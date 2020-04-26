@@ -1,11 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class SettingsData : ScriptableObject
+namespace Data
 {
-    public KeyCode forward;
-    public KeyCode backward;
-    public KeyCode right;
-    public KeyCode left;
+    [CreateAssetMenu(menuName = "ScriptableObjects/GameProxy", order = 1)]
+    public class SettingsData : ScriptableObject
+    {
+        public KeyCode forward;
+        public KeyCode backward;
+        public KeyCode right;
+        public KeyCode left;
+        public KeyCode jump;
+    }
 }
