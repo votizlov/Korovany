@@ -15,7 +15,7 @@ public class MainMenuController : MonoBehaviour
     public void StartSolo()
     {
         settings.playerName = null;
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Arena");
     }
 
     public void CreateRoom()

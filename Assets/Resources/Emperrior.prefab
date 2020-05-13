@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: c14837dfa515883428e5652d93e80c72, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -141,7 +141,7 @@ MonoBehaviour:
   rigidbody: {fileID: 5212380099699345704}
   photonView: {fileID: 88917178748614906}
   gunPlace: {fileID: 5212380099439885239}
-  speed: 0
+  speed: 10
   speedH: 2
   speedV: 2
 --- !u!114 &5212380099835355654
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28d70fa18349ae14fa447da0e608a66b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentGun: {fileID: 109950757463191738, guid: 3604e46d20fde584091834b86e420f6c,
+  primaryGun: {fileID: 4494811711480783028, guid: 421cc7b41fb88ee4ea3170416d240a81,
     type: 3}
   guns: []
   gunPlace: {fileID: 5212380099439885232}

@@ -1,24 +1,25 @@
 ﻿using System.Collections.Generic;
+using UnityEditor.Rendering.Universal.ShaderGUI;
 using UnityEngine;
 
 namespace Objects.Items
 {
     public class InventoryController : MonoBehaviour
     {
-        public Gun.Gun currentGun;
-        [SerializeField] private List<Gun.Gun> guns;
+        [SerializeField]private Gun.Gun primaryGun;
+        //[SerializeField] private List<Gun.Gun> guns; todo different guns for class
         [SerializeField] private Transform gunPlace;
+        //[SerializeField] private todo items saving
 
         public void Awake()
         {
-            //todo инстанцирование пушек
-            currentGun = Instantiate(currentGun, gunPlace.position, gunPlace.rotation);
-            currentGun.transform.parent = gunPlace;
+            primaryGun = Instantiate(primaryGun, gunPlace.position, gunPlace.rotation);
+            primaryGun.transform.parent = gunPlace;
         }
 
         public void FireCurrentGun()
         {
-            currentGun.Fire();
+            primaryGun.Fire();
         }
 
         public void ReloadCurrentGun()

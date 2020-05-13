@@ -13,6 +13,7 @@ namespace AI
         [SerializeField] private GameProxy gameProxy;
         [SerializeField] private NavMeshAgent agent;
         [SerializeField] private Gun gun;
+        [SerializeField] private int bounty;
         private MainContext _context;
 
         private void Awake()

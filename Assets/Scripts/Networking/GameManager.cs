@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using AI;
+using Apex.AI.Components;
 using Core;
 using Data;
 using Objects;
+using Objects.Items;
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,19 +13,21 @@ namespace Networking
 {
     public class GameManager : MonoBehaviourPunCallbacks
     {
-        [SerializeField] private GameObject playerPrefab;
-
         [SerializeField] private Transform playerStartPoint;
 
         [SerializeField] private SettingsData settings;
 
         [SerializeField] private GameProxy gameProxy;
-        
+
+        [SerializeField] private ItemsController itemsController;
+
         [SerializeField] private AttackManager attackManager;
 
         [SerializeField] private UIController UI;
 
         [SerializeField] private GameObject classSelectionCam;
+
+        [SerializeField] private UtilityAIComponent comp;
 
         private GameObject t;
 
@@ -39,15 +42,18 @@ namespace Networking
             gameProxy.UI = UI;
             gameProxy.allies = new List<GameObject>();
             gameProxy.enemies = new List<GameObject>();
+            gameProxy.gameManager = this;
+            gameProxy.itemsController = itemsController;
             m_View = GetComponent<PhotonView>();
         }
 
         public void SpawnPlayer(String selectedClass)
         {
-            if (!m_View.IsMine) return;
+            if (!m_View.IsMine && PhotonNetwork.IsConnected) return;
             if (settings.playerName == null)
             {
-                t = Instantiate(playerPrefab, playerStartPoint.position, playerStartPoint.rotation);
+                t = Instantiate((GameObject) Resources.Load(selectedClass), playerStartPoint.position,
+                    playerStartPoint.rotation);
             }
             else
             {
@@ -56,12 +62,12 @@ namespace Networking
 
             gameProxy.allies.Add(t);
             gameProxy.players.Add(t.GetComponent<PlayerController>());
-            
+
             classSelectionCam.SetActive(false);
 
             UI.OnClassSelectedText();
             m_PlayersReady++;
-            if (PhotonNetwork.CurrentRoom.PlayerCount == m_PlayersReady)
+            if (!PhotonNetwork.IsConnected || PhotonNetwork.CurrentRoom.PlayerCount == m_PlayersReady)
             {
                 StartMainLoop();
             }
@@ -69,12 +75,21 @@ namespace Networking
 
         private void StartMainLoop()
         {
+            foreach (var player in gameProxy.players)
+            {
+                player.isFreesed = false;
+            }
+
             UI.OnMainLoopStarted();
         }
 
         public void OnLeftRoom()
         {
             SceneManager.LoadScene("MainMenu");
+        }
+
+        public void OnKorovanDestroyed()
+        {
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
-using AI;
+using Networking;
 using Objects;
+using Objects.Items;
 using UnityEngine;
 
 namespace Core
@@ -12,7 +13,9 @@ namespace Core
         public List<GameObject> enemies;
         public AttackManager attackManager;
         public List<PlayerController> players;
+        public GameManager gameManager;
         public UIController UI;
+        public ItemsController itemsController;
         public int currency;
     }
 }

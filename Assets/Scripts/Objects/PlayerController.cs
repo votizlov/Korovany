@@ -10,7 +10,6 @@ namespace Objects
 {
     public class PlayerController : MonoBehaviour, IPunObservable
     {
-        public event Action<PlayerController> OnInteract;
 
         public bool isFreesed = true;
         
@@ -52,30 +51,31 @@ namespace Objects
 
         void Update()
         {
-            if (!photonView.IsMine) return;
+            if (isFreesed) return;
+            if (!photonView.IsMine && PhotonNetwork.IsConnected) return;
             if (Input.GetKey(settings.forward))
             {
-                applyAcceleration(gameObject.transform.forward);
+                ApplyAcceleration(gameObject.transform.forward);
             }
 
             if (Input.GetKey(settings.backward))
             {
-                applyAcceleration(-gameObject.transform.forward);
+                ApplyAcceleration(-gameObject.transform.forward);
             }
 
             if (Input.GetKey(settings.left))
             {
-                applyAcceleration(Quaternion.Euler(0, -90, 0) * gameObject.transform.forward);
+                ApplyAcceleration(Quaternion.Euler(0, -90, 0) * gameObject.transform.forward);
             }
 
             if (Input.GetKey(settings.right))
             {
-                applyAcceleration(Quaternion.Euler(0, 90, 0) * gameObject.transform.forward);
+                ApplyAcceleration(Quaternion.Euler(0, 90, 0) * gameObject.transform.forward);
             }
 
             if (Input.GetKey(settings.jump))
             {
-                applyAcceleration(gameObject.transform.up);
+                ApplyAcceleration(gameObject.transform.up);
             }
 
             if (Input.GetKey(settings.fire))
@@ -85,7 +85,7 @@ namespace Objects
 
             if (Input.GetKeyDown(settings.interaction))
             {
-                OnInteract?.Invoke(this);
+                Interact();
             }
 
             if (Input.GetKeyDown(settings.openAlliesMenu))
@@ -110,7 +110,22 @@ namespace Objects
             }
         }
 
-        private void applyAcceleration(Vector3 dir)
+        private void Interact()
+        {
+            RaycastHit hit;
+
+            if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit,
+                2))
+            {
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+                if (hit.collider.gameObject.CompareTag("Interactable"))
+                {
+                    hit.collider.GetComponent<Interactable>().Interact(this);
+                }
+            }
+        }
+
+        private void ApplyAcceleration(Vector3 dir)
         {
             rigidbody.AddForce(dir * speed);
         }

@@ -5,117 +5,87 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Korovany/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Korovany/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Korovany/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Korovany/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Korovany/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Korovany/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/SettingsData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/SettingsData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/SettingsData.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/SettingsData.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Object.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Object/PlayerController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Object/PlayerController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Settings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Editor.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Editor/MapPreviewEditor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Editor/MapPreviewEditor.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Editor/UpdatableDataEditor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Editor/UpdatableDataEditor.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Materials.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Materials/Map Mat.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Materials/Map Mat.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Materials/Mesh Mat.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Materials/Mesh Mat.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scenes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scenes/Scene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scenes/Scene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/Data.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/Data/HeightMapSettings.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/Data/HeightMapSettings.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/Data/MeshSettings.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/Data/MeshSettings.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/Data/TextureData.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/Data/TextureData.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/Data/UpdatableData.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/Data/UpdatableData.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/FalloffGenerator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/FalloffGenerator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/HeightMapGenerator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/HeightMapGenerator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/HideOnPlay.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/HideOnPlay.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/MapPreview.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/MapPreview.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/MeshGenerator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/MeshGenerator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/Noise.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/Noise.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/Terrain.shader" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/Terrain.shader.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/TerrainChunk.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/TerrainChunk.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/TerrainGenerator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/TerrainGenerator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/TextureGenerator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/TextureGenerator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/ThreadedDataRequester.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/ThreadedDataRequester.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Standard Assets.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Standard Assets/Characters.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Standard Assets/Characters/FirstPersonCharacter.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Standard Assets/Characters/FirstPersonCharacter/Prefabs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Standard Assets/Characters/FirstPersonCharacter/Prefabs/RigidBodyFPSController.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Standard Assets/Characters/FirstPersonCharacter/Prefabs/RigidBodyFPSController.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Standard Assets/Characters/FirstPersonCharacter/Scripts.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Standard Assets/Characters/FirstPersonCharacter/Scripts/MouseLook.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Standard Assets/Characters/FirstPersonCharacter/Scripts/MouseLook.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Standard Assets/Characters/FirstPersonCharacter/Scripts/RigidbodyFirstPersonController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Standard Assets/Characters/FirstPersonCharacter/Scripts/RigidbodyFirstPersonController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Standard Assets/PhysicsMaterials.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Standard Assets/PhysicsMaterials/Bouncy.physicmaterial" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Standard Assets/PhysicsMaterials/Bouncy.physicmaterial.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Standard Assets/PhysicsMaterials/Ice.physicmaterial" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Standard Assets/PhysicsMaterials/Ice.physicmaterial.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Standard Assets/PhysicsMaterials/MaxFriction.physicMaterial" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Standard Assets/PhysicsMaterials/MaxFriction.physicMaterial.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Standard Assets/PhysicsMaterials/Metal.physicmaterial" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Standard Assets/PhysicsMaterials/Metal.physicmaterial.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Standard Assets/PhysicsMaterials/Rubber.physicmaterial" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Standard Assets/PhysicsMaterials/Rubber.physicmaterial.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Standard Assets/PhysicsMaterials/Wood.physicmaterial" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Standard Assets/PhysicsMaterials/Wood.physicmaterial.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Standard Assets/PhysicsMaterials/ZeroFriction.physicMaterial" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Standard Assets/PhysicsMaterials/ZeroFriction.physicMaterial.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Terrain Assets.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Terrain Assets/Default Texture.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Terrain Assets/Default Texture.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Terrain Assets/New Height Map Settings.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Terrain Assets/New Height Map Settings.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Terrain Assets/New Mesh Settings.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Terrain Assets/New Mesh Settings.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Textures.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Textures/Grass.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Textures/Grass.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Textures/Rocks 1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Textures/Rocks 1.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Textures/Rocks 2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Textures/Rocks 2.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Textures/Sandy grass.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Textures/Sandy grass.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Textures/Snow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Textures/Snow.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Textures/Stony ground.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Textures/Stony ground.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Textures/Tileable noise.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Textures/Tileable noise.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Textures/Water.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainGenerator/Textures/Water.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FastIK/Materials/Blue.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FastIK/Materials/Blue.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FastIK/Materials/Green.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FastIK/Materials/Green.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FastIK/Materials/Red.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FastIK/Materials/Red.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FastIK/Materials/White.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FastIK/Materials/White.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FastIK/Materials/Yellow.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FastIK/Materials/Yellow.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FastIK/Scripts/FastIK/FastIKFabric.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FastIK/Scripts/FastIK/FastIKFabric.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/New Terrain.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/New Terrain.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Materials/FlyerAsteroid.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Materials/FlyerAsteroid.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Materials/FlyerPlayership.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Materials/FlyerPlayership.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Materials/WhiteSmooth.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Materials/WhiteSmooth.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Models/Materials/Asteroid.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Models/Materials/Asteroid.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Models/Materials/FlyerAsteroid1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Models/Materials/FlyerAsteroid1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Models/Materials/SpaceshipGlow.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Models/Materials/SpaceshipGlow.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Models/Materials/SpaceshipHull.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Models/Materials/SpaceshipHull.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoProcedural/Materials/Black.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoProcedural/Materials/Black.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoProcedural/Materials/LightGreen.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoProcedural/Materials/LightGreen.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoProcedural/Materials/Orange.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoProcedural/Materials/Orange.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoProcedural/Materials/Red.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoProcedural/Materials/Red.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoProcedural/Materials/Yellow.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoProcedural/Materials/Yellow.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Racing Kit/Models/Materials/_defaultMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Racing Kit/Models/Materials/_defaultMat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Racing Kit/Models/Materials/bark.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Racing Kit/Models/Materials/bark.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Racing Kit/Models/Materials/grass.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Racing Kit/Models/Materials/grass.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Racing Kit/Models/Materials/grey.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Racing Kit/Models/Materials/grey.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Racing Kit/Models/Materials/red.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Racing Kit/Models/Materials/red.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Racing Kit/Models/Materials/road.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Racing Kit/Models/Materials/road.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Racing Kit/Models/Materials/tankco.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Racing Kit/Models/Materials/tankco.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Racing Kit/Models/Materials/wall.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Racing Kit/Models/Materials/wall.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Racing Kit/Models/Materials/white.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Racing Kit/Models/Materials/white.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/11 - Default.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/11 - Default.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/13 - Default.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/13 - Default.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/13 - Default22662.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/13 - Default22662.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/13 - Default54.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/13 - Default54.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/20 - Default.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/20 - Default.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/22 - Default.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/22 - Default.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/24 - Default.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/24 - Default.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/No Name.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/No Name.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/car.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/car.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/ground_green.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/ground_green.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/ground_green232.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/ground_green232.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/insides_2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/insides_2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/insides_3.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/insides_3.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/leaves_palm_243.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/leaves_palm_243.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/roof.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/roof.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/tank.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/tank.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/windows_2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/windows_2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Materials/Red Beam.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Materials/Red Beam.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Materials/UnitTextureGreen12x.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Materials/UnitTextureGreen12x.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Materials/UnitTextureRed12x.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Materials/UnitTextureRed12x.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Materials/UnitTextureYellow12x.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Materials/UnitTextureYellow12x.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Animations/Materials/EyesMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Animations/Materials/EyesMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Animations/Materials/SkinMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Animations/Materials/SkinMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Animations/Materials/SuitMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Animations/Materials/SuitMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Animations/Materials/TeethMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Animations/Materials/TeethMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Animations/Materials/TongueMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Animations/Materials/TongueMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Materials/Gradient.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Materials/Gradient.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Materials/PlayerDiamond.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Materials/PlayerDiamond.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Materials/Robot_Color.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Materials/Robot_Color.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Materials/UnitCircleMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Materials/UnitCircleMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Materials/UnitCircleTexture.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Materials/UnitCircleTexture.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Materials/UnitTextureBlue.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Materials/UnitTextureBlue.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Materials/UnitTextureBlue12x.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Materials/UnitTextureBlue12x.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Materials/UnitTextureRed.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Materials/UnitTextureRed.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Guns/Heavy Full Metal Sword.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Guns/Heavy Full Metal Sword.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Guns/Pistol.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Guns/Pistol.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Guns/bazooka.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Guns/bazooka.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Emperrior.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Emperrior.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Guard.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Guard.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Arena.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Arena.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/EnemyContextProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/EnemyContextProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/GameProxy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/GameProxy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/MainMenuController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/MainMenuController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DamageSystem/AttackTypes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DamageSystem/AttackTypes.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Networking/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Networking/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Objects/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Objects/Interactable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Objects/Item.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Objects/Interactable.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Objects/Items/InventoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Objects/Items/InventoryController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Objects/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Objects/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,27 +96,37 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/EnemyContextProvider.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/AllyContextProvider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/Korovan.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/SpawnersContextProvider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FastIK/Scripts/FastIK/FastIKFabric.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/Classes.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/MainContext.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DamageSystem/AttackManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/MainMenuController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/Actions/FollowPlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Networking/LobbyManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data/SettingsData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Networking/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/AlliesShop.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/Actions/SelectItemToSpawn.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/Timer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/PathCreator/Examples/Scripts/PathFollower.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/GameProxy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DamageSystem/AttackingObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/UIController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DamageSystem/AttackTypes.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Procedural-Landmass-Generation-master/Procedural-Landmass-Generation-master/Proc Gen E21/Assets/Scripts/Terrain.shader" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Game.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/Items/InventoryController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scripts/CameraWork.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/EnemyContextProvider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/AllyContextProvider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/MainContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/Items/ItemComponent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DamageSystem/AttackManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/Interactable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/MainMenuController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/Actions/FollowPlayer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data/SettingsData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/AlliesShop.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/Actions/SelectItemToSpawn.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/Items/ItemsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/TerrainGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DamageSystem/AttackTypes.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Code/PhotonNetwork.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/SpawnersContext.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -167,19 +147,29 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Objects/AlliesShop.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/MainContext.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Objects/Timer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/DamageSystem/AttackTypes.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Core/GameProxy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Core/Game.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DamageSystem/AttackingObject.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/AllyContextProvider.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/Actions/FollowPlayer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Core/MainMenuController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Objects/Classes.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Core/UIController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Networking/LobbyManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/SpawnersContextProvider.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Objects/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Core/MainMenuController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DamageSystem/AttackTypes.cs" />
+        <option value="$PROJECT_DIR$/Assets/FastIK/Scripts/FastIK/FastIKFabric.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/AI/EnemyContextProvider.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Objects/TerrainGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Objects/PathFollower.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Objects/Items/InventoryController.cs" />
+        <option value="$PROJECT_DIR$/Assets/PathCreator/Examples/Scripts/PathFollower.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Objects/Korovan.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Objects/Interactable.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Core/GameProxy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Objects/Items/ItemsController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Networking/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Objects/Items/ItemComponent.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Objects/PlayerController.cs" />
       </list>
     </option>
   </component>
@@ -227,7 +217,7 @@
       <workItem from="1587884965838" duration="10743000" />
       <workItem from="1588145734954" duration="1614000" />
       <workItem from="1589293725897" duration="10246000" />
-      <workItem from="1589356327314" duration="5834000" />
+      <workItem from="1589356327314" duration="17608000" />
     </task>
     <servers />
   </component>
