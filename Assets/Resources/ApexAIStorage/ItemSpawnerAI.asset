@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1719459976, guid: 6012f3241c1c1f7409c44769fc0a1db7, type: 3}
+  m_Name: ItemSpawnerAI
+  m_EditorClassIdentifier: 
+  description: 
+  version: 16779010
+  aiId: f033d780-fc25-4d60-9bc8-23588ae047ba
+  configuration: '{"@type":"Apex.AI.UtilityAI, ApexAI","_rootSelectorId":cfffc970876646e4894c381f68fef5fb,"_id":f033d780fc254d609bc823588ae047ba,"_selectors":[{"@type":"Apex.AI.ScoreSelector,
+    ApexAI","_id":cfffc970876646e4894c381f68fef5fb,"_qualifiers":[],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Apex.AI.CompositeAction, ApexAI","_actions":[],"_connectorAction":{"@type":"Apex.AI.SelectorAction,
+    ApexAI","_selectorId":cfcf2ba051fe4735ab54144ed5a7a30e}}}},{"@type":"Apex.AI.ScoreSelector,
+    ApexAI","_id":cfcf2ba051fe4735ab54144ed5a7a30e,"_qualifiers":[],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI"}}]}'
+  editorConfiguration: '{"offset":{"@x":0,"@y":0},"zoom":1,"SelectorView":{"ViewArea":{"@left":100,"@top":100,"@width":200,"@height":100},"Name":"SelectItemToSpawn","DefaultQualifier":{"ActionView":{"@connectorType":"Composite"}}},"SelectorView":{"ViewArea":{"@left":420,"@top":100,"@width":200,"@height":100},"Name":"SpawnItem","DefaultQualifier":{}}}'

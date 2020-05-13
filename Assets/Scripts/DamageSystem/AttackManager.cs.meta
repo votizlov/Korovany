@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: d221f55b8915c5d4ea3f56ce2b169c10
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - pistolShotEffect: {fileID: 7397567114278750189, guid: 9d5da58edd2fe5e49aa82db9c6fb0f88,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

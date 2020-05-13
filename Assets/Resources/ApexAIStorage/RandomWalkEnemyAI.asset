@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1719459976, guid: 6012f3241c1c1f7409c44769fc0a1db7, type: 3}
+  m_Name: RandomWalkEnemyAI
+  m_EditorClassIdentifier: 
+  description: 
+  version: 16779010
+  aiId: 0941c29b-873d-4af6-a7ae-175cad463f4e
+  configuration: '{"@type":"Apex.AI.UtilityAI, ApexAI","_rootSelectorId":549a11162dfa4bd9b6ff01bad56c15d6,"_id":0941c29b873d4af6a7ae175cad463f4e,"_selectors":[{"@type":"Apex.AI.ScoreSelector,
+    ApexAI","_id":549a11162dfa4bd9b6ff01bad56c15d6,"_qualifiers":[{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
+    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":2b0dc8a1ba714432aa0d381729bd1daa},"threshold":1,"_scorers":[{"@type":"isAgentArrived,
+    Assembly-CSharp"}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Apex.AI.CompositeAction, ApexAI","_actions":[],"_connectorAction":{"@type":"Apex.AI.SelectorAction,
+    ApexAI","_selectorId":e94f474b0077419db9c33c2de713594e}}}},{"@type":"Apex.AI.ScoreSelector,
+    ApexAI","_id":2b0dc8a1ba714432aa0d381729bd1daa,"_qualifiers":[],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Apex.AI.CompositeAction, ApexAI","_actions":[{"@type":"SelectRandomDestination,
+    Assembly-CSharp"},{"@type":"GoToPos, Assembly-CSharp"}],"_connectorAction":{"@type":"Apex.AI.SelectorAction,
+    ApexAI","_selectorId":e94f474b0077419db9c33c2de713594e}}}},{"@type":"Apex.AI.ScoreSelector,
+    ApexAI","_id":e94f474b0077419db9c33c2de713594e,"_qualifiers":[],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Apex.AI.CompositeAction, ApexAI","_actions":[{"@type":"FindClosestTarget,
+    Assembly-CSharp"},{"@type":"RotateToTarget, Assembly-CSharp"},{"@type":"Shoot,
+    Assembly-CSharp"}]}}}]}'
+  editorConfiguration: '{"offset":{"@x":0,"@y":0},"zoom":1,"SelectorView":{"ViewArea":{"@left":100,"@top":100,"@width":200,"@height":160},"Name":"If
+    reached destination","QualifierView":{"ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{"@connectorType":"Composite"}}},"SelectorView":{"ViewArea":{"@left":380,"@top":40,"@width":200,"@height":100},"Name":"set
+    new destination","DefaultQualifier":{"ActionView":{"@connectorType":"Composite"}}},"SelectorView":{"ViewArea":{"@left":580,"@top":180,"@width":200,"@height":100},"Name":"try
+    to attack","DefaultQualifier":{"ActionView":{"@connectorType":"Composite"}}}}'

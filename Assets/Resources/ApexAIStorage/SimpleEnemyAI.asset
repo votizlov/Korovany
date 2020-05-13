@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1719459976, guid: 6012f3241c1c1f7409c44769fc0a1db7, type: 3}
+  m_Name: SimpleEnemyAI
+  m_EditorClassIdentifier: 
+  description: 
+  version: 16779010
+  aiId: 7cad78a0-5210-4d36-a9c7-c9ce07a2b05d
+  configuration: '{"@type":"Apex.AI.UtilityAI, ApexAI","_rootSelectorId":f0e2973f3da344b7a313e9e547dbdf7b,"_id":7cad78a052104d36a9c7c9ce07a2b05d,"_selectors":[{"@type":"Apex.AI.ScoreSelector,
+    ApexAI","_id":f0e2973f3da344b7a313e9e547dbdf7b,"_qualifiers":[],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Apex.AI.CompositeAction, ApexAI","_actions":[{"@type":"FindClosestTarget,
+    Assembly-CSharp"},{"@type":"RotateToTarget, Assembly-CSharp"},{"@type":"Shoot,
+    Assembly-CSharp"},{"@type":"GoToTarget, Assembly-CSharp"}]}}}]}'
+  editorConfiguration: '{"offset":{"@x":0,"@y":0},"zoom":1,"SelectorView":{"ViewArea":{"@left":100,"@top":100,"@width":200,"@height":100},"DefaultQualifier":{"ActionView":{"@connectorType":"Composite"}}}}'

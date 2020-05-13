@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1719459976, guid: 6012f3241c1c1f7409c44769fc0a1db7, type: 3}
+  m_Name: SimpleAllyAI
+  m_EditorClassIdentifier: 
+  description: 
+  version: 16779010
+  aiId: e96123b7-3f93-4079-b375-0229e63179c0
+  configuration: '{"@type":"Apex.AI.UtilityAI, ApexAI","_rootSelectorId":39dffc726ade4df7b6d38642672a896e,"_id":e96123b73f934079b3750229e63179c0,"_selectors":[{"@type":"Apex.AI.ScoreSelector,
+    ApexAI","_id":39dffc726ade4df7b6d38642672a896e,"_qualifiers":[{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
+    ApexAI","action":{"@type":"Apex.AI.CompositeAction, ApexAI","_actions":[{"@type":"GoToPos,
+    Assembly-CSharp"},{"@type":"ExecutingOrderState, Assembly-CSharp"}],"_connectorAction":{"@type":"Apex.AI.SelectorAction,
+    ApexAI","_selectorId":28e6b42bf26241d89a7113897c530679}},"threshold":2,"_scorers":[{"@type":"isNewDestinationReceived,
+    Assembly-CSharp"}]},{"@type":"Apex.AI.CompositeAllOrNothingQualifier, ApexAI","action":{"@type":"Apex.AI.CompositeAction,
+    ApexAI","_actions":[{"@type":"ExecutedOrderState, Assembly-CSharp"}],"_connectorAction":{"@type":"Apex.AI.SelectorAction,
+    ApexAI","_selectorId":28e6b42bf26241d89a7113897c530679}},"_scorers":[{"@type":"isAgentArrived,
+    Assembly-CSharp"}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":28e6b42bf26241d89a7113897c530679}}},{"@type":"Apex.AI.ScoreSelector,
+    ApexAI","_id":2f964028ffb14de391955268247eb1d3,"_qualifiers":[],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Apex.AI.CompositeAction, ApexAI","_actions":[{"@type":"FollowPlayer,
+    Assembly-CSharp"}],"_connectorAction":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":86177766de314f08ab7ca9fbab9f178c}}}},{"@type":"Apex.AI.ScoreSelector,
+    ApexAI","_id":86177766de314f08ab7ca9fbab9f178c,"_qualifiers":[{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
+    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":f7a405cdc5494f98b3c3176c2f02d88c},"threshold":1,"_scorers":[{"@type":"IsAttacking,
+    Assembly-CSharp"}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI"}},{"@type":"Apex.AI.ScoreSelector, ApexAI","_id":f7a405cdc5494f98b3c3176c2f02d88c,"_qualifiers":[],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Apex.AI.CompositeAction, ApexAI","_actions":[{"@type":"FindClosestTarget,
+    Assembly-CSharp"},{"@type":"RotateToTarget, Assembly-CSharp"},{"@type":"Shoot,
+    Assembly-CSharp"}]}}},{"@type":"Apex.AI.ScoreSelector, ApexAI","_id":28e6b42bf26241d89a7113897c530679,"_qualifiers":[{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
+    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":86177766de314f08ab7ca9fbab9f178c},"threshold":2,"_scorers":[{"@type":"isExecutingOrder,
+    Assembly-CSharp"}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":2f964028ffb14de391955268247eb1d3}}}]}'
+  editorConfiguration: '{"offset":{"@x":157,"@y":52},"zoom":0.80000001,"SelectorView":{"ViewArea":{"@left":13,"@top":116,"@width":160,"@height":176},"Name":"UpdateOrders","QualifierView":{"Name":"isNewDestinationReceived","ActionView":{"@connectorType":"Composite"}},"QualifierView":{"Name":"isArrivedAtDestination","ActionView":{"@connectorType":"Composite"}},"DefaultQualifier":{"Name":"nothing
+    new","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":477,"@top":356,"@width":160,"@height":80},"DefaultQualifier":{"ActionView":{"@connectorType":"Composite"}}},"SelectorView":{"ViewArea":{"@left":685,"@top":164,"@width":160,"@height":128},"Name":"AttackBehaviorSelector","QualifierView":{"Name":"isAttacking","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"isPassive"}},"SelectorView":{"ViewArea":{"@left":893,"@top":100,"@width":160,"@height":80},"Name":"AttackBehavior","DefaultQualifier":{"ActionView":{"@connectorType":"Composite"}}},"SelectorView":{"ViewArea":{"@left":269,"@top":180,"@width":160,"@height":128},"Name":"Is
+    executing order","QualifierView":{"Name":"yes","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"no","ActionView":{"@connectorType":"Selector"}}}}'
