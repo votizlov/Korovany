@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class ExecutedOrderState : ActionBase
 {
-
     public override void Execute(IAIContext context)
     {
         var c = (MainContext) context;

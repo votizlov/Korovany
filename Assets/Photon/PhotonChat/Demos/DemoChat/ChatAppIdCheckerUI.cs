@@ -6,7 +6,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using UnityEngine;
-
 #if PHOTON_UNITY_NETWORKING
 using UnityEngine.UI;
 using Photon.Pun;
@@ -22,7 +21,7 @@ public class ChatAppIdCheckerUI : MonoBehaviour
 
     public void Update()
     {
-		if (string.IsNullOrEmpty(PhotonNetwork.PhotonServerSettings.AppSettings.AppIdChat))
+        if (string.IsNullOrEmpty(PhotonNetwork.PhotonServerSettings.AppSettings.AppIdChat))
         {
             if (Description != null)
             {
@@ -40,7 +39,6 @@ public class ChatAppIdCheckerUI : MonoBehaviour
     }
 }
 #else
-
 public class ChatAppIdCheckerUI : MonoBehaviour
 {
     // empty class. if PUN is not present, we currently don't check Chat-AppId "presence".

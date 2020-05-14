@@ -11,7 +11,7 @@ public class ChannelSelector : MonoBehaviour, IPointerClickHandler
     {
         this.Channel = channel;
         Text t = GetComponentInChildren<Text>();
-        t.text = this.Channel;        
+        t.text = this.Channel;
     }
 
     public void OnPointerClick(PointerEventData eventData)

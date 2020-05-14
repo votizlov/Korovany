@@ -1,6 +1,6 @@
 ﻿namespace AI
 {
-    public enum AllyBehaviors 
+    public enum AllyBehaviors
     {
         Passive,
         Attacking

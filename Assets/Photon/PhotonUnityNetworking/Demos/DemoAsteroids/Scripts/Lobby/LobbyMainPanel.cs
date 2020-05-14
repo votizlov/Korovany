@@ -8,31 +8,25 @@ namespace Photon.Pun.Demo.Asteroids
 {
     public class LobbyMainPanel : MonoBehaviourPunCallbacks
     {
-        [Header("Login Panel")]
-        public GameObject LoginPanel;
+        [Header("Login Panel")] public GameObject LoginPanel;
 
         public InputField PlayerNameInput;
 
-        [Header("Selection Panel")]
-        public GameObject SelectionPanel;
+        [Header("Selection Panel")] public GameObject SelectionPanel;
 
-        [Header("Create Room Panel")]
-        public GameObject CreateRoomPanel;
+        [Header("Create Room Panel")] public GameObject CreateRoomPanel;
 
         public InputField RoomNameInputField;
         public InputField MaxPlayersInputField;
 
-        [Header("Join Random Room Panel")]
-        public GameObject JoinRandomRoomPanel;
+        [Header("Join Random Room Panel")] public GameObject JoinRandomRoomPanel;
 
-        [Header("Room List Panel")]
-        public GameObject RoomListPanel;
+        [Header("Room List Panel")] public GameObject RoomListPanel;
 
         public GameObject RoomListContent;
         public GameObject RoomListEntryPrefab;
 
-        [Header("Inside Room Panel")]
-        public GameObject InsideRoomPanel;
+        [Header("Inside Room Panel")] public GameObject InsideRoomPanel;
 
         public Button StartGameButton;
         public GameObject PlayerListEntryPrefab;
@@ -49,7 +43,7 @@ namespace Photon.Pun.Demo.Asteroids
 
             cachedRoomList = new Dictionary<string, RoomInfo>();
             roomListEntries = new Dictionary<string, GameObject>();
-            
+
             PlayerNameInput.text = "Player " + Random.Range(1000, 10000);
         }
 
@@ -291,7 +285,7 @@ namespace Photon.Pun.Demo.Asteroids
 
             return true;
         }
-        
+
         private void ClearRoomListView()
         {
             foreach (GameObject entry in roomListEntries.Values)
@@ -313,7 +307,8 @@ namespace Photon.Pun.Demo.Asteroids
             SelectionPanel.SetActive(activePanel.Equals(SelectionPanel.name));
             CreateRoomPanel.SetActive(activePanel.Equals(CreateRoomPanel.name));
             JoinRandomRoomPanel.SetActive(activePanel.Equals(JoinRandomRoomPanel.name));
-            RoomListPanel.SetActive(activePanel.Equals(RoomListPanel.name));    // UI should call OnRoomListButtonClicked() to activate this
+            RoomListPanel.SetActive(
+                activePanel.Equals(RoomListPanel.name)); // UI should call OnRoomListButtonClicked() to activate this
             InsideRoomPanel.SetActive(activePanel.Equals(InsideRoomPanel.name));
         }
 
@@ -352,7 +347,7 @@ namespace Photon.Pun.Demo.Asteroids
                 GameObject entry = Instantiate(RoomListEntryPrefab);
                 entry.transform.SetParent(RoomListContent.transform);
                 entry.transform.localScale = Vector3.one;
-                entry.GetComponent<RoomListEntry>().Initialize(info.Name, (byte)info.PlayerCount, info.MaxPlayers);
+                entry.GetComponent<RoomListEntry>().Initialize(info.Name, (byte) info.PlayerCount, info.MaxPlayers);
 
                 roomListEntries.Add(info.Name, entry);
             }

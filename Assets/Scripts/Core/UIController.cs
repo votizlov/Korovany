@@ -28,8 +28,10 @@ namespace Core
 
         public void OnClassSelectedText()
         {
+            classSelection.SetActive(false);
             waitForPlayers.SetActive(true);
         }
+
         public void OpenAlliesShopMenu(AlliesShop shop)
         {
             if (_isMenuOpened) return;
@@ -59,10 +61,11 @@ namespace Core
         {
             alliesShop.SetActive(false);
             _isMenuOpened = false;
-            Instantiate(ally, _currShop.spawnPoint+_currShop.transform.position, Quaternion.identity);
+            Instantiate(ally, _currShop.spawnPoint + _currShop.transform.position, Quaternion.identity);
         }
 
-        public void ChangeAllyMode(int behavior)//enum нельзя передавать из кнопок, хотя эта фича была запрошена 6 лет назад
+        public void
+            ChangeAllyMode(int behavior) //enum нельзя передавать из кнопок, хотя эта фича была запрошена 6 лет назад
         {
             _currCommander.allyBehavior = (AllyBehaviors) behavior;
             alliesMenu.SetActive(false);

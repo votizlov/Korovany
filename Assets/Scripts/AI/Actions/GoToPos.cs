@@ -6,10 +6,9 @@ using UnityEngine;
 
 public class GoToPos : ActionBase
 {
-
     public override void Execute(IAIContext context)
     {
-        var c = (MainContext)context;
+        var c = (MainContext) context;
         c.agent.stoppingDistance = 0;
         c.agent.destination = c.targetPosition;
     }

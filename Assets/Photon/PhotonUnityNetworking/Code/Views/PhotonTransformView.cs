@@ -55,8 +55,10 @@ namespace Photon.Pun
         {
             if (!this.m_PhotonView.IsMine)
             {
-                transform.position = Vector3.MoveTowards(transform.position, this.m_NetworkPosition, this.m_Distance * (1.0f / PhotonNetwork.SerializationRate));
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, this.m_NetworkRotation, this.m_Angle * (1.0f / PhotonNetwork.SerializationRate));
+                transform.position = Vector3.MoveTowards(transform.position, this.m_NetworkPosition,
+                    this.m_Distance * (1.0f / PhotonNetwork.SerializationRate));
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, this.m_NetworkRotation,
+                    this.m_Angle * (1.0f / PhotonNetwork.SerializationRate));
             }
         }
 
@@ -85,12 +87,10 @@ namespace Photon.Pun
             }
             else
             {
-
-
                 if (this.m_SynchronizePosition)
                 {
-                    this.m_NetworkPosition = (Vector3)stream.ReceiveNext();
-                    this.m_Direction = (Vector3)stream.ReceiveNext();
+                    this.m_NetworkPosition = (Vector3) stream.ReceiveNext();
+                    this.m_Direction = (Vector3) stream.ReceiveNext();
 
                     if (m_firstTake)
                     {
@@ -99,17 +99,15 @@ namespace Photon.Pun
                     }
                     else
                     {
-                        float lag = Mathf.Abs((float)(PhotonNetwork.Time - info.SentServerTime));
+                        float lag = Mathf.Abs((float) (PhotonNetwork.Time - info.SentServerTime));
                         this.m_NetworkPosition += this.m_Direction * lag;
                         this.m_Distance = Vector3.Distance(transform.position, this.m_NetworkPosition);
                     }
-
-                   
                 }
 
                 if (this.m_SynchronizeRotation)
                 {
-                    this.m_NetworkRotation = (Quaternion)stream.ReceiveNext();
+                    this.m_NetworkRotation = (Quaternion) stream.ReceiveNext();
 
                     if (m_firstTake)
                     {
@@ -124,7 +122,7 @@ namespace Photon.Pun
 
                 if (this.m_SynchronizeScale)
                 {
-                    transform.localScale = (Vector3)stream.ReceiveNext();
+                    transform.localScale = (Vector3) stream.ReceiveNext();
                 }
 
                 if (m_firstTake)

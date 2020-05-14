@@ -20,7 +20,8 @@ public class AttackManager : MonoBehaviour
                 if (Physics.Raycast(attackingObject.transform.position, attackingObject.transform.forward, out hit,
                     attackingObject.range))
                 {
-                    Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+                    Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance,
+                        Color.yellow);
                     if (hit.collider.gameObject.CompareTag("Damagable"))
                     {
                         hit.collider.GetComponent<DamagableObject>().RemoveHP(attackingObject.damage);

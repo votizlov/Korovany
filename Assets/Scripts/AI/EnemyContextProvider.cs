@@ -18,7 +18,8 @@ namespace AI
 
         private void Awake()
         {
-            _context = new MainContext {agent = agent, possibleTargets = gameProxy.allies, gun = gun,currentPos = transform};
+            _context = new MainContext
+                {agent = agent, possibleTargets = gameProxy.allies, gun = gun, currentPos = transform};
             gameProxy.enemies.Add(gameObject);
         }
 

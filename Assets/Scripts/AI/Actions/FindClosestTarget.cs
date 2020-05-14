@@ -14,6 +14,7 @@ public class FindClosestTarget : ActionBase
             c.target = null;
             return;
         }
+
         float range = Vector3.Distance(c.currentPos.position, c.possibleTargets[0].transform.position);
         GameObject closest = c.possibleTargets[0];
         foreach (var tgt in c.possibleTargets)

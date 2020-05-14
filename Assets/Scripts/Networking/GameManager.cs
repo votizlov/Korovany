@@ -29,11 +29,11 @@ namespace Networking
 
         [SerializeField] private UtilityAIComponent comp;
 
+        [SerializeField] private PhotonView photonView;
+
         private GameObject t;
 
-        private PhotonView m_View;
-
-        private int m_PlayersReady;
+        private int m_PlayersReady = 0;
 
         void Awake()
         {
@@ -44,13 +44,11 @@ namespace Networking
             gameProxy.enemies = new List<GameObject>();
             gameProxy.gameManager = this;
             gameProxy.itemsController = itemsController;
-            m_View = GetComponent<PhotonView>();
         }
 
         public void SpawnPlayer(String selectedClass)
         {
-            if (!m_View.IsMine && PhotonNetwork.IsConnected) return;
-            if (settings.playerName == null)
+            if (!PhotonNetwork.IsConnected)
             {
                 t = Instantiate((GameObject) Resources.Load(selectedClass), playerStartPoint.position,
                     playerStartPoint.rotation);
@@ -58,6 +56,7 @@ namespace Networking
             else
             {
                 t = PhotonNetwork.Instantiate(selectedClass, playerStartPoint.position, playerStartPoint.rotation);
+                photonView.RPC("PlayerReady", RpcTarget.All);
             }
 
             gameProxy.allies.Add(t);
@@ -66,13 +65,26 @@ namespace Networking
             classSelectionCam.SetActive(false);
 
             UI.OnClassSelectedText();
-            m_PlayersReady++;
-            if (!PhotonNetwork.IsConnected || PhotonNetwork.CurrentRoom.PlayerCount == m_PlayersReady)
+
+            Debug.Log(m_PlayersReady);
+            if (!PhotonNetwork.IsConnected)
             {
                 StartMainLoop();
             }
+
+            if (PhotonNetwork.CurrentRoom.PlayerCount == m_PlayersReady)
+            {
+                photonView.RPC("StartMainLoop", RpcTarget.All);
+            }
         }
 
+        [PunRPC]
+        private void PlayerReady()
+        {
+            m_PlayersReady++;
+        }
+
+        [PunRPC]
         private void StartMainLoop()
         {
             foreach (var player in gameProxy.players)

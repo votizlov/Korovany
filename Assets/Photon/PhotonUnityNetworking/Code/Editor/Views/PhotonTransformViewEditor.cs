@@ -28,7 +28,7 @@ namespace Photon.Pun
                 return;
             }
 
-            PhotonTransformView view = (PhotonTransformView)target;
+            PhotonTransformView view = (PhotonTransformView) target;
 
 
             EditorGUILayout.LabelField("Synchronize Options");
@@ -44,7 +44,9 @@ namespace Photon.Pun
             if (this.helpToggle)
             {
                 EditorGUI.indentLevel += 1;
-                EditorGUILayout.HelpBox("The Photon Transform View of PUN 2 is simple by design.\nReplace it with the Photon Transform View Classic if you want the old options.\nThe best solution is a custom IPunObservable implementation.", MessageType.Info, true);
+                EditorGUILayout.HelpBox(
+                    "The Photon Transform View of PUN 2 is simple by design.\nReplace it with the Photon Transform View Classic if you want the old options.\nThe best solution is a custom IPunObservable implementation.",
+                    MessageType.Info, true);
                 EditorGUI.indentLevel -= 1;
             }
         }

@@ -2,20 +2,20 @@
 
 namespace ProceduralLegPlacement
 {
-    public class ProceduralLegPlacement : MonoBehaviour {
-
+    public class ProceduralLegPlacement : MonoBehaviour
+    {
         public Vector3 optimalRestingPosition = Vector3.forward;
-        public Vector3 RestingPosition {
-            get {
-                return transform.TransformPoint (optimalRestingPosition);
-            }
+
+        public Vector3 RestingPosition
+        {
+            get { return transform.TransformPoint(optimalRestingPosition); }
         }
+
         public Vector3 worldVelocity = Vector3.right;
 
-        public Vector3 DesiredPosition {
-            get {
-                return RestingPosition + worldVelocity;
-            }
+        public Vector3 DesiredPosition
+        {
+            get { return RestingPosition + worldVelocity; }
         }
 
         public Vector3 worldTarget = Vector3.zero;
@@ -34,43 +34,55 @@ namespace ProceduralLegPlacement
         public float lastStep = 0;
 
         // Start is called before the first frame update
-        void Start () {
+        void Start()
+        {
             worldVelocity = Vector3.zero;
             lastStep = Time.time + stepCooldown * stepOffset;
-            Step ();
+            Step();
         }
 
         // Update is called once per frame
-        void Update () {
-            UpdateIkTarget ();
-            if (Time.time > lastStep + stepCooldown && autoStep) {
-                Step ();
+        void Update()
+        {
+            UpdateIkTarget();
+            if (Time.time > lastStep + stepCooldown && autoStep)
+            {
+                Step();
             }
         }
 
-        public void UpdateIkTarget () {
-            float percent = Mathf.Clamp01 ((Time.time - lastStep) / stepDuration);
-            ikTarget.position = Vector3.Lerp (ikTarget.position, worldTarget, percent) + Vector3.up * stepHeightCurve.Evaluate (percent) * stepHeightMultiplier;
+        public void UpdateIkTarget()
+        {
+            float percent = Mathf.Clamp01((Time.time - lastStep) / stepDuration);
+            ikTarget.position = Vector3.Lerp(ikTarget.position, worldTarget, percent) +
+                                Vector3.up * stepHeightCurve.Evaluate(percent) * stepHeightMultiplier;
         }
 
-        public void Step () {
+        public void Step()
+        {
             Vector3 direction = DesiredPosition - ikPoleTarget.position;
             RaycastHit hit;
-            if (Physics.SphereCast (ikPoleTarget.position, stepRadius, direction, out hit, direction.magnitude * 2f, solidLayer)) {
+            if (Physics.SphereCast(ikPoleTarget.position, stepRadius, direction, out hit, direction.magnitude * 2f,
+                solidLayer))
+            {
                 worldTarget = hit.point;
-            } else {
+            }
+            else
+            {
                 worldTarget = RestingPosition;
             }
+
             lastStep = Time.time;
         }
 
-        public void OnDrawGizmos () {
+        public void OnDrawGizmos()
+        {
             Gizmos.color = Color.blue;
-            Gizmos.DrawLine (RestingPosition, DesiredPosition);
+            Gizmos.DrawLine(RestingPosition, DesiredPosition);
             Gizmos.color = Color.black;
-            Gizmos.DrawWireSphere (RestingPosition, 0.1f);
+            Gizmos.DrawWireSphere(RestingPosition, 0.1f);
             Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere (DesiredPosition, 0.1f);
+            Gizmos.DrawWireSphere(DesiredPosition, 0.1f);
         }
     }
 }

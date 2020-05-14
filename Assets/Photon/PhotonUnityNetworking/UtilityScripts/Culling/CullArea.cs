@@ -39,7 +39,7 @@ namespace Photon.Pun.UtilityScripts
         ///     before sending three consequent updates only to players who are in the same cell
         ///     or interested in updates of the current cell.
         /// </summary>
-        public readonly int[] SUBDIVISION_FIRST_LEVEL_ORDER = new int[4] { 0, 1, 1, 1 };
+        public readonly int[] SUBDIVISION_FIRST_LEVEL_ORDER = new int[4] {0, 1, 1, 1};
 
         /// <summary>
         ///     This represents the order in which updates are sent.
@@ -50,7 +50,7 @@ namespace Photon.Pun.UtilityScripts
         ///     If there are two subdivisions we are sending every second update only to players
         ///     who are in the same cell or interested in updates of the current cell.
         /// </summary>
-        public readonly int[] SUBDIVISION_SECOND_LEVEL_ORDER = new int[8] { 0, 2, 1, 2, 0, 2, 1, 2 };
+        public readonly int[] SUBDIVISION_SECOND_LEVEL_ORDER = new int[8] {0, 2, 1, 2, 0, 2, 1, 2};
 
         /// <summary>
         ///     This represents the order in which updates are sent.
@@ -62,7 +62,7 @@ namespace Photon.Pun.UtilityScripts
         ///     If there are two subdivisions we are sending every second update only to players
         ///     who are in the same cell or interested in updates of the current cell.
         /// </summary>
-        public readonly int[] SUBDIVISION_THIRD_LEVEL_ORDER = new int[12] { 0, 3, 2, 3, 1, 3, 2, 3, 1, 3, 2, 3 };
+        public readonly int[] SUBDIVISION_THIRD_LEVEL_ORDER = new int[12] {0, 3, 2, 3, 1, 3, 2, 3, 1, 3, 2, 3};
 
         public Vector2 Center;
         public Vector2 Size = new Vector2(25.0f, 25.0f);
@@ -116,8 +116,10 @@ namespace Photon.Pun.UtilityScripts
             {
                 if (Debug.isDebugBuild)
                 {
-                    Debug.LogError("There are too many cells created by your subdivision options. Maximum allowed number of cells is " + (MAX_NUMBER_OF_ALLOWED_CELLS - this.FIRST_GROUP_ID) +
-                                   ". Current number of cells is " + this.CellCount + ".");
+                    Debug.LogError(
+                        "There are too many cells created by your subdivision options. Maximum allowed number of cells is " +
+                        (MAX_NUMBER_OF_ALLOWED_CELLS - this.FIRST_GROUP_ID) +
+                        ". Current number of cells is " + this.CellCount + ".");
                     return;
                 }
                 else
@@ -135,8 +137,10 @@ namespace Photon.Pun.UtilityScripts
 
                 rootNode.Center = new Vector3(this.Center.x, this.Center.y, 0.0f);
                 rootNode.Size = new Vector3(this.Size.x, this.Size.y, 0.0f);
-                rootNode.TopLeft = new Vector3((this.Center.x - (this.Size.x / 2.0f)), (this.Center.y - (this.Size.y / 2.0f)), 0.0f);
-                rootNode.BottomRight = new Vector3((this.Center.x + (this.Size.x / 2.0f)), (this.Center.y + (this.Size.y / 2.0f)), 0.0f);
+                rootNode.TopLeft = new Vector3((this.Center.x - (this.Size.x / 2.0f)),
+                    (this.Center.y - (this.Size.y / 2.0f)), 0.0f);
+                rootNode.BottomRight = new Vector3((this.Center.x + (this.Size.x / 2.0f)),
+                    (this.Center.y + (this.Size.y / 2.0f)), 0.0f);
             }
             else
             {
@@ -145,8 +149,10 @@ namespace Photon.Pun.UtilityScripts
 
                 rootNode.Center = new Vector3(this.Center.x, 0.0f, this.Center.y);
                 rootNode.Size = new Vector3(this.Size.x, 0.0f, this.Size.y);
-                rootNode.TopLeft = new Vector3((this.Center.x - (this.Size.x / 2.0f)), 0.0f, (this.Center.y - (this.Size.y / 2.0f)));
-                rootNode.BottomRight = new Vector3((this.Center.x + (this.Size.x / 2.0f)), 0.0f, (this.Center.y + (this.Size.y / 2.0f)));
+                rootNode.TopLeft = new Vector3((this.Center.x - (this.Size.x / 2.0f)), 0.0f,
+                    (this.Center.y - (this.Size.y / 2.0f)));
+                rootNode.BottomRight = new Vector3((this.Center.x + (this.Size.x / 2.0f)), 0.0f,
+                    (this.Center.y + (this.Size.y / 2.0f)));
             }
 
             this.CreateChildCells(rootNode, 1);
@@ -168,8 +174,8 @@ namespace Photon.Pun.UtilityScripts
                 return;
             }
 
-            int rowCount = (int)this.Subdivisions[(cellLevelInHierarchy - 1)].x;
-            int columnCount = (int)this.Subdivisions[(cellLevelInHierarchy - 1)].y;
+            int rowCount = (int) this.Subdivisions[(cellLevelInHierarchy - 1)].x;
+            int columnCount = (int) this.Subdivisions[(cellLevelInHierarchy - 1)].y;
 
             float startX = parent.Center.x - (parent.Size.x / 2.0f);
             float width = parent.Size.x / rowCount;
@@ -180,7 +186,10 @@ namespace Photon.Pun.UtilityScripts
                 {
                     float xPos = startX + (row * width) + (width / 2.0f);
 
-                    CellTreeNode node = new CellTreeNode(this.idCounter++, (this.NumberOfSubdivisions == cellLevelInHierarchy) ? CellTreeNode.ENodeType.Leaf : CellTreeNode.ENodeType.Node, parent);
+                    CellTreeNode node = new CellTreeNode(this.idCounter++,
+                        (this.NumberOfSubdivisions == cellLevelInHierarchy)
+                            ? CellTreeNode.ENodeType.Leaf
+                            : CellTreeNode.ENodeType.Node, parent);
 
                     if (this.YIsUpAxis)
                     {
@@ -238,8 +247,8 @@ namespace Photon.Pun.UtilityScripts
 
             foreach (Vector2 v in this.Subdivisions)
             {
-                horizontalCells *= (int)v.x;
-                verticalCells *= (int)v.y;
+                horizontalCells *= (int) v.x;
+                verticalCells *= (int) v.y;
             }
 
             this.CellCount = horizontalCells * verticalCells;
@@ -374,18 +383,19 @@ namespace Photon.Pun.UtilityScripts
         public void Draw()
         {
 #if UNITY_EDITOR
-        if (this.Childs != null)
-        {
-            foreach (CellTreeNode node in this.Childs)
+            if (this.Childs != null)
             {
-                node.Draw();
+                foreach (CellTreeNode node in this.Childs)
+                {
+                    node.Draw();
+                }
             }
-        }
 
-        Gizmos.color = new Color((this.NodeType == ENodeType.Root) ? 1 : 0, (this.NodeType == ENodeType.Node) ? 1 : 0, (this.NodeType == ENodeType.Leaf) ? 1 : 0);
-        Gizmos.DrawWireCube(this.Center, this.Size);
+            Gizmos.color = new Color((this.NodeType == ENodeType.Root) ? 1 : 0,
+                (this.NodeType == ENodeType.Node) ? 1 : 0, (this.NodeType == ENodeType.Leaf) ? 1 : 0);
+            Gizmos.DrawWireCube(this.Center, this.Size);
 
-        UnityEditor.Handles.Label(this.Center, this.Id.ToString(), new GUIStyle() { fontStyle = FontStyle.Bold });
+            UnityEditor.Handles.Label(this.Center, this.Id.ToString(), new GUIStyle() {fontStyle = FontStyle.Bold});
 #endif
         }
 

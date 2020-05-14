@@ -439,9 +439,11 @@
               <e p="GoToPos.cs" t="Include" />
               <e p="GoToTarget.cs" t="Include" />
               <e p="RotateToTarget.cs" t="Include" />
-              <e p="SelectItemToSpawn.cs" t="Include" />
+              <e p="SelectItemPlaces.cs" t="Include" />
               <e p="SelectRandomDestination.cs" t="Include" />
               <e p="Shoot.cs" t="Include" />
+              <e p="SpawnItems.cs" t="Include" />
+              <e p="StopAI.cs" t="Include" />
               <e p="ToggleRagdoll.cs" t="Include" />
               <e p="UpdateBehavior.cs" t="Include" />
             </e>

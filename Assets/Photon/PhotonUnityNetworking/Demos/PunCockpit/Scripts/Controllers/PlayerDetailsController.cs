@@ -4,13 +4,11 @@
 // </copyright>
 // <author>developer@exitgames.com</author>
 // --------------------------------------------------------------------------------------------------------------------
- 
+
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
 using UnityEngine.UI;
-
 using Photon.Realtime;
 using Photon.Pun.UtilityScripts;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
@@ -22,7 +20,6 @@ namespace Photon.Pun.Demo.Cockpit
     /// </summary>
     public class PlayerDetailsController : MonoBehaviourPunCallbacks
     {
-
         public GameObject ContentPanel;
         public PropertyCell PropertyCellPrototype;
         public Text UpdateStatusText;
@@ -37,7 +34,6 @@ namespace Photon.Pun.Demo.Cockpit
         public GameObject MasterClientToolBar;
 
 
-
         public GameObject NotInRoomLabel;
 
 
@@ -48,19 +44,16 @@ namespace Photon.Pun.Demo.Cockpit
         void Awake()
         {
             this.PropertyCellPrototype.gameObject.SetActive(false);
-
         }
 
         public override void OnEnable()
         {
-
             base.OnEnable();
 
             UpdateStatusText.text = string.Empty;
             NotInRoomLabel.SetActive(false);
 
             PlayerNumbering.OnPlayerNumberingChanged += OnPlayerNumberingChanged;
-
         }
 
         public void SetPlayerTarget(Player player)
@@ -78,12 +71,13 @@ namespace Photon.Pun.Demo.Cockpit
                 this.AddProperty(ParseKey(item.Key), item.Value.ToString(), this.BuiltInPropertiesPanel);
             }
 
-			// PlayerNumbering extension
-            this.AddProperty("Player Number", "#" + player.GetPlayerNumber().ToString("00"), this.PlayerNumberingExtensionPanel);
+            // PlayerNumbering extension
+            this.AddProperty("Player Number", "#" + player.GetPlayerNumber().ToString("00"),
+                this.PlayerNumberingExtensionPanel);
 
 
-			// Score extension
-			this.AddProperty(PunPlayerScores.PlayerScoreProp, player.GetScore().ToString(), this.ScoreExtensionPanel);
+            // Score extension
+            this.AddProperty(PunPlayerScores.PlayerScoreProp, player.GetScore().ToString(), this.ScoreExtensionPanel);
 
 
             foreach (DictionaryEntry item in _player.CustomProperties)
@@ -91,7 +85,8 @@ namespace Photon.Pun.Demo.Cockpit
                 this.AddProperty(ParseKey(item.Key), item.Value.ToString(), this.CustomPropertiesPanel);
             }
 
-			MasterClientToolBar.SetActive(PhotonNetwork.CurrentRoom.PlayerCount>1 && PhotonNetwork.LocalPlayer.IsMasterClient);
+            MasterClientToolBar.SetActive(PhotonNetwork.CurrentRoom.PlayerCount > 1 &&
+                                          PhotonNetwork.LocalPlayer.IsMasterClient);
         }
 
         void AddProperty(string property, string value, Transform parent)
@@ -108,19 +103,19 @@ namespace Photon.Pun.Demo.Cockpit
         {
             if (key.GetType() == typeof(byte))
             {
-                byte _byteKey = (byte)key;
+                byte _byteKey = (byte) key;
 
                 switch (_byteKey)
                 {
-                    case (byte)255:
+                    case (byte) 255:
                         return "PlayerName";
-                    case (byte)254:
+                    case (byte) 254:
                         return "Inactive";
-                    case (byte)253:
+                    case (byte) 253:
                         return "UserId";
                 }
-
             }
+
             return key.ToString();
         }
 
@@ -154,7 +149,6 @@ namespace Photon.Pun.Demo.Cockpit
             //Debug.Log("_player.ID " + _player.ActorNumber);
             if (_player.ActorNumber == target.ActorNumber)
             {
-
                 foreach (DictionaryEntry entry in changedProps)
                 {
                     string _key = this.ParseKey(entry.Key);
@@ -166,9 +160,7 @@ namespace Photon.Pun.Demo.Cockpit
                     {
                         this.AddProperty(_key, entry.Value.ToString(), this.CustomPropertiesPanel);
                     }
-
                 }
-
             }
 
             StartCoroutine("UpdateUIPing");
@@ -180,10 +172,10 @@ namespace Photon.Pun.Demo.Cockpit
         private void OnPlayerNumberingChanged()
         {
             if (_player != null)
-            { // we might be called before player is setup
+            {
+                // we might be called before player is setup
                 this.builtInPropsCellList["Player Number"].UpdateInfo("#" + _player.GetPlayerNumber().ToString("00"));
             }
-
         }
 
         IEnumerator UpdateUIPing()
@@ -216,7 +208,6 @@ namespace Photon.Pun.Demo.Cockpit
 
             if (_player != null)
             {
-
                 allProps["ID"] = _player.ActorNumber;
                 allProps[ActorProperties.UserId] = _player.UserId != null ? _player.UserId : string.Empty;
                 allProps["NickName"] = _player.NickName != null ? _player.NickName : string.Empty;

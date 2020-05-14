@@ -11,7 +11,7 @@ namespace Objects
         public float offsetX = 100f;
         public float offsetY = 100f;
 
-        void Start ()
+        void Start()
         {
             offsetX = Random.Range(0f, 9999f);
             offsetY = Random.Range(0f, 9999f);
@@ -19,13 +19,7 @@ namespace Objects
             terrain.terrainData = GenerateTerrain(terrain.terrainData);
         }
 
-        void Update()
-        {
-
-            //offsetX += Time.deltaTime * 5f;
-        }
-
-        TerrainData GenerateTerrain (TerrainData terrainData)
+        TerrainData GenerateTerrain(TerrainData terrainData)
         {
             terrainData.heightmapResolution = width + 1;
 
@@ -34,7 +28,8 @@ namespace Objects
             terrainData.SetHeights(0, 0, GenerateHeights());
             return terrainData;
         }
-        float[,] GenerateHeights ()
+
+        float[,] GenerateHeights()
         {
             float[,] heights = new float[width, height];
             for (int x = 0; x < width; x++)
@@ -44,12 +39,14 @@ namespace Objects
                     heights[x, y] = CalculateHeight(x, y);
                 }
             }
+
             return heights;
         }
-        float CalculateHeight (int x, int y)
+
+        float CalculateHeight(int x, int y)
         {
-            float xCoord = (float)x / width * scale + offsetX;
-            float yCoord = (float)y / height * scale + offsetY;
+            float xCoord = (float) x / width * scale + offsetX;
+            float yCoord = (float) y / height * scale + offsetY;
 
             return Mathf.PerlinNoise(xCoord, yCoord);
         }

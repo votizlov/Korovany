@@ -48,8 +48,10 @@ namespace Photon.Pun
         {
             if (!this.m_PhotonView.IsMine)
             {
-                this.m_Body.position = Vector2.MoveTowards(this.m_Body.position, this.m_NetworkPosition, this.m_Distance * (1.0f / PhotonNetwork.SerializationRate));
-                this.m_Body.rotation = Mathf.MoveTowards(this.m_Body.rotation, this.m_NetworkRotation, this.m_Angle * (1.0f / PhotonNetwork.SerializationRate));
+                this.m_Body.position = Vector2.MoveTowards(this.m_Body.position, this.m_NetworkPosition,
+                    this.m_Distance * (1.0f / PhotonNetwork.SerializationRate));
+                this.m_Body.rotation = Mathf.MoveTowards(this.m_Body.rotation, this.m_NetworkRotation,
+                    this.m_Angle * (1.0f / PhotonNetwork.SerializationRate));
             }
         }
 
@@ -72,12 +74,13 @@ namespace Photon.Pun
             }
             else
             {
-                this.m_NetworkPosition = (Vector2)stream.ReceiveNext();
-                this.m_NetworkRotation = (float)stream.ReceiveNext();
+                this.m_NetworkPosition = (Vector2) stream.ReceiveNext();
+                this.m_NetworkRotation = (float) stream.ReceiveNext();
 
                 if (this.m_TeleportEnabled)
                 {
-                    if (Vector3.Distance(this.m_Body.position, this.m_NetworkPosition) > this.m_TeleportIfDistanceGreaterThan)
+                    if (Vector3.Distance(this.m_Body.position, this.m_NetworkPosition) >
+                        this.m_TeleportIfDistanceGreaterThan)
                     {
                         this.m_Body.position = this.m_NetworkPosition;
                     }
@@ -85,11 +88,11 @@ namespace Photon.Pun
 
                 if (this.m_SynchronizeVelocity || this.m_SynchronizeAngularVelocity)
                 {
-                    float lag = Mathf.Abs((float)(PhotonNetwork.Time - info.SentServerTime));
+                    float lag = Mathf.Abs((float) (PhotonNetwork.Time - info.SentServerTime));
 
                     if (m_SynchronizeVelocity)
                     {
-                        this.m_Body.velocity = (Vector2)stream.ReceiveNext();
+                        this.m_Body.velocity = (Vector2) stream.ReceiveNext();
 
                         this.m_NetworkPosition += this.m_Body.velocity * lag;
 
@@ -98,7 +101,7 @@ namespace Photon.Pun
 
                     if (this.m_SynchronizeAngularVelocity)
                     {
-                        this.m_Body.angularVelocity = (float)stream.ReceiveNext();
+                        this.m_Body.angularVelocity = (float) stream.ReceiveNext();
 
                         this.m_NetworkRotation += this.m_Body.angularVelocity * lag;
 

@@ -9,10 +9,8 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System.Collections;
-
 using UnityEngine;
 using UnityEngine.UI;
-
 using Photon.Realtime;
 using Photon.Pun.UtilityScripts;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
@@ -67,7 +65,8 @@ namespace Photon.Pun.Demo.Asteroids
         {
             while (true)
             {
-                yield return new WaitForSeconds(Random.Range(AsteroidsGame.ASTEROIDS_MIN_SPAWN_TIME, AsteroidsGame.ASTEROIDS_MAX_SPAWN_TIME));
+                yield return new WaitForSeconds(Random.Range(AsteroidsGame.ASTEROIDS_MIN_SPAWN_TIME,
+                    AsteroidsGame.ASTEROIDS_MAX_SPAWN_TIME));
 
                 Vector2 direction = Random.insideUnitCircle;
                 Vector3 position = Vector3.zero;
@@ -75,12 +74,14 @@ namespace Photon.Pun.Demo.Asteroids
                 if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
                 {
                     // Make it appear on the left/right side
-                    position = new Vector3(Mathf.Sign(direction.x) * Camera.main.orthographicSize * Camera.main.aspect, 0, direction.y * Camera.main.orthographicSize);
+                    position = new Vector3(Mathf.Sign(direction.x) * Camera.main.orthographicSize * Camera.main.aspect,
+                        0, direction.y * Camera.main.orthographicSize);
                 }
                 else
                 {
                     // Make it appear on the top/bottom
-                    position = new Vector3(direction.x * Camera.main.orthographicSize * Camera.main.aspect, 0, Mathf.Sign(direction.y) * Camera.main.orthographicSize);
+                    position = new Vector3(direction.x * Camera.main.orthographicSize * Camera.main.aspect, 0,
+                        Mathf.Sign(direction.y) * Camera.main.orthographicSize);
                 }
 
                 // Offset slightly so we are not out of screen at creation time (as it would destroy the asteroid right away)
@@ -91,7 +92,9 @@ namespace Photon.Pun.Demo.Asteroids
                 Vector3 torque = Random.insideUnitSphere * Random.Range(500.0f, 1500.0f);
                 object[] instantiationData = {force, torque, true};
 
-                PhotonNetwork.InstantiateSceneObject("BigAsteroid", position, Quaternion.Euler(Random.value * 360.0f, Random.value * 360.0f, Random.value * 360.0f), 0, instantiationData);
+                PhotonNetwork.InstantiateSceneObject("BigAsteroid", position,
+                    Quaternion.Euler(Random.value * 360.0f, Random.value * 360.0f, Random.value * 360.0f), 0,
+                    instantiationData);
             }
         }
 
@@ -101,7 +104,9 @@ namespace Photon.Pun.Demo.Asteroids
 
             while (timer > 0.0f)
             {
-                InfoText.text = string.Format("Player {0} won with {1} points.\n\n\nReturning to login screen in {2} seconds.", winner, score, timer.ToString("n2"));
+                InfoText.text =
+                    string.Format("Player {0} won with {1} points.\n\n\nReturning to login screen in {2} seconds.",
+                        winner, score, timer.ToString("n2"));
 
                 yield return new WaitForEndOfFrame();
 
@@ -168,7 +173,8 @@ namespace Photon.Pun.Demo.Asteroids
 
         private void StartGame()
         {
-            float angularStart = (360.0f / PhotonNetwork.CurrentRoom.PlayerCount) * PhotonNetwork.LocalPlayer.GetPlayerNumber();
+            float angularStart = (360.0f / PhotonNetwork.CurrentRoom.PlayerCount) *
+                                 PhotonNetwork.LocalPlayer.GetPlayerNumber();
             float x = 20.0f * Mathf.Sin(angularStart * Mathf.Deg2Rad);
             float z = 20.0f * Mathf.Cos(angularStart * Mathf.Deg2Rad);
             Vector3 position = new Vector3(x, 0.0f, z);

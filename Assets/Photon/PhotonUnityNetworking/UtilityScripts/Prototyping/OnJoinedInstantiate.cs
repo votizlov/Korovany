@@ -11,34 +11,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
-
 using Photon.Realtime;
-
 #if UNITY_EDITOR
 using UnityEditor;
+
 #endif
 
 namespace Photon.Pun.UtilityScripts
 {
-
     /// <summary>
     /// This component will instantiate a network GameObject when a room is joined
     /// </summary>
     public class OnJoinedInstantiate : MonoBehaviour
         , IMatchmakingCallbacks
     {
-        public enum SpawnSequence { Connection, Random, RoundRobin }
+        public enum SpawnSequence
+        {
+            Connection,
+            Random,
+            RoundRobin
+        }
 
         #region Inspector Items
 
         // Old field, only here for backwards compat. Value copies over to SpawnPoints in OnValidate
         [HideInInspector] private Transform SpawnPosition;
         [HideInInspector] public SpawnSequence Sequence = SpawnSequence.Connection;
-        [HideInInspector] public List<Transform> SpawnPoints = new List<Transform>(1) { null };
+        [HideInInspector] public List<Transform> SpawnPoints = new List<Transform>(1) {null};
         [HideInInspector] public bool UseRandomOffset = true;
-        [FormerlySerializedAs("PositionOffset")]
-        [HideInInspector] public float RandomOffset = 2.0f;
-        [HideInInspector] public List<GameObject> PrefabsToInstantiate = new List<GameObject>(1) { null }; // set in inspector
+
+        [FormerlySerializedAs("PositionOffset")] [HideInInspector]
+        public float RandomOffset = 2.0f;
+
+        [HideInInspector]
+        public List<GameObject> PrefabsToInstantiate = new List<GameObject>(1) {null}; // set in inspector
+
         [HideInInspector] [SerializeField] private bool autoSpawnObjects = true;
 
         #endregion
@@ -93,7 +100,6 @@ namespace Photon.Pun.UtilityScripts
             }
 
             return false;
-
         }
 
         /// <summary>
@@ -111,25 +117,25 @@ namespace Photon.Pun.UtilityScripts
 
 #if UNITY_2018_3_OR_NEWER
 
-			GameObject validated = null;
+            GameObject validated = null;
 
-			if (unvalidated != null)
-			{
+            if (unvalidated != null)
+            {
+                if (PrefabUtility.IsPartOfPrefabAsset(unvalidated))
+                    return unvalidated;
 
-				if (PrefabUtility.IsPartOfPrefabAsset(unvalidated))
-					return unvalidated;
+                var prefabStatus = PrefabUtility.GetPrefabInstanceStatus(unvalidated);
+                var isValidPrefab = prefabStatus == PrefabInstanceStatus.Connected ||
+                                    prefabStatus == PrefabInstanceStatus.Disconnected;
 
-				var prefabStatus = PrefabUtility.GetPrefabInstanceStatus(unvalidated);
-				var isValidPrefab = prefabStatus == PrefabInstanceStatus.Connected || prefabStatus == PrefabInstanceStatus.Disconnected;
+                if (isValidPrefab)
+                    validated = PrefabUtility.GetCorrespondingObjectFromSource(unvalidated) as GameObject;
+                else
+                    return null;
 
-				if (isValidPrefab)
-					validated = PrefabUtility.GetCorrespondingObjectFromSource(unvalidated) as GameObject;
-				else
-					return null;
-
-				if (!PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(validated).Contains("/Resources"))
-					Debug.LogWarning("Player Prefab needs to be a Prefab in a Resource folder.");
-			}
+                if (!PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(validated).Contains("/Resources"))
+                    Debug.LogWarning("Player Prefab needs to be a Prefab in a Resource folder.");
+            }
 #else
             GameObject validated = unvalidated;
 
@@ -161,7 +167,6 @@ namespace Photon.Pun.UtilityScripts
 
         public virtual void SpawnObjects()
         {
-
             if (this.PrefabsToInstantiate != null)
             {
                 foreach (GameObject o in this.PrefabsToInstantiate)
@@ -171,7 +176,8 @@ namespace Photon.Pun.UtilityScripts
 #if UNITY_EDITOR
                     Debug.Log("Auto-Instantiating: " + o.name);
 #endif
-                    Vector3 spawnPos; Quaternion spawnRot;
+                    Vector3 spawnPos;
+                    Quaternion spawnRot;
                     GetSpawnPoint(out spawnPos, out spawnRot);
 
 
@@ -183,22 +189,37 @@ namespace Photon.Pun.UtilityScripts
 
         public virtual void DespawnObjects()
         {
-
             while (SpawnedObjects.Count > 0)
             {
                 var go = SpawnedObjects.Pop();
                 if (go)
                     PhotonNetwork.Destroy(go);
-
             }
         }
 
-        public virtual void OnFriendListUpdate(List<FriendInfo> friendList) { }
-        public virtual void OnCreatedRoom() { }
-        public virtual void OnCreateRoomFailed(short returnCode, string message) { }
-        public virtual void OnJoinRoomFailed(short returnCode, string message) { }
-        public virtual void OnJoinRandomFailed(short returnCode, string message) { }
-        public virtual void OnLeftRoom() { }
+        public virtual void OnFriendListUpdate(List<FriendInfo> friendList)
+        {
+        }
+
+        public virtual void OnCreatedRoom()
+        {
+        }
+
+        public virtual void OnCreateRoomFailed(short returnCode, string message)
+        {
+        }
+
+        public virtual void OnJoinRoomFailed(short returnCode, string message)
+        {
+        }
+
+        public virtual void OnJoinRandomFailed(short returnCode, string message)
+        {
+        }
+
+        public virtual void OnLeftRoom()
+        {
+        }
 
         protected int lastUsedSpawnPointIndex = -1;
 
@@ -207,7 +228,6 @@ namespace Photon.Pun.UtilityScripts
         /// </summary>
         protected virtual void GetSpawnPoint(out Vector3 spawnPos, out Quaternion spawnRot)
         {
-
             // Fetch a point using the Sequence method indicated
             Transform point = GetSpawnPoint();
 
@@ -227,7 +247,7 @@ namespace Photon.Pun.UtilityScripts
             random = random.normalized;
             if (UseRandomOffset)
             {
-                Random.InitState((int)(Time.time * 10000));
+                Random.InitState((int) (Time.time * 10000));
                 spawnPos += RandomOffset * random;
             }
         }
@@ -248,34 +268,33 @@ namespace Photon.Pun.UtilityScripts
                 switch (Sequence)
                 {
                     case SpawnSequence.Connection:
-                        {
-                            int id = PhotonNetwork.LocalPlayer.ActorNumber;
-                            return SpawnPoints[(id == -1) ? 0 : id % SpawnPoints.Count];
-                        }
+                    {
+                        int id = PhotonNetwork.LocalPlayer.ActorNumber;
+                        return SpawnPoints[(id == -1) ? 0 : id % SpawnPoints.Count];
+                    }
 
                     case SpawnSequence.RoundRobin:
-                        {
-                            lastUsedSpawnPointIndex++;
-                            if (lastUsedSpawnPointIndex >= SpawnPoints.Count)
-                                lastUsedSpawnPointIndex = 0;
+                    {
+                        lastUsedSpawnPointIndex++;
+                        if (lastUsedSpawnPointIndex >= SpawnPoints.Count)
+                            lastUsedSpawnPointIndex = 0;
 
-                            /// Use Vector.Zero and Quaternion.Identity if we are dealing with no or a null spawnpoint.
-                            return SpawnPoints == null || SpawnPoints.Count == 0 ? null : SpawnPoints[lastUsedSpawnPointIndex];
-                        }
+                        /// Use Vector.Zero and Quaternion.Identity if we are dealing with no or a null spawnpoint.
+                        return SpawnPoints == null || SpawnPoints.Count == 0
+                            ? null
+                            : SpawnPoints[lastUsedSpawnPointIndex];
+                    }
 
                     case SpawnSequence.Random:
-                        {
-                            return SpawnPoints[Random.Range(0, SpawnPoints.Count)];
-                        }
+                    {
+                        return SpawnPoints[Random.Range(0, SpawnPoints.Count)];
+                    }
 
                     default:
                         return null;
                 }
-
             }
         }
-
-
     }
 
 #if UNITY_EDITOR
@@ -284,7 +303,6 @@ namespace Photon.Pun.UtilityScripts
     [CanEditMultipleObjects]
     public class OnJoinedInstantiateEditor : Editor
     {
-
         SerializedProperty SpawnPoints, PrefabsToInstantiate, UseRandomOffset, RandomOffset, Sequence, autoSpawnObjects;
         GUIStyle fieldBox;
 
@@ -306,11 +324,12 @@ namespace Photon.Pun.UtilityScripts
             const int PAD = 6;
 
             if (fieldBox == null)
-                fieldBox = new GUIStyle("HelpBox") { padding = new RectOffset(PAD, PAD, PAD, PAD) };
+                fieldBox = new GUIStyle("HelpBox") {padding = new RectOffset(PAD, PAD, PAD, PAD)};
 
             EditorGUI.BeginChangeCheck();
 
-            EditableReferenceList(PrefabsToInstantiate, new GUIContent(PrefabsToInstantiate.displayName, PrefabsToInstantiate.tooltip), fieldBox);
+            EditableReferenceList(PrefabsToInstantiate,
+                new GUIContent(PrefabsToInstantiate.displayName, PrefabsToInstantiate.tooltip), fieldBox);
 
             EditableReferenceList(SpawnPoints, new GUIContent(SpawnPoints.displayName, SpawnPoints.tooltip), fieldBox);
 
@@ -343,7 +362,7 @@ namespace Photon.Pun.UtilityScripts
             EditorGUILayout.LabelField(gc);
 
             if (style == null)
-                style = new GUIStyle("HelpBox") { padding = new RectOffset(6, 6, 6, 6) };
+                style = new GUIStyle("HelpBox") {padding = new RectOffset(6, 6, 6, 6)};
 
             EditorGUILayout.BeginVertical(style);
 
@@ -351,7 +370,7 @@ namespace Photon.Pun.UtilityScripts
 
             if (count == 0)
             {
-                if (GUI.Button(EditorGUILayout.GetControlRect(GUILayout.MaxWidth(20)), "+", (GUIStyle)"minibutton"))
+                if (GUI.Button(EditorGUILayout.GetControlRect(GUILayout.MaxWidth(20)), "+", (GUIStyle) "minibutton"))
                 {
                     int newindex = list.arraySize;
                     list.InsertArrayElementAtIndex(0);
@@ -363,9 +382,11 @@ namespace Photon.Pun.UtilityScripts
                 for (int i = 0; i < list.arraySize; ++i)
                 {
                     EditorGUILayout.BeginHorizontal();
-                    bool add = (GUI.Button(EditorGUILayout.GetControlRect(GUILayout.MaxWidth(20)), "+", (GUIStyle)"minibutton"));
+                    bool add = (GUI.Button(EditorGUILayout.GetControlRect(GUILayout.MaxWidth(20)), "+",
+                        (GUIStyle) "minibutton"));
                     EditorGUILayout.PropertyField(list.GetArrayElementAtIndex(i), GUIContent.none);
-                    bool remove = (GUI.Button(EditorGUILayout.GetControlRect(GUILayout.MaxWidth(20)), "x", (GUIStyle)"minibutton"));
+                    bool remove = (GUI.Button(EditorGUILayout.GetControlRect(GUILayout.MaxWidth(20)), "x",
+                        (GUIStyle) "minibutton"));
 
                     EditorGUILayout.EndHorizontal();
 

@@ -6,7 +6,6 @@ namespace Core.Pooling
     [AddComponentMenu("Pool/ObjectPooling")]
     public class ObjectPooling : MonoBehaviour
     {
-
         #region Data
 
         List<PoolObject> objects;

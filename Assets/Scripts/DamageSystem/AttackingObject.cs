@@ -12,7 +12,7 @@ namespace DamageSystem
         [SerializeField] private GameProxy gameProxy;
 
         private bool _isReloading = false;
-        public AttackTypes type; 
+        public AttackTypes type;
 
 //todo reload logic + attack properties
         public void Attack()
@@ -21,13 +21,12 @@ namespace DamageSystem
             gameProxy.attackManager.Attack(this);
             StartCoroutine(Reloading());
         }
-    
+
         private IEnumerator Reloading()
         {
             _isReloading = true;
             yield return new WaitForSeconds(reload);
             _isReloading = false;
         }
-
     }
 }

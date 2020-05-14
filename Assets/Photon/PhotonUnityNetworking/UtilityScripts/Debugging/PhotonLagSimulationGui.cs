@@ -12,7 +12,6 @@
 
 
 using UnityEngine;
-
 using Photon.Pun;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
@@ -52,7 +51,8 @@ namespace Photon.Pun.UtilityScripts
 
             if (this.Peer == null)
             {
-                this.WindowRect = GUILayout.Window(this.WindowId, this.WindowRect, this.NetSimHasNoPeerWindow, "Netw. Sim.");
+                this.WindowRect = GUILayout.Window(this.WindowId, this.WindowRect, this.NetSimHasNoPeerWindow,
+                    "Netw. Sim.");
             }
             else
             {
@@ -67,7 +67,8 @@ namespace Photon.Pun.UtilityScripts
 
         private void NetSimWindow(int windowId)
         {
-            GUILayout.Label(string.Format("Rtt:{0,4} +/-{1,3}", this.Peer.RoundTripTime, this.Peer.RoundTripTimeVariance));
+            GUILayout.Label(string.Format("Rtt:{0,4} +/-{1,3}", this.Peer.RoundTripTime,
+                this.Peer.RoundTripTimeVariance));
 
             bool simEnabled = this.Peer.IsSimulationEnabled;
             bool newSimEnabled = GUILayout.Toggle(simEnabled, "Simulate");
@@ -80,22 +81,22 @@ namespace Photon.Pun.UtilityScripts
             GUILayout.Label("Lag " + inOutLag);
             inOutLag = GUILayout.HorizontalSlider(inOutLag, 0, 500);
 
-            this.Peer.NetworkSimulationSettings.IncomingLag = (int)inOutLag;
-            this.Peer.NetworkSimulationSettings.OutgoingLag = (int)inOutLag;
+            this.Peer.NetworkSimulationSettings.IncomingLag = (int) inOutLag;
+            this.Peer.NetworkSimulationSettings.OutgoingLag = (int) inOutLag;
 
             float inOutJitter = this.Peer.NetworkSimulationSettings.IncomingJitter;
             GUILayout.Label("Jit " + inOutJitter);
             inOutJitter = GUILayout.HorizontalSlider(inOutJitter, 0, 100);
 
-            this.Peer.NetworkSimulationSettings.IncomingJitter = (int)inOutJitter;
-            this.Peer.NetworkSimulationSettings.OutgoingJitter = (int)inOutJitter;
+            this.Peer.NetworkSimulationSettings.IncomingJitter = (int) inOutJitter;
+            this.Peer.NetworkSimulationSettings.OutgoingJitter = (int) inOutJitter;
 
             float loss = this.Peer.NetworkSimulationSettings.IncomingLossPercentage;
             GUILayout.Label("Loss " + loss);
             loss = GUILayout.HorizontalSlider(loss, 0, 10);
 
-            this.Peer.NetworkSimulationSettings.IncomingLossPercentage = (int)loss;
-            this.Peer.NetworkSimulationSettings.OutgoingLossPercentage = (int)loss;
+            this.Peer.NetworkSimulationSettings.IncomingLossPercentage = (int) loss;
+            this.Peer.NetworkSimulationSettings.OutgoingLossPercentage = (int) loss;
 
             // if anything was clicked, the height of this window is likely changed. reduce it to be layouted again next frame
             if (GUI.changed)

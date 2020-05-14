@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-
 using UnityEngine;
-
 using ExitGames.Client.Photon;
 
 namespace Photon.Pun.Demo.Procedural

@@ -9,9 +9,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-
 using UnityEngine;
-
 using Photon.Pun;
 
 namespace Photon.Pun.UtilityScripts
@@ -137,9 +135,16 @@ namespace Photon.Pun.UtilityScripts
 
                 subscribedCells += this.activeCells[index] + " | ";
             }
-            GUI.Label(new Rect(20.0f, Screen.height - 120.0f, 200.0f, 40.0f), "<color=white>PhotonView Group: " + this.pView.Group + "</color>", new GUIStyle() { alignment = TextAnchor.UpperLeft, fontSize = 16 });
-            GUI.Label(new Rect(20.0f, Screen.height - 100.0f, 200.0f, 40.0f), "<color=white>" + subscribedAndActiveCells + "</color>", new GUIStyle() { alignment = TextAnchor.UpperLeft, fontSize = 16 });
-            GUI.Label(new Rect(20.0f, Screen.height - 60.0f, 200.0f, 40.0f), "<color=white>" + subscribedCells + "</color>", new GUIStyle() { alignment = TextAnchor.UpperLeft, fontSize = 16 });
+
+            GUI.Label(new Rect(20.0f, Screen.height - 120.0f, 200.0f, 40.0f),
+                "<color=white>PhotonView Group: " + this.pView.Group + "</color>",
+                new GUIStyle() {alignment = TextAnchor.UpperLeft, fontSize = 16});
+            GUI.Label(new Rect(20.0f, Screen.height - 100.0f, 200.0f, 40.0f),
+                "<color=white>" + subscribedAndActiveCells + "</color>",
+                new GUIStyle() {alignment = TextAnchor.UpperLeft, fontSize = 16});
+            GUI.Label(new Rect(20.0f, Screen.height - 60.0f, 200.0f, 40.0f),
+                "<color=white>" + subscribedCells + "</color>",
+                new GUIStyle() {alignment = TextAnchor.UpperLeft, fontSize = 16});
         }
 
         #endregion
@@ -170,7 +175,8 @@ namespace Photon.Pun.UtilityScripts
                 return true;
             }
 
-            if (this.activeCells[this.cullArea.NumberOfSubdivisions] != this.previousActiveCells[this.cullArea.NumberOfSubdivisions])
+            if (this.activeCells[this.cullArea.NumberOfSubdivisions] !=
+                this.previousActiveCells[this.cullArea.NumberOfSubdivisions])
             {
                 return true;
             }

@@ -169,6 +169,7 @@ namespace Photon.Pun
                 Player player = PhotonNetwork.CurrentRoom.GetPlayer(ID);
                 return player;
             }
+
             return null;
         }
 

@@ -14,10 +14,10 @@ namespace Photon.Pun
     using ExitGames.Client.Photon;
     using Photon.Realtime;
     using UnityEngine;
-
-    #if UNITY_5_5_OR_NEWER
+#if UNITY_5_5_OR_NEWER
     using UnityEngine.Profiling;
-    #endif
+
+#endif
 
 
     /// <summary>
@@ -25,8 +25,8 @@ namespace Photon.Pun
     /// </summary>
     public class PhotonHandler : ConnectionHandler, IInRoomCallbacks, IMatchmakingCallbacks
     {
-
         private static PhotonHandler instance;
+
         internal static PhotonHandler Instance
         {
             get
@@ -61,7 +61,8 @@ namespace Photon.Pun
 
         protected internal int UpdateInterval; // time [ms] between consecutive SendOutgoingCommands calls
 
-        protected internal int UpdateIntervalOnSerialize; // time [ms] between consecutive RunViewUpdate calls (sending syncs, etc)
+        protected internal int
+            UpdateIntervalOnSerialize; // time [ms] between consecutive RunViewUpdate calls (sending syncs, etc)
 
         private int nextSendTickCount;
 
@@ -100,13 +101,16 @@ namespace Photon.Pun
                 {
                     supportLogger = this.gameObject.AddComponent<SupportLogger>();
                 }
+
                 if (this.supportLoggerComponent != null)
                 {
                     if (supportLogger.GetInstanceID() != this.supportLoggerComponent.GetInstanceID())
                     {
-                        Debug.LogWarningFormat("Cached SupportLogger component is different from the one attached to PhotonMono GameObject");
+                        Debug.LogWarningFormat(
+                            "Cached SupportLogger component is different from the one attached to PhotonMono GameObject");
                     }
                 }
+
                 this.supportLoggerComponent = supportLogger;
                 this.supportLoggerComponent.Client = PhotonNetwork.NetworkingClient;
             }
@@ -115,7 +119,7 @@ namespace Photon.Pun
             this.UpdateIntervalOnSerialize = 1000 / PhotonNetwork.SerializationRate;
 
             PhotonNetwork.AddCallbackTarget(this);
-            this.StartFallbackSendAckThread();  // this is not done in the base class
+            this.StartFallbackSendAckThread(); // this is not done in the base class
         }
 
         protected void Start()
@@ -149,15 +153,18 @@ namespace Photon.Pun
             }
 
 
-            int currentMsSinceStart = (int)(Time.realtimeSinceStartup * 1000); // avoiding Environment.TickCount, which could be negative on long-running platforms
+            int currentMsSinceStart =
+                (int) (Time.realtimeSinceStartup *
+                       1000); // avoiding Environment.TickCount, which could be negative on long-running platforms
             if (PhotonNetwork.IsMessageQueueRunning && currentMsSinceStart > this.nextSendTickCountOnSerialize)
             {
                 PhotonNetwork.RunViewUpdate();
-                this.nextSendTickCountOnSerialize = currentMsSinceStart + this.UpdateIntervalOnSerialize - SerializeRateFrameCorrection;
+                this.nextSendTickCountOnSerialize =
+                    currentMsSinceStart + this.UpdateIntervalOnSerialize - SerializeRateFrameCorrection;
                 this.nextSendTickCount = 0; // immediately send when synchronization code was running
             }
 
-            currentMsSinceStart = (int)(Time.realtimeSinceStartup * 1000);
+            currentMsSinceStart = (int) (Time.realtimeSinceStartup * 1000);
             if (SendAsap || currentMsSinceStart > this.nextSendTickCount)
             {
                 SendAsap = false;
@@ -218,24 +225,44 @@ namespace Photon.Pun
             PhotonNetwork.LoadLevelIfSynced();
         }
 
-        public void OnJoinedRoom(){}
+        public void OnJoinedRoom()
+        {
+        }
 
-        public void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps){}
+        public void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
+        {
+        }
 
-        public void OnMasterClientSwitched(Player newMasterClient){}
+        public void OnMasterClientSwitched(Player newMasterClient)
+        {
+        }
 
-        public void OnFriendListUpdate(System.Collections.Generic.List<FriendInfo> friendList){}
+        public void OnFriendListUpdate(System.Collections.Generic.List<FriendInfo> friendList)
+        {
+        }
 
-        public void OnCreateRoomFailed(short returnCode, string message){}
+        public void OnCreateRoomFailed(short returnCode, string message)
+        {
+        }
 
-        public void OnJoinRoomFailed(short returnCode, string message){}
+        public void OnJoinRoomFailed(short returnCode, string message)
+        {
+        }
 
-        public void OnJoinRandomFailed(short returnCode, string message){}
+        public void OnJoinRandomFailed(short returnCode, string message)
+        {
+        }
 
-        public void OnLeftRoom(){}
+        public void OnLeftRoom()
+        {
+        }
 
-        public void OnPlayerEnteredRoom(Player newPlayer){}
+        public void OnPlayerEnteredRoom(Player newPlayer)
+        {
+        }
 
-        public void OnPlayerLeftRoom(Player otherPlayer){}
+        public void OnPlayerLeftRoom(Player otherPlayer)
+        {
+        }
     }
 }

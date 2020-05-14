@@ -1,6 +1,6 @@
 ﻿namespace DamageSystem
 {
-    public enum AttackTypes 
+    public enum AttackTypes
     {
         PistolShot,
         BazookaShot,

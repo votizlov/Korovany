@@ -14,12 +14,12 @@ public class SelectRandomDestination : ActionBase
     {
         var c = (MainContext) context;
         Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * distance;
-           
+
         randomDirection += c.currentPos.position;
-           
+
         NavMeshHit navHit;
-           
-        NavMesh.SamplePosition (randomDirection, out navHit, distance, layermask);
+
+        NavMesh.SamplePosition(randomDirection, out navHit, distance, layermask);
 
         c.targetPosition = navHit.position;
     }

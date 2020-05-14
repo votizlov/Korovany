@@ -15,7 +15,6 @@
 
 using UnityEngine;
 using UnityEngine.UI;
-
 using ExitGames.Client.Photon;
 using Photon.Pun;
 
@@ -50,8 +49,7 @@ namespace Photon.Pun.UtilityScripts
         [Header("Reference to a Text component for visualizing the countdown")]
         public Text Text;
 
-        [Header("Countdown time in seconds")]
-        public float Countdown = 5.0f;
+        [Header("Countdown time in seconds")] public float Countdown = 5.0f;
 
         public void Start()
         {
@@ -69,7 +67,7 @@ namespace Photon.Pun.UtilityScripts
                 return;
             }
 
-            float timer = (float)PhotonNetwork.Time - startTime;
+            float timer = (float) PhotonNetwork.Time - startTime;
             float countdown = Countdown - timer;
 
             Text.text = string.Format("Game starts in {0} seconds", countdown.ToString("n0"));
@@ -96,7 +94,7 @@ namespace Photon.Pun.UtilityScripts
             if (propertiesThatChanged.TryGetValue(CountdownStartTime, out startTimeFromProps))
             {
                 isTimerRunning = true;
-                startTime = (float)startTimeFromProps;
+                startTime = (float) startTimeFromProps;
             }
         }
     }

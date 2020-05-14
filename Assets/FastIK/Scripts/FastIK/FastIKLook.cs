@@ -34,7 +34,8 @@ namespace DitzelGames.FastIK
                 return;
 
 
-            transform.rotation = Quaternion.FromToRotation(StartDirection, Target.position - transform.position) * StartRotation;
+            transform.rotation = Quaternion.FromToRotation(StartDirection, Target.position - transform.position) *
+                                 StartRotation;
         }
     }
 }

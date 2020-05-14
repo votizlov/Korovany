@@ -33,7 +33,6 @@ namespace Photon.Pun
     using SupportClassPun = ExitGames.Client.Photon.SupportClass;
 
 
-
     /// <summary>Replacement for RPC attribute with different name. Used to flag methods as remote-callable.</summary>
     public class PunRPC : Attribute
     {
@@ -196,6 +195,7 @@ namespace Photon.Pun
                 {
                     this.pvCache = PhotonView.Get(this);
                 }
+
                 return this.pvCache;
             }
         }
@@ -218,7 +218,8 @@ namespace Photon.Pun
     /// </remarks>
     /// \ingroup callbacks
     // the documentation for the interface methods becomes inherited when Doxygen builds it.
-    public class MonoBehaviourPunCallbacks : MonoBehaviourPun, IConnectionCallbacks , IMatchmakingCallbacks , IInRoomCallbacks, ILobbyCallbacks, IWebRpcCallback, IErrorInfoCallback
+    public class MonoBehaviourPunCallbacks : MonoBehaviourPun, IConnectionCallbacks, IMatchmakingCallbacks,
+        IInRoomCallbacks, ILobbyCallbacks, IWebRpcCallback, IErrorInfoCallback
     {
         public virtual void OnEnable()
         {
@@ -499,7 +500,7 @@ namespace Photon.Pun
         /// this won't be called!
         /// </remarks>
         /// <param name="debugMessage">Contains a debug message why authentication failed. This has to be fixed during development.</param>
-        public virtual void OnCustomAuthenticationFailed (string debugMessage)
+        public virtual void OnCustomAuthenticationFailed(string debugMessage)
         {
         }
 
@@ -542,8 +543,10 @@ namespace Photon.Pun
     public struct PhotonMessageInfo
     {
         private readonly int timeInt;
+
         /// <summary>The sender of a message / event. May be null.</summary>
         public readonly Player Sender;
+
         public readonly PhotonView photonView;
 
         public PhotonMessageInfo(Player player, int timestamp, PhotonView view)
@@ -568,7 +571,7 @@ namespace Photon.Pun
         {
             get
             {
-                uint u = (uint)this.timeInt;
+                uint u = (uint) this.timeInt;
                 double t = u;
                 return t / 1000.0d;
             }
@@ -584,7 +587,6 @@ namespace Photon.Pun
             return string.Format("[PhotonMessageInfo: Sender='{1}' Senttime={0}]", this.SentServerTime, this.Sender);
         }
     }
-
 
 
     /// <summary>Defines Photon event-codes as used by PUN.</summary>
@@ -663,8 +665,10 @@ namespace Photon.Pun
         {
             if (pos != newWriteData.Count)
             {
-                throw new Exception("SetWriteStream failed, because count does not match position value. pos: "+ pos + " newWriteData.Count:" + newWriteData.Count);
+                throw new Exception("SetWriteStream failed, because count does not match position value. pos: " + pos +
+                                    " newWriteData.Count:" + newWriteData.Count);
             }
+
             this.writeData = newWriteData;
             this.currentItem = pos;
             this.IsWriting = true;
@@ -948,13 +952,13 @@ namespace Photon.Pun
         }
 
 
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         /// <summary>In Editor, we can access the active scene's name.</summary>
         public static string EditorActiveSceneName
         {
             get { return SceneManager.GetActiveScene().name; }
         }
-        #endif
+#endif
     }
 
 
@@ -971,7 +975,7 @@ namespace Photon.Pun
     {
         /// <summary>Contains a GameObject per prefabId, to speed up instantiation.</summary>
         public readonly Dictionary<string, GameObject> ResourceCache = new Dictionary<string, GameObject>();
-        
+
         /// <summary>Returns an inactive instance of a networked GameObject, to be used by PUN.</summary>
         /// <param name="prefabId">String identifier for the networked object.</param>
         /// <param name="position">Location of the new object.</param>
@@ -983,10 +987,11 @@ namespace Photon.Pun
             bool cached = this.ResourceCache.TryGetValue(prefabId, out res);
             if (!cached)
             {
-                res = (GameObject)Resources.Load(prefabId, typeof(GameObject));
+                res = (GameObject) Resources.Load(prefabId, typeof(GameObject));
                 if (res == null)
                 {
-                    Debug.LogError("DefaultPool failed to load \"" + prefabId + "\" . Make sure it's in a \"Resources\" folder.");
+                    Debug.LogError("DefaultPool failed to load \"" + prefabId +
+                                   "\" . Make sure it's in a \"Resources\" folder.");
                 }
                 else
                 {
@@ -997,7 +1002,7 @@ namespace Photon.Pun
             bool wasActive = res.activeSelf;
             if (wasActive) res.SetActive(false);
 
-            GameObject instance =GameObject.Instantiate(res, position, rotation) as GameObject;
+            GameObject instance = GameObject.Instantiate(res, position, rotation) as GameObject;
 
             if (wasActive) res.SetActive(true);
             return instance;
@@ -1015,7 +1020,8 @@ namespace Photon.Pun
     /// <summary>Small number of extension methods that make it easier for PUN to work cross-Unity-versions.</summary>
     public static class PunExtensions
     {
-        public static Dictionary<MethodInfo, ParameterInfo[]> ParametersOfMethods = new Dictionary<MethodInfo, ParameterInfo[]>();
+        public static Dictionary<MethodInfo, ParameterInfo[]> ParametersOfMethods =
+            new Dictionary<MethodInfo, ParameterInfo[]>();
 
         public static ParameterInfo[] GetCachedParemeters(this MethodInfo mo)
         {

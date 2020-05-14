@@ -7,7 +7,6 @@ namespace PathCreationEditor
 {
     public static class PathHandle
     {
-
         public const float extraInputRadius = .005f;
 
         static Vector2 handleDragMouseStart;
@@ -39,7 +38,8 @@ namespace PathCreationEditor
             dstMouseToDragPointStart = float.MaxValue;
         }
 
-        public static Vector3 DrawHandle(Vector3 position, PathSpace space, bool isInteractive, float handleDiameter, Handles.CapFunction capFunc, HandleColours colours, out HandleInputType inputType, int handleIndex)
+        public static Vector3 DrawHandle(Vector3 position, PathSpace space, bool isInteractive, float handleDiameter,
+            Handles.CapFunction capFunc, HandleColours colours, out HandleInputType inputType, int handleIndex)
         {
             int id = GetID(handleIndex);
             Vector3 screenPosition = Handles.matrix.MultiplyPoint(position);
@@ -72,6 +72,7 @@ namespace PathCreationEditor
                         mouseIsOverAHandle = false;
                     }
                 }
+
                 switch (eventType)
                 {
                     case EventType.MouseDown:
@@ -87,6 +88,7 @@ namespace PathCreationEditor
                                 inputType = HandleInputType.LMBPress;
                             }
                         }
+
                         break;
 
                     case EventType.MouseUp:
@@ -105,19 +107,22 @@ namespace PathCreationEditor
                                 inputType = HandleInputType.LMBClick;
                             }
                         }
+
                         break;
 
                     case EventType.MouseDrag:
                         if (GUIUtility.hotControl == id && Event.current.button == 0)
                         {
                             handleDragMouseEnd += new Vector2(Event.current.delta.x, -Event.current.delta.y);
-                            Vector3 position2 = Camera.current.WorldToScreenPoint(Handles.matrix.MultiplyPoint(handleDragWorldStart))
-                                + (Vector3)(handleDragMouseEnd - handleDragMouseStart);
+                            Vector3 position2 =
+                                Camera.current.WorldToScreenPoint(Handles.matrix.MultiplyPoint(handleDragWorldStart))
+                                + (Vector3) (handleDragMouseEnd - handleDragMouseStart);
                             inputType = HandleInputType.LMBDrag;
                             // Handle can move freely in 3d space
                             if (space == PathSpace.xyz)
                             {
-                                position = Handles.matrix.inverse.MultiplyPoint(Camera.current.ScreenToWorldPoint(position2));
+                                position = Handles.matrix.inverse.MultiplyPoint(
+                                    Camera.current.ScreenToWorldPoint(position2));
                             }
                             // Handle is clamped to xy or xz plane
                             else
@@ -128,6 +133,7 @@ namespace PathCreationEditor
                             GUI.changed = true;
                             Event.current.Use();
                         }
+
                         break;
                 }
             }
@@ -155,7 +161,7 @@ namespace PathCreationEditor
                     {
                         if (cam.orthographic)
                         {
-                            lookForward= -cam.transform.forward;
+                            lookForward = -cam.transform.forward;
                         }
                         else
                         {
@@ -163,7 +169,8 @@ namespace PathCreationEditor
                         }
                     }
 
-                    capFunc(id, screenPosition, Quaternion.LookRotation(lookForward), handleDiameter, EventType.Repaint);
+                    capFunc(id, screenPosition, Quaternion.LookRotation(lookForward), handleDiameter,
+                        EventType.Repaint);
                     Handles.matrix = cachedMatrix;
 
                     Handles.color = originalColour;
@@ -186,7 +193,8 @@ namespace PathCreationEditor
             public Color selectedColour;
             public Color disabledColour;
 
-            public HandleColours(Color defaultColour, Color highlightedColour, Color selectedColour, Color disabledColour)
+            public HandleColours(Color defaultColour, Color highlightedColour, Color selectedColour,
+                Color disabledColour)
             {
                 this.defaultColour = defaultColour;
                 this.highlightedColour = highlightedColour;
@@ -210,10 +218,12 @@ namespace PathCreationEditor
                 // This is a bit of a shot in the dark at fixing a reported bug that I've been unable to reproduce.
                 // The problem is that multiple handles are being selected when just one is clicked on.
                 // I assume this is because they're somehow being assigned the same id.
-                while (idHash.Contains(id)) {
-                    numIts ++;
+                while (idHash.Contains(id))
+                {
+                    numIts++;
                     id += numIts * numIts;
-                    if (numIts > 100) {
+                    if (numIts > 100)
+                    {
                         Debug.LogError("Failed to generate unique handle id.");
                         break;
                     }

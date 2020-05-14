@@ -90,7 +90,9 @@ namespace Photon.Pun
                     m_DefaultRemoveButtonStyle = new GUIStyle();
                     m_DefaultRemoveButtonStyle.fixedWidth = 30;
                     m_DefaultRemoveButtonStyle.fixedHeight = 20;
-                    m_DefaultRemoveButtonStyle.active.background = ReorderableListResources.CreatePixelTexture("Dark Pixel (List GUI)", new Color32(18, 18, 18, 255));
+                    m_DefaultRemoveButtonStyle.active.background =
+                        ReorderableListResources.CreatePixelTexture("Dark Pixel (List GUI)",
+                            new Color32(18, 18, 18, 255));
                     m_DefaultRemoveButtonStyle.imagePosition = ImagePosition.ImageOnly;
                     m_DefaultRemoveButtonStyle.alignment = TextAnchor.MiddleCenter;
                 }
@@ -157,11 +159,11 @@ namespace Photon.Pun
 
         internal static string GetIconPath(string iconFileName)
         {
-            string _thisIconPath = PhotonNetwork.FindAssetPath ("PhotonGUI");
+            string _thisIconPath = PhotonNetwork.FindAssetPath("PhotonGUI");
 
             if (string.IsNullOrEmpty(_thisIconPath))
             {
-                _thisIconPath = "Assets/Photon/PhotonUnityNetworking/Code/Editor/"+iconFileName;
+                _thisIconPath = "Assets/Photon/PhotonUnityNetworking/Code/Editor/" + iconFileName;
             }
             else
             {
@@ -170,7 +172,7 @@ namespace Photon.Pun
 
             return _thisIconPath;
         }
-        
+
         static Texture2D m_HelpIcon;
 
         public static Texture2D HelpIcon
@@ -182,15 +184,15 @@ namespace Photon.Pun
                     m_HelpIcon = AssetDatabase.LoadAssetAtPath(GetIconPath("help.png"), typeof(Texture2D)) as Texture2D;
                 }
 
-                
+
                 return m_HelpIcon;
             }
         }
-        
-        
+
+
         static Texture2D m_CopyIcon;
         static Texture2D m_CopyIconPro;
-        
+
         public static Texture2D CopyIcon
         {
             get
@@ -199,15 +201,18 @@ namespace Photon.Pun
                 {
                     if (m_CopyIconPro == null)
                     {
-                        m_CopyIconPro = AssetDatabase.LoadAssetAtPath(GetIconPath("CopyIconPro.png"), typeof(Texture2D)) as Texture2D;
+                        m_CopyIconPro =
+                            AssetDatabase.LoadAssetAtPath(GetIconPath("CopyIconPro.png"), typeof(Texture2D)) as
+                                Texture2D;
                     }
 
                     return m_CopyIconPro;
                 }
-                
+
                 if (m_CopyIcon == null)
                 {
-                    m_CopyIcon = AssetDatabase.LoadAssetAtPath(GetIconPath("CopyIcon.png"), typeof(Texture2D)) as Texture2D;
+                    m_CopyIcon =
+                        AssetDatabase.LoadAssetAtPath(GetIconPath("CopyIcon.png"), typeof(Texture2D)) as Texture2D;
                 }
 
                 return m_CopyIcon;
@@ -243,9 +248,9 @@ namespace Photon.Pun
             controlRect.yMax -= 5;
 
             Rect addButtonRect = new Rect(controlRect.xMax - DefaultAddButtonStyle.fixedWidth,
-                                          controlRect.yMin,
-                                          DefaultAddButtonStyle.fixedWidth,
-                                          DefaultAddButtonStyle.fixedHeight);
+                controlRect.yMin,
+                DefaultAddButtonStyle.fixedWidth,
+                DefaultAddButtonStyle.fixedHeight);
 
             return GUI.Button(addButtonRect, "", DefaultAddButtonStyle);
         }
@@ -338,7 +343,8 @@ namespace Photon.Pun
             {
                 PhotonGUI.DefaultTitleStyle.Draw(controlRect, GUIContent.none, controlID);
 
-                Rect labelRect = new Rect(controlRect.xMin + 5 + contentOffset, controlRect.yMin + 5, controlRect.width, controlRect.height);
+                Rect labelRect = new Rect(controlRect.xMin + 5 + contentOffset, controlRect.yMin + 5, controlRect.width,
+                    controlRect.height);
                 GUI.Label(labelRect, headline, EditorStyles.boldLabel);
             }
 

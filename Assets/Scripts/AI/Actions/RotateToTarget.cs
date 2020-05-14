@@ -6,10 +6,9 @@ using UnityEngine;
 
 public class RotateToTarget : ActionBase
 {
-
     public override void Execute(IAIContext context)
     {
-        var c = (MainContext)context;
+        var c = (MainContext) context;
         if (c.target == null) return;
         c.gun.transform.LookAt(c.target.transform.position);
     }

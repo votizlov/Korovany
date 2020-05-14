@@ -30,6 +30,5 @@ public class MainMenuController : MonoBehaviour
 
     public void OpenNamePrompt()
     {
-        
     }
 }

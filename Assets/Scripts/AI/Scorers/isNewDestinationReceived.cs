@@ -6,10 +6,9 @@ using UnityEngine;
 
 public class isNewDestinationReceived : ContextualScorerBase
 {
-
     public override float Score(IAIContext context)
     {
-        var c = (MainContext)context;
+        var c = (MainContext) context;
         if (c.commander.alliesDestination != c.lastOrderedPos)
         {
             c.targetPosition = c.commander.alliesDestination;

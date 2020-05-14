@@ -11,7 +11,6 @@ namespace Objects.Gun
 
         public void Reload()
         {
-        
         }
 
         public void Fire()

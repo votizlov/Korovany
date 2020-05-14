@@ -15,7 +15,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-
 using Photon.Realtime;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
@@ -43,18 +42,16 @@ namespace Photon.Pun.UtilityScripts
     [DisallowMultipleComponent]
     public class PhotonTeamsManager : MonoBehaviour, IMatchmakingCallbacks, IInRoomCallbacks
     {
-        #if UNITY_EDITOR
-        #pragma warning disable 0414
-        [SerializeField]
-        private bool listFoldIsOpen = true;
-        #pragma warning restore 0414
-        #endif
+#if UNITY_EDITOR
+#pragma warning disable 0414
+        [SerializeField] private bool listFoldIsOpen = true;
+#pragma warning restore 0414
+#endif
 
-        [SerializeField]
-        private List<PhotonTeam> teamsList = new List<PhotonTeam>
+        [SerializeField] private List<PhotonTeam> teamsList = new List<PhotonTeam>
         {
-            new PhotonTeam { Name = "Blue", Code = 1 },
-            new PhotonTeam { Name = "Red", Code = 2 }
+            new PhotonTeam {Name = "Blue", Code = 1},
+            new PhotonTeam {Name = "Red", Code = 2}
         };
 
         private Dictionary<byte, PhotonTeam> teamsByCode;
@@ -71,6 +68,7 @@ namespace Photon.Pun.UtilityScripts
         public static event Action<Player, PhotonTeam> PlayerLeftTeam;
 
         private static PhotonTeamsManager instance;
+
         public static PhotonTeamsManager Instance
         {
             get
@@ -103,6 +101,7 @@ namespace Photon.Pun.UtilityScripts
                 Destroy(this);
                 return;
             }
+
             teamsByCode = new Dictionary<byte, PhotonTeam>(teamsList.Count);
             teamsByName = new Dictionary<string, PhotonTeam>(teamsList.Count);
             playersPerTeam = new Dictionary<byte, HashSet<Player>>(teamsList.Count);
@@ -154,10 +153,11 @@ namespace Photon.Pun.UtilityScripts
                             {
                                 PlayerLeftTeam(targetPlayer, teamsByCode[code]);
                             }
+
                             break;
                         }
                     }
-                } 
+                }
                 else if (temp is byte)
                 {
                     byte teamCode = (byte) temp;
@@ -168,21 +168,27 @@ namespace Photon.Pun.UtilityScripts
                         {
                             continue;
                         }
+
                         if (playersPerTeam[code].Remove(targetPlayer))
                         {
                             if (PlayerLeftTeam != null)
                             {
                                 PlayerLeftTeam(targetPlayer, teamsByCode[code]);
                             }
+
                             break;
                         }
                     }
+
                     PhotonTeam team = teamsByCode[teamCode];
                     if (!playersPerTeam[teamCode].Add(targetPlayer))
                     {
-                        Debug.LogWarningFormat("Unexpected situation while setting team {0} for player {1}, updating teams for all", team, targetPlayer);
+                        Debug.LogWarningFormat(
+                            "Unexpected situation while setting team {0} for player {1}, updating teams for all", team,
+                            targetPlayer);
                         this.UpdateTeams();
                     }
+
                     if (PlayerJoinedTeam != null)
                     {
                         PlayerJoinedTeam(targetPlayer, team);
@@ -190,7 +196,8 @@ namespace Photon.Pun.UtilityScripts
                 }
                 else
                 {
-                    Debug.LogErrorFormat("Unexpected: custom property key {0} should have of type byte, instead we got {1} of type {2}. Player: {3}", 
+                    Debug.LogErrorFormat(
+                        "Unexpected: custom property key {0} should have of type byte, instead we got {1} of type {2}. Player: {3}",
                         TeamPlayerProp, temp, temp.GetType(), targetPlayer);
                 }
             }
@@ -202,10 +209,13 @@ namespace Photon.Pun.UtilityScripts
             {
                 return;
             }
+
             PhotonTeam team = otherPlayer.GetPhotonTeam();
             if (team != null && !playersPerTeam[team.Code].Remove(otherPlayer))
             {
-                Debug.LogWarningFormat("Unexpected situation while removing player {0} who left from team {1}, updating teams for all", otherPlayer, team);
+                Debug.LogWarningFormat(
+                    "Unexpected situation while removing player {0} who left from team {1}, updating teams for all",
+                    otherPlayer, team);
                 // revert to 'brute force' in case of unexpected situation
                 this.UpdateTeams();
             }
@@ -218,11 +228,13 @@ namespace Photon.Pun.UtilityScripts
             {
                 return;
             }
+
             if (playersPerTeam[team.Code].Contains(newPlayer))
             {
                 // player rejoined w/ same team
                 return;
             }
+
             // check if player rejoined w/ different team, remove from previous team 
             foreach (var key in teamsByCode.Keys)
             {
@@ -231,9 +243,12 @@ namespace Photon.Pun.UtilityScripts
                     break;
                 }
             }
+
             if (!playersPerTeam[team.Code].Add(newPlayer))
             {
-                Debug.LogWarningFormat("Unexpected situation while adding player {0} who joined to team {1}, updating teams for all", newPlayer, team);
+                Debug.LogWarningFormat(
+                    "Unexpected situation while adding player {0} who joined to team {1}, updating teams for all",
+                    newPlayer, team);
                 // revert to 'brute force' in case of unexpected situation
                 this.UpdateTeams();
             }
@@ -301,6 +316,7 @@ namespace Photon.Pun.UtilityScripts
             {
                 return teamsList.ToArray();
             }
+
             return null;
         }
 
@@ -323,8 +339,10 @@ namespace Photon.Pun.UtilityScripts
                     members[i] = player;
                     i++;
                 }
+
                 return true;
             }
+
             return false;
         }
 
@@ -342,6 +360,7 @@ namespace Photon.Pun.UtilityScripts
             {
                 return this.TryGetTeamMembers(team.Code, out members);
             }
+
             return false;
         }
 
@@ -358,6 +377,7 @@ namespace Photon.Pun.UtilityScripts
             {
                 return this.TryGetTeamMembers(team.Code, out members);
             }
+
             return false;
         }
 
@@ -374,20 +394,25 @@ namespace Photon.Pun.UtilityScripts
             {
                 return false;
             }
+
             PhotonTeam team = player.GetPhotonTeam();
             if (team == null)
             {
                 return false;
             }
+
             HashSet<Player> players;
             if (this.playersPerTeam.TryGetValue(team.Code, out players))
             {
                 if (!players.Contains(player))
                 {
-                    Debug.LogWarningFormat("Unexpected situation while getting team mates of player {0} who is joined to team {1}, updating teams for all", player, team);
+                    Debug.LogWarningFormat(
+                        "Unexpected situation while getting team mates of player {0} who is joined to team {1}, updating teams for all",
+                        player, team);
                     // revert to 'brute force' in case of unexpected situation
                     this.UpdateTeams();
                 }
+
                 teamMates = new Player[players.Count - 1];
                 int i = 0;
                 foreach (var p in players)
@@ -396,11 +421,14 @@ namespace Photon.Pun.UtilityScripts
                     {
                         continue;
                     }
+
                     teamMates[i] = p;
                     i++;
                 }
+
                 return true;
             }
+
             return false;
         }
 
@@ -416,6 +444,7 @@ namespace Photon.Pun.UtilityScripts
             {
                 return this.GetTeamMembersCount(team);
             }
+
             return 0;
         }
 
@@ -431,6 +460,7 @@ namespace Photon.Pun.UtilityScripts
             {
                 return this.GetTeamMembersCount(team);
             }
+
             return 0;
         }
 
@@ -446,6 +476,7 @@ namespace Photon.Pun.UtilityScripts
             {
                 return players.Count;
             }
+
             return 0;
         }
 
@@ -493,10 +524,12 @@ namespace Photon.Pun.UtilityScripts
         {
             object teamId;
             PhotonTeam team;
-            if (player.CustomProperties.TryGetValue(PhotonTeamsManager.TeamPlayerProp, out teamId) && PhotonTeamsManager.Instance.TryGetTeamByCode((byte)teamId, out team))
+            if (player.CustomProperties.TryGetValue(PhotonTeamsManager.TeamPlayerProp, out teamId) &&
+                PhotonTeamsManager.Instance.TryGetTeamByCode((byte) teamId, out team))
             {
                 return team;
             }
+
             return null;
         }
 
@@ -513,13 +546,17 @@ namespace Photon.Pun.UtilityScripts
                 Debug.LogWarning("JoinTeam failed: PhotonTeam provided is null");
                 return false;
             }
+
             PhotonTeam currentTeam = player.GetPhotonTeam();
             if (currentTeam != null)
             {
-                Debug.LogWarningFormat("JoinTeam failed: player ({0}) is already joined to a team ({1}), call SwitchTeam instead", player, team);
+                Debug.LogWarningFormat(
+                    "JoinTeam failed: player ({0}) is already joined to a team ({1}), call SwitchTeam instead", player,
+                    team);
                 return false;
             }
-            return player.SetCustomProperties(new Hashtable { { PhotonTeamsManager.TeamPlayerProp, team.Code } });
+
+            return player.SetCustomProperties(new Hashtable {{PhotonTeamsManager.TeamPlayerProp, team.Code}});
         }
 
         /// <summary>
@@ -557,19 +594,24 @@ namespace Photon.Pun.UtilityScripts
                 Debug.LogWarning("SwitchTeam failed: PhotonTeam provided is null");
                 return false;
             }
+
             PhotonTeam currentTeam = player.GetPhotonTeam();
             if (currentTeam == null)
             {
-                Debug.LogWarningFormat("SwitchTeam failed: player ({0}) was not joined to any team, call JoinTeam instead", player);
+                Debug.LogWarningFormat(
+                    "SwitchTeam failed: player ({0}) was not joined to any team, call JoinTeam instead", player);
                 return false;
             }
+
             if (currentTeam.Code == team.Code)
             {
-                Debug.LogWarningFormat("SwitchTeam failed: player ({0}) is already joined to the same team {1}", player, team);
+                Debug.LogWarningFormat("SwitchTeam failed: player ({0}) is already joined to the same team {1}", player,
+                    team);
                 return false;
             }
-            return player.SetCustomProperties(new Hashtable { { PhotonTeamsManager.TeamPlayerProp, team.Code } },
-                new Hashtable { { PhotonTeamsManager.TeamPlayerProp, currentTeam.Code }});
+
+            return player.SetCustomProperties(new Hashtable {{PhotonTeamsManager.TeamPlayerProp, team.Code}},
+                new Hashtable {{PhotonTeamsManager.TeamPlayerProp, currentTeam.Code}});
         }
 
         /// <summary>Switch the player's team using a team code.</summary>
@@ -607,7 +649,9 @@ namespace Photon.Pun.UtilityScripts
                 Debug.LogWarningFormat("LeaveCurrentTeam failed: player ({0}) was not joined to any team", player);
                 return false;
             }
-            return player.SetCustomProperties(new Hashtable {{PhotonTeamsManager.TeamPlayerProp, null}}, new Hashtable {{PhotonTeamsManager.TeamPlayerProp, currentTeam.Code}});
+
+            return player.SetCustomProperties(new Hashtable {{PhotonTeamsManager.TeamPlayerProp, null}},
+                new Hashtable {{PhotonTeamsManager.TeamPlayerProp, currentTeam.Code}});
         }
 
         /// <summary>

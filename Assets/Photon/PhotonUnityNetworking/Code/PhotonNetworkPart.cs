@@ -17,10 +17,8 @@ namespace Photon.Pun
     using System.Collections;
     using System.Collections.Generic;
     using System.Reflection;
-
     using ExitGames.Client.Photon;
     using Photon.Realtime;
-
     using Hashtable = ExitGames.Client.Photon.Hashtable;
     using SupportClassPun = ExitGames.Client.Photon.SupportClass;
 
@@ -45,15 +43,12 @@ namespace Photon.Pun
         /// <value>The photon views.</value>
         public static PhotonView[] PhotonViews
         {
-            get
-            {
-                return photonViewList.Values.ToArray ();
-            }
-
+            get { return photonViewList.Values.ToArray(); }
         }
 
         /// <summary>Parameters: PhotonView for which ownership changed, previous owner of the view.</summary>
         private static event Action<PhotonView, Player> OnOwnershipRequestEv;
+
         /// <summary>Parameters: PhotonView for which ownership was requested, player who requests ownership.</summary>
         private static event Action<PhotonView, Player> OnOwnershipTransferedEv;
 
@@ -126,6 +121,7 @@ namespace Photon.Pun
 
         /// <summary>For automatic scene syncing, the loaded scene is put into a room property. This is the name of said prop.</summary>
         internal const string CurrentSceneProperty = "curScn";
+
         internal const string CurrentScenePropertyLoadAsync = "curScnLa";
 
 
@@ -139,15 +135,13 @@ namespace Photon.Pun
         /// </remarks>
         public static IPunPrefabPool PrefabPool
         {
-            get
-            {
-                return prefabPool;
-            }
+            get { return prefabPool; }
             set
             {
                 if (value == null)
                 {
-                    Debug.LogWarning("PhotonNetwork.PrefabPool cannot be set to null. It will default back to using the 'DefaultPool' Pool");
+                    Debug.LogWarning(
+                        "PhotonNetwork.PrefabPool cannot be set to null. It will default back to using the 'DefaultPool' Pool");
                     prefabPool = new DefaultPool();
                 }
                 else
@@ -170,11 +164,13 @@ namespace Photon.Pun
         /// list of MonoBehaviours on demand (when a new MonoBehaviour gets added to a networked GameObject, e.g.).
         /// </remarks>
         public static bool UseRpcMonoBehaviourCache;
-        
-        private static readonly Dictionary<Type, List<MethodInfo>> monoRPCMethodsCache = new Dictionary<Type, List<MethodInfo>>();
 
-        private static readonly Dictionary<string, int> rpcShortcuts;  // lookup "table" for the index (shortcut) of an RPC name
-        
+        private static readonly Dictionary<Type, List<MethodInfo>> monoRPCMethodsCache =
+            new Dictionary<Type, List<MethodInfo>>();
+
+        private static readonly Dictionary<string, int>
+            rpcShortcuts; // lookup "table" for the index (shortcut) of an RPC name
+
         /// <summary>
         /// If an RPC method is implemented as coroutine, it gets started, unless this value is false.
         /// </summary>
@@ -299,15 +295,15 @@ namespace Photon.Pun
 #pragma warning disable 0414
         private static readonly Type typePunRPC = typeof(PunRPC);
         private static readonly Type typePhotonMessageInfo = typeof(PhotonMessageInfo);
-        private static readonly object keyByteZero = (byte)0;
-        private static readonly object keyByteOne = (byte)1;
-        private static readonly object keyByteTwo = (byte)2;
-        private static readonly object keyByteThree = (byte)3;
-        private static readonly object keyByteFour = (byte)4;
-        private static readonly object keyByteFive = (byte)5;
-        private static readonly object keyByteSix = (byte)6;
-        private static readonly object keyByteSeven = (byte)7;
-        private static readonly object keyByteEight = (byte)8;
+        private static readonly object keyByteZero = (byte) 0;
+        private static readonly object keyByteOne = (byte) 1;
+        private static readonly object keyByteTwo = (byte) 2;
+        private static readonly object keyByteThree = (byte) 3;
+        private static readonly object keyByteFour = (byte) 4;
+        private static readonly object keyByteFive = (byte) 5;
+        private static readonly object keyByteSix = (byte) 6;
+        private static readonly object keyByteSeven = (byte) 7;
+        private static readonly object keyByteEight = (byte) 8;
         private static readonly object[] emptyObjectArray = new object[0];
         private static readonly Type[] emptyTypeArray = new Type[0];
 #pragma warning restore 0414
@@ -319,26 +315,28 @@ namespace Photon.Pun
         {
             if (rpcData == null || !rpcData.ContainsKey(keyByteZero))
             {
-                Debug.LogError("Malformed RPC; this should never occur. Content: " + SupportClassPun.DictionaryToString(rpcData));
+                Debug.LogError("Malformed RPC; this should never occur. Content: " +
+                               SupportClassPun.DictionaryToString(rpcData));
                 return;
             }
 
             // ts: updated with "flat" event data
-            int netViewID = (int)rpcData[keyByteZero]; // LIMITS PHOTONVIEWS&PLAYERS
-            int otherSidePrefix = 0;    // by default, the prefix is 0 (and this is not being sent)
+            int netViewID = (int) rpcData[keyByteZero]; // LIMITS PHOTONVIEWS&PLAYERS
+            int otherSidePrefix = 0; // by default, the prefix is 0 (and this is not being sent)
             if (rpcData.ContainsKey(keyByteOne))
             {
-                otherSidePrefix = (short)rpcData[keyByteOne];
+                otherSidePrefix = (short) rpcData[keyByteOne];
             }
 
 
             string inMethodName;
             if (rpcData.ContainsKey(keyByteFive))
             {
-                int rpcIndex = (byte)rpcData[keyByteFive];  // LIMITS RPC COUNT
+                int rpcIndex = (byte) rpcData[keyByteFive]; // LIMITS RPC COUNT
                 if (rpcIndex > PhotonNetwork.PhotonServerSettings.RpcList.Count - 1)
                 {
-                    Debug.LogError("Could not find RPC with index: " + rpcIndex + ". Going to ignore! Check PhotonServerSettings.RpcList");
+                    Debug.LogError("Could not find RPC with index: " + rpcIndex +
+                                   ". Going to ignore! Check PhotonServerSettings.RpcList");
                     return;
                 }
                 else
@@ -348,13 +346,13 @@ namespace Photon.Pun
             }
             else
             {
-                inMethodName = (string)rpcData[keyByteThree];
+                inMethodName = (string) rpcData[keyByteThree];
             }
 
             object[] arguments = null;
             if (rpcData.ContainsKey(keyByteFour))
             {
-                arguments = (object[])rpcData[keyByteFour];
+                arguments = (object[]) rpcData[keyByteFour];
             }
 
             PhotonView photonNetview = GetPhotonView(netViewID);
@@ -366,25 +364,34 @@ namespace Photon.Pun
 
                 if (owningPv)
                 {
-                    Debug.LogWarning("Received RPC \"" + inMethodName + "\" for viewID " + netViewID + " but this PhotonView does not exist! View was/is ours." + (ownerSent ? " Owner called." : " Remote called.") + " By: " + sender);
+                    Debug.LogWarning("Received RPC \"" + inMethodName + "\" for viewID " + netViewID +
+                                     " but this PhotonView does not exist! View was/is ours." +
+                                     (ownerSent ? " Owner called." : " Remote called.") + " By: " + sender);
                 }
                 else
                 {
-                    Debug.LogWarning("Received RPC \"" + inMethodName + "\" for viewID " + netViewID + " but this PhotonView does not exist! Was remote PV." + (ownerSent ? " Owner called." : " Remote called.") + " By: " + sender + " Maybe GO was destroyed but RPC not cleaned up.");
+                    Debug.LogWarning("Received RPC \"" + inMethodName + "\" for viewID " + netViewID +
+                                     " but this PhotonView does not exist! Was remote PV." +
+                                     (ownerSent ? " Owner called." : " Remote called.") + " By: " + sender +
+                                     " Maybe GO was destroyed but RPC not cleaned up.");
                 }
+
                 return;
             }
 
             if (photonNetview.Prefix != otherSidePrefix)
             {
-                Debug.LogError("Received RPC \"" + inMethodName + "\" on viewID " + netViewID + " with a prefix of " + otherSidePrefix + ", our prefix is " + photonNetview.Prefix + ". The RPC has been ignored.");
+                Debug.LogError("Received RPC \"" + inMethodName + "\" on viewID " + netViewID + " with a prefix of " +
+                               otherSidePrefix + ", our prefix is " + photonNetview.Prefix +
+                               ". The RPC has been ignored.");
                 return;
             }
 
             // Get method name
             if (string.IsNullOrEmpty(inMethodName))
             {
-                Debug.LogError("Malformed RPC; this should never occur. Content: " + SupportClassPun.DictionaryToString(rpcData));
+                Debug.LogError("Malformed RPC; this should never occur. Content: " +
+                               SupportClassPun.DictionaryToString(rpcData));
                 return;
             }
 
@@ -424,7 +431,8 @@ namespace Photon.Pun
 
             int receivers = 0;
             int foundMethods = 0;
-            if (!PhotonNetwork.UseRpcMonoBehaviourCache || photonNetview.RpcMonoBehaviours == null || photonNetview.RpcMonoBehaviours.Length == 0)
+            if (!PhotonNetwork.UseRpcMonoBehaviourCache || photonNetview.RpcMonoBehaviours == null ||
+                photonNetview.RpcMonoBehaviours.Length == 0)
             {
                 photonNetview.RefreshRpcMonoBehaviourCache();
             }
@@ -476,10 +484,10 @@ namespace Photon.Pun
                         if (parameters.Length == 0)
                         {
                             receivers++;
-                            object o = mInfo.Invoke((object)monob, null);
+                            object o = mInfo.Invoke((object) monob, null);
                             if (PhotonNetwork.RunRpcCoroutines)
                             {
-                                IEnumerator ie = null;//o as IEnumerator;
+                                IEnumerator ie = null; //o as IEnumerator;
                                 if ((ie = o as IEnumerator) != null)
                                 {
                                     PhotonHandler.Instance.StartCoroutine(ie);
@@ -488,19 +496,21 @@ namespace Photon.Pun
                         }
                         else if (parameters.Length == 1 && parameters[0].ParameterType == typeof(PhotonMessageInfo))
                         {
-                            int sendTime = (int)rpcData[keyByteTwo];
+                            int sendTime = (int) rpcData[keyByteTwo];
 
                             receivers++;
-                            object o = mInfo.Invoke((object)monob, new object[] { new PhotonMessageInfo(sender, sendTime, photonNetview) });
+                            object o = mInfo.Invoke((object) monob,
+                                new object[] {new PhotonMessageInfo(sender, sendTime, photonNetview)});
                             if (PhotonNetwork.RunRpcCoroutines)
                             {
-                                IEnumerator ie = null;//o as IEnumerator;
+                                IEnumerator ie = null; //o as IEnumerator;
                                 if ((ie = o as IEnumerator) != null)
                                 {
                                     PhotonHandler.Instance.StartCoroutine(ie);
                                 }
                             }
                         }
+
                         continue;
                     }
 
@@ -512,55 +522,60 @@ namespace Photon.Pun
                         if (CheckTypeMatch(parameters, argumentsTypes))
                         {
                             receivers++;
-                            object o = mInfo.Invoke((object)monob, arguments);
+                            object o = mInfo.Invoke((object) monob, arguments);
                             if (PhotonNetwork.RunRpcCoroutines)
                             {
-                                IEnumerator ie = null;//o as IEnumerator;
+                                IEnumerator ie = null; //o as IEnumerator;
                                 if ((ie = o as IEnumerator) != null)
                                 {
                                     PhotonHandler.Instance.StartCoroutine(ie);
                                 }
                             }
                         }
+
                         continue;
                     }
 
                     if (parameters.Length == arguments.Length + 1)
                     {
                         // Check for PhotonNetworkMessage being the last
-                        if (parameters[parameters.Length - 1].ParameterType == typeof(PhotonMessageInfo) && CheckTypeMatch(parameters, argumentsTypes))
+                        if (parameters[parameters.Length - 1].ParameterType == typeof(PhotonMessageInfo) &&
+                            CheckTypeMatch(parameters, argumentsTypes))
                         {
-                            int sendTime = (int)rpcData[(byte)2];
+                            int sendTime = (int) rpcData[(byte) 2];
                             object[] argumentsWithInfo = new object[arguments.Length + 1];
                             arguments.CopyTo(argumentsWithInfo, 0);
-                            argumentsWithInfo[argumentsWithInfo.Length - 1] = new PhotonMessageInfo(sender, sendTime, photonNetview);
+                            argumentsWithInfo[argumentsWithInfo.Length - 1] =
+                                new PhotonMessageInfo(sender, sendTime, photonNetview);
 
                             receivers++;
-                            object o = mInfo.Invoke((object)monob, argumentsWithInfo);
+                            object o = mInfo.Invoke((object) monob, argumentsWithInfo);
                             if (PhotonNetwork.RunRpcCoroutines)
                             {
-                                IEnumerator ie = null;//o as IEnumerator;
+                                IEnumerator ie = null; //o as IEnumerator;
                                 if ((ie = o as IEnumerator) != null)
                                 {
                                     PhotonHandler.Instance.StartCoroutine(ie);
                                 }
                             }
                         }
+
                         continue;
                     }
 
                     if (parameters.Length == 1 && parameters[0].ParameterType.IsArray)
                     {
                         receivers++;
-                        object o = mInfo.Invoke((object)monob, new object[] { arguments });
+                        object o = mInfo.Invoke((object) monob, new object[] {arguments});
                         if (PhotonNetwork.RunRpcCoroutines)
                         {
-                            IEnumerator ie = null;//o as IEnumerator;
+                            IEnumerator ie = null; //o as IEnumerator;
                             if ((ie = o as IEnumerator) != null)
                             {
                                 PhotonHandler.Instance.StartCoroutine(ie);
                             }
                         }
+
                         continue;
                     }
                 }
@@ -597,16 +612,21 @@ namespace Photon.Pun
                 {
                     if (foundMethods == 0)
                     {
-                        Debug.LogError("PhotonView with ID " + netViewID + " has no (non-static) method \"" + inMethodName + "\" marked with the [PunRPC](C#) or @PunRPC(JS) property! Args: " + argsString);
+                        Debug.LogError("PhotonView with ID " + netViewID + " has no (non-static) method \"" +
+                                       inMethodName +
+                                       "\" marked with the [PunRPC](C#) or @PunRPC(JS) property! Args: " + argsString);
                     }
                     else
                     {
-                        Debug.LogError("PhotonView with ID " + netViewID + " has no (non-static) method \"" + inMethodName + "\" that takes " + argsLength + " argument(s): " + argsString);
+                        Debug.LogError("PhotonView with ID " + netViewID + " has no (non-static) method \"" +
+                                       inMethodName + "\" that takes " + argsLength + " argument(s): " + argsString);
                     }
                 }
                 else
                 {
-                    Debug.LogError("PhotonView with ID " + netViewID + " has " + receivers + " methods \"" + inMethodName + "\" that takes " + argsLength + " argument(s): " + argsString + ". Should be just one?");
+                    Debug.LogError("PhotonView with ID " + netViewID + " has " + receivers + " methods \"" +
+                                   inMethodName + "\" that takes " + argsLength + " argument(s): " + argsString +
+                                   ". Should be just one?");
                 }
             }
         }
@@ -626,7 +646,7 @@ namespace Photon.Pun
 
             for (int index = 0; index < callParameterTypes.Length; index++)
             {
-                #if NETFX_CORE
+#if NETFX_CORE
                 TypeInfo methodParamTI = methodParameters[index].ParameterType.GetTypeInfo();
                 TypeInfo callParamTI = callParameterTypes[index].GetTypeInfo();
 
@@ -634,13 +654,14 @@ namespace Photon.Pun
                 {
                     return false;
                 }
-                #else
+#else
                 Type type = methodParameters[index].ParameterType;
-                if (callParameterTypes[index] != null && !type.IsAssignableFrom(callParameterTypes[index]) && !(type.IsEnum && System.Enum.GetUnderlyingType(type).IsAssignableFrom(callParameterTypes[index])))
+                if (callParameterTypes[index] != null && !type.IsAssignableFrom(callParameterTypes[index]) &&
+                    !(type.IsEnum && System.Enum.GetUnderlyingType(type).IsAssignableFrom(callParameterTypes[index])))
                 {
                     return false;
                 }
-                #endif
+#endif
             }
 
             return true;
@@ -690,7 +711,8 @@ namespace Photon.Pun
             {
                 if (view.OwnerActorNr == playerId)
                 {
-                    view.OwnerActorNr = view.CreatorActorNr;    //TODO: for scene objects, the Master Client should become owner
+                    view.OwnerActorNr =
+                        view.CreatorActorNr; //TODO: for scene objects, the Master Client should become owner
                     //Debug.Log("Creator is: " + view.OwnerActorNr);
                 }
             }
@@ -730,8 +752,9 @@ namespace Photon.Pun
             }
 
             PhotonView viewZero = views[0];
-            int creatorId = viewZero.CreatorActorNr;            // creatorId of obj is needed to delete EvInstantiate (only if it's from that user)
-            int instantiationId = viewZero.InstantiationId;     // actual, live InstantiationIds start with 1 and go up
+            int creatorId =
+                viewZero.CreatorActorNr; // creatorId of obj is needed to delete EvInstantiate (only if it's from that user)
+            int instantiationId = viewZero.InstantiationId; // actual, live InstantiationIds start with 1 and go up
 
             // Don't remove GOs that are owned by others (unless this is the master and the remote player left)
             if (!localOnly)
@@ -739,14 +762,18 @@ namespace Photon.Pun
                 //Debug.LogWarning("Destroy " + instantiationId + " creator " + creatorId, go);
                 if (!viewZero.IsMine)
                 {
-                    Debug.LogError("Failed to 'network-remove' GameObject. Client is neither owner nor MasterClient taking over for owner who left: " + viewZero);
+                    Debug.LogError(
+                        "Failed to 'network-remove' GameObject. Client is neither owner nor MasterClient taking over for owner who left: " +
+                        viewZero);
                     return;
                 }
 
                 // Don't remove the Instantiation from the server, if it doesn't have a proper ID
                 if (instantiationId < 1)
                 {
-                    Debug.LogError("Failed to 'network-remove' GameObject because it is missing a valid InstantiationId on view: " + viewZero + ". Not Destroying GameObject or PhotonViews!");
+                    Debug.LogError(
+                        "Failed to 'network-remove' GameObject because it is missing a valid InstantiationId on view: " +
+                        viewZero + ". Not Destroying GameObject or PhotonViews!");
                     return;
                 }
             }
@@ -755,7 +782,8 @@ namespace Photon.Pun
             // cleanup instantiation (event and local list)
             if (!localOnly)
             {
-                ServerCleanInstantiateAndDestroy(instantiationId, creatorId, viewZero.isRuntimeInstantiated);   // server cleaning
+                ServerCleanInstantiateAndDestroy(instantiationId, creatorId,
+                    viewZero.isRuntimeInstantiated); // server cleaning
             }
 
 
@@ -773,6 +801,7 @@ namespace Photon.Pun
                 {
                     LocalCleanPhotonView(view);
                 }
+
                 if (!localOnly)
                 {
                     OpCleanRpcBuffer(view);
@@ -784,51 +813,62 @@ namespace Photon.Pun
                 Debug.Log("Network destroy Instantiated GO: " + go.name);
             }
 
-            go.SetActive(false);            // PUN 2 disables objects before the return to the pool
-            prefabPool.Destroy(go);         // PUN 2 always uses a PrefabPool (even for the default implementation)
+            go.SetActive(false); // PUN 2 disables objects before the return to the pool
+            prefabPool.Destroy(go); // PUN 2 always uses a PrefabPool (even for the default implementation)
         }
 
 
+        private static readonly ExitGames.Client.Photon.Hashtable
+            removeFilter = new ExitGames.Client.Photon.Hashtable();
 
-        private static readonly ExitGames.Client.Photon.Hashtable removeFilter = new ExitGames.Client.Photon.Hashtable();
-        private static readonly ExitGames.Client.Photon.Hashtable ServerCleanDestroyEvent = new ExitGames.Client.Photon.Hashtable();
-        private static readonly RaiseEventOptions ServerCleanOptions = new RaiseEventOptions() { CachingOption = EventCaching.RemoveFromRoomCache };
+        private static readonly ExitGames.Client.Photon.Hashtable ServerCleanDestroyEvent =
+            new ExitGames.Client.Photon.Hashtable();
+
+        private static readonly RaiseEventOptions ServerCleanOptions = new RaiseEventOptions()
+            {CachingOption = EventCaching.RemoveFromRoomCache};
 
         /// <summary>
         /// Removes an instantiation event from the server's cache. Needs id and actorNr of player who instantiated.
         /// </summary>
-        private static void ServerCleanInstantiateAndDestroy(int instantiateId, int creatorId, bool isRuntimeInstantiated)
+        private static void ServerCleanInstantiateAndDestroy(int instantiateId, int creatorId,
+            bool isRuntimeInstantiated)
         {
             // remove the Instantiate-event from the server cache:
-            removeFilter[(byte)7] = instantiateId;
+            removeFilter[(byte) 7] = instantiateId;
             ServerCleanOptions.CachingOption = EventCaching.RemoveFromRoomCache;
 
-            PhotonNetwork.RaiseEventInternal(PunEvent.Instantiation, removeFilter, ServerCleanOptions, SendOptions.SendReliable);
+            PhotonNetwork.RaiseEventInternal(PunEvent.Instantiation, removeFilter, ServerCleanOptions,
+                SendOptions.SendReliable);
 
 
             // send a Destroy-event to everyone (removing an event from the cache, doesn't send this to anyone else):
-            ServerCleanDestroyEvent[(byte)0] = instantiateId;
-            ServerCleanOptions.CachingOption = (isRuntimeInstantiated) ? EventCaching.DoNotCache : EventCaching.AddToRoomCacheGlobal;   // if the view got loaded with the scene, cache EvDestroy for anyone (re)joining later
+            ServerCleanDestroyEvent[(byte) 0] = instantiateId;
+            ServerCleanOptions.CachingOption =
+                (isRuntimeInstantiated)
+                    ? EventCaching.DoNotCache
+                    : EventCaching
+                        .AddToRoomCacheGlobal; // if the view got loaded with the scene, cache EvDestroy for anyone (re)joining later
 
-            PhotonNetwork.RaiseEventInternal(PunEvent.Destroy, ServerCleanDestroyEvent, ServerCleanOptions, SendOptions.SendReliable);
+            PhotonNetwork.RaiseEventInternal(PunEvent.Destroy, ServerCleanDestroyEvent, ServerCleanOptions,
+                SendOptions.SendReliable);
         }
 
         private static void SendDestroyOfPlayer(int actorNr)
         {
             ExitGames.Client.Photon.Hashtable evData = new ExitGames.Client.Photon.Hashtable();
-            evData[(byte)0] = actorNr;
+            evData[(byte) 0] = actorNr;
 
-            PhotonNetwork.RaiseEventInternal(PunEvent.DestroyPlayer, evData,null, SendOptions.SendReliable);
-          	//NetworkingClient.OpRaiseEvent(PunEvent.DestroyPlayer, evData, null, SendOptions.SendReliable);
+            PhotonNetwork.RaiseEventInternal(PunEvent.DestroyPlayer, evData, null, SendOptions.SendReliable);
+            //NetworkingClient.OpRaiseEvent(PunEvent.DestroyPlayer, evData, null, SendOptions.SendReliable);
             //NetworkingClient.OpRaiseEvent(PunEvent.DestroyPlayer, evData, true, 0, EventCaching.DoNotCache, ReceiverGroup.Others);
         }
 
         private static void SendDestroyOfAll()
         {
             ExitGames.Client.Photon.Hashtable evData = new ExitGames.Client.Photon.Hashtable();
-            evData[(byte)0] = -1;
+            evData[(byte) 0] = -1;
 
-            PhotonNetwork.RaiseEventInternal(PunEvent.DestroyPlayer, evData,null, SendOptions.SendReliable);
+            PhotonNetwork.RaiseEventInternal(PunEvent.DestroyPlayer, evData, null, SendOptions.SendReliable);
             //NetworkingClient.OpRaiseEvent(PunEvent.DestroyPlayer, evData, null , SendOptions.SendReliable);
             //NetworkingClient.OpRaiseEvent(PunEvent.DestroyPlayer, evData, true, 0, EventCaching.DoNotCache, ReceiverGroup.Others);
         }
@@ -836,7 +876,8 @@ namespace Photon.Pun
         private static void OpRemoveFromServerInstantiationsOfPlayer(int actorNr)
         {
             // removes all "Instantiation" events of player actorNr. this is not an event for anyone else
-            RaiseEventOptions options = new RaiseEventOptions() { CachingOption = EventCaching.RemoveFromRoomCache, TargetActors = new int[] { actorNr } };
+            RaiseEventOptions options = new RaiseEventOptions()
+                {CachingOption = EventCaching.RemoveFromRoomCache, TargetActors = new int[] {actorNr}};
             PhotonNetwork.RaiseEventInternal(PunEvent.Instantiation, null, options, SendOptions.SendReliable);
             //NetworkingClient.OpRaiseEvent(PunEvent.Instantiation, null, options, SendOptions.SendReliable);
             //NetworkingClient.OpRaiseEvent(PunEvent.Instantiation, null, true, 0, new int[] { actorNr }, EventCaching.RemoveFromRoomCache);
@@ -844,17 +885,21 @@ namespace Photon.Pun
 
         internal static void RequestOwnership(int viewID, int fromOwner)
         {
-            Debug.Log("RequestOwnership(): " + viewID + " from: " + fromOwner + " Time: " + Environment.TickCount % 1000);
+            Debug.Log(
+                "RequestOwnership(): " + viewID + " from: " + fromOwner + " Time: " + Environment.TickCount % 1000);
             //PhotonNetwork.NetworkingClient.OpRaiseEvent(PunEvent.OwnershipRequest, true, new int[] { viewID, fromOwner }, 0, EventCaching.DoNotCache, null, ReceiverGroup.All, 0);
-            PhotonNetwork.RaiseEventInternal(PunEvent.OwnershipRequest, new int[] { viewID, fromOwner },new RaiseEventOptions() { Receivers = ReceiverGroup.All },SendOptions.SendReliable);
+            PhotonNetwork.RaiseEventInternal(PunEvent.OwnershipRequest, new int[] {viewID, fromOwner},
+                new RaiseEventOptions() {Receivers = ReceiverGroup.All}, SendOptions.SendReliable);
             //NetworkingClient.OpRaiseEvent(PunEvent.OwnershipRequest, new int[] { viewID, fromOwner }, new RaiseEventOptions() { Receivers = ReceiverGroup.All }, SendOptions.SendReliable);   // All sends to all via server (including self)
         }
 
         internal static void TransferOwnership(int viewID, int playerID)
         {
-            Debug.Log("TransferOwnership() view " + viewID + " to: " + playerID + " Time: " + Environment.TickCount % 1000);
+            Debug.Log("TransferOwnership() view " + viewID + " to: " + playerID + " Time: " +
+                      Environment.TickCount % 1000);
             //PhotonNetwork.NetworkingClient.OpRaiseEvent(PunEvent.OwnershipTransfer, true, new int[] {viewID, playerID}, 0, EventCaching.DoNotCache, null, ReceiverGroup.All, 0);
-            PhotonNetwork.RaiseEventInternal(PunEvent.OwnershipTransfer, new int[] { viewID, playerID }, new RaiseEventOptions() { Receivers = ReceiverGroup.All },SendOptions.SendReliable);
+            PhotonNetwork.RaiseEventInternal(PunEvent.OwnershipTransfer, new int[] {viewID, playerID},
+                new RaiseEventOptions() {Receivers = ReceiverGroup.All}, SendOptions.SendReliable);
             //NetworkingClient.OpRaiseEvent(PunEvent.OwnershipTransfer, new int[] { viewID, playerID }, new RaiseEventOptions() { Receivers = ReceiverGroup.All }, SendOptions.SendReliable);   // All sends to all via server (including self)
         }
 
@@ -868,7 +913,7 @@ namespace Photon.Pun
         {
             PhotonView result = null;
             photonViewList.TryGetValue(viewID, out result);
-            
+
             /// Removed aggressive find that likely had no real use case, and was expensive.
             //if (result == null)
             //{
@@ -913,7 +958,9 @@ namespace Photon.Pun
                 // if some other view is in the list already, we got a problem. it might be undestructible. print out error
                 if (netView != listedView)
                 {
-                    Debug.LogError(string.Format("PhotonView ID duplicate found: {0}. New: {1} old: {2}. Maybe one wasn't destroyed on scene load?! Check for 'DontDestroyOnLoad'. Destroying old entry, adding new.", netView.ViewID, netView, listedView));
+                    Debug.LogError(string.Format(
+                        "PhotonView ID duplicate found: {0}. New: {1} old: {2}. Maybe one wasn't destroyed on scene load?! Check for 'DontDestroyOnLoad'. Destroying old entry, adding new.",
+                        netView.ViewID, netView, listedView));
                 }
                 else
                 {
@@ -941,7 +988,8 @@ namespace Photon.Pun
         /// <param name="actorNumber"></param>
         public static void OpCleanActorRpcBuffer(int actorNumber)
         {
-            RaiseEventOptions options = new RaiseEventOptions() { CachingOption = EventCaching.RemoveFromRoomCache, TargetActors = new int[] { actorNumber } };
+            RaiseEventOptions options = new RaiseEventOptions()
+                {CachingOption = EventCaching.RemoveFromRoomCache, TargetActors = new int[] {actorNumber}};
             PhotonNetwork.RaiseEventInternal(PunEvent.RPC, null, options, SendOptions.SendReliable);
             //NetworkingClient.OpRaiseEvent(PunEvent.RPC, null, options, SendOptions.SendReliable);
             //NetworkingClient.OpRaiseEvent(PunEvent.RPC, null, true, 0, new int[] { actorNumber }, EventCaching.RemoveFromRoomCache);
@@ -953,7 +1001,8 @@ namespace Photon.Pun
         /// <param name="actorNumber"></param>
         public static void OpRemoveCompleteCacheOfPlayer(int actorNumber)
         {
-            RaiseEventOptions options = new RaiseEventOptions() { CachingOption = EventCaching.RemoveFromRoomCache, TargetActors = new int[] { actorNumber } };
+            RaiseEventOptions options = new RaiseEventOptions()
+                {CachingOption = EventCaching.RemoveFromRoomCache, TargetActors = new int[] {actorNumber}};
             PhotonNetwork.RaiseEventInternal(0, null, options, SendOptions.SendReliable);
             //NetworkingClient.OpRaiseEvent(0, null, options, SendOptions.SendReliable);
         }
@@ -961,7 +1010,8 @@ namespace Photon.Pun
 
         public static void OpRemoveCompleteCache()
         {
-            RaiseEventOptions options = new RaiseEventOptions() { CachingOption = EventCaching.RemoveFromRoomCache, Receivers = ReceiverGroup.MasterClient };
+            RaiseEventOptions options = new RaiseEventOptions()
+                {CachingOption = EventCaching.RemoveFromRoomCache, Receivers = ReceiverGroup.MasterClient};
             PhotonNetwork.RaiseEventInternal(0, null, options, SendOptions.SendReliable);
             //NetworkingClient.OpRaiseEvent(0, null, options, SendOptions.SendReliable);  // TODO check if someone gets this event
         }
@@ -970,18 +1020,23 @@ namespace Photon.Pun
         private static void RemoveCacheOfLeftPlayers()
         {
             Dictionary<byte, object> opParameters = new Dictionary<byte, object>();
-            opParameters[ParameterCode.Code] = (byte)0;		// any event
-            opParameters[ParameterCode.Cache] = (byte)EventCaching.RemoveFromRoomCacheForActorsLeft;    // option to clear the room cache of all events of players who left
+            opParameters[ParameterCode.Code] = (byte) 0; // any event
+            opParameters[ParameterCode.Cache] =
+                (byte) EventCaching
+                    .RemoveFromRoomCacheForActorsLeft; // option to clear the room cache of all events of players who left
 
-            NetworkingClient.LoadBalancingPeer.SendOperation((byte)OperationCode.RaiseEvent, opParameters, SendOptions.SendReliable);   // TODO: Check if this is the best implementation possible
+            NetworkingClient.LoadBalancingPeer.SendOperation((byte) OperationCode.RaiseEvent, opParameters,
+                SendOptions.SendReliable); // TODO: Check if this is the best implementation possible
         }
 
         // Remove RPCs of view (if they are local player's RPCs)
         public static void CleanRpcBufferIfMine(PhotonView view)
         {
-            if (view.OwnerActorNr != NetworkingClient.LocalPlayer.ActorNumber && !NetworkingClient.LocalPlayer.IsMasterClient)
+            if (view.OwnerActorNr != NetworkingClient.LocalPlayer.ActorNumber &&
+                !NetworkingClient.LocalPlayer.IsMasterClient)
             {
-                Debug.LogError("Cannot remove cached RPCs on a PhotonView thats not ours! " + view.Owner + " scene: " + view.IsSceneView);
+                Debug.LogError("Cannot remove cached RPCs on a PhotonView thats not ours! " + view.Owner + " scene: " +
+                               view.IsSceneView);
                 return;
             }
 
@@ -990,13 +1045,16 @@ namespace Photon.Pun
 
 
         private static readonly Hashtable rpcFilterByViewId = new ExitGames.Client.Photon.Hashtable();
-        private static readonly RaiseEventOptions OpCleanRpcBufferOptions = new RaiseEventOptions() { CachingOption = EventCaching.RemoveFromRoomCache };
+
+        private static readonly RaiseEventOptions OpCleanRpcBufferOptions = new RaiseEventOptions()
+            {CachingOption = EventCaching.RemoveFromRoomCache};
 
         /// <summary>Cleans server RPCs for PhotonView (without any further checks).</summary>
         public static void OpCleanRpcBuffer(PhotonView view)
         {
-            rpcFilterByViewId[(byte)0] = view.ViewID;
-            PhotonNetwork.RaiseEventInternal(PunEvent.RPC, rpcFilterByViewId, OpCleanRpcBufferOptions, SendOptions.SendReliable);
+            rpcFilterByViewId[(byte) 0] = view.ViewID;
+            PhotonNetwork.RaiseEventInternal(PunEvent.RPC, rpcFilterByViewId, OpCleanRpcBufferOptions,
+                SendOptions.SendReliable);
         }
 
         /// <summary>
@@ -1057,12 +1115,13 @@ namespace Photon.Pun
         /// (byte)5 -> (byte) method shortcut (alternative to name)
         ///
         /// This is sent as event (code: 200) which will contain a sender (origin of this RPC).
+        static ExitGames.Client.Photon.Hashtable rpcEvent = new ExitGames.Client.Photon.Hashtable();
 
-        static ExitGames.Client.Photon.Hashtable  rpcEvent = new ExitGames.Client.Photon.Hashtable();
         static RaiseEventOptions RpcOptionsToAll = new RaiseEventOptions();
 
 
-        internal static void RPC(PhotonView view, string methodName, RpcTarget target, Player player, bool encrypt, params object[] parameters)
+        internal static void RPC(PhotonView view, string methodName, RpcTarget target, Player player, bool encrypt,
+            params object[] parameters)
         {
             if (blockedSendingGroups.Contains(view.Group))
             {
@@ -1071,7 +1130,8 @@ namespace Photon.Pun
 
             if (view.ViewID < 1)
             {
-                Debug.LogError("Illegal view ID:" + view.ViewID + " method: " + methodName + " GO:" + view.gameObject.name);
+                Debug.LogError("Illegal view ID:" + view.ViewID + " method: " + methodName + " GO:" +
+                               view.gameObject.name);
             }
 
             if (PhotonNetwork.LogLevel >= PunLogLevel.Full)
@@ -1083,11 +1143,12 @@ namespace Photon.Pun
             //ts: changed RPCs to a one-level hashtable as described in internal.txt
             rpcEvent.Clear();
 
-            rpcEvent[keyByteZero] = (int)view.ViewID; // LIMITS NETWORKVIEWS&PLAYERS
+            rpcEvent[keyByteZero] = (int) view.ViewID; // LIMITS NETWORKVIEWS&PLAYERS
             if (view.Prefix > 0)
             {
-                rpcEvent[keyByteOne] = (short)view.Prefix;
+                rpcEvent[keyByteOne] = (short) view.Prefix;
             }
+
             rpcEvent[keyByteTwo] = PhotonNetwork.ServerTimestamp;
 
 
@@ -1095,7 +1156,7 @@ namespace Photon.Pun
             int shortcut = 0;
             if (rpcShortcuts.TryGetValue(methodName, out shortcut))
             {
-                rpcEvent[keyByteFive] = (byte)shortcut; // LIMITS RPC COUNT
+                rpcEvent[keyByteFive] = (byte) shortcut; // LIMITS RPC COUNT
             }
             else
             {
@@ -1104,10 +1165,10 @@ namespace Photon.Pun
 
             if (parameters != null && parameters.Length > 0)
             {
-                rpcEvent[keyByteFour] = (object[])parameters;
+                rpcEvent[keyByteFour] = (object[]) parameters;
             }
 
-            SendOptions sendOptions = new SendOptions () { Reliability = true, Encrypt = encrypt };
+            SendOptions sendOptions = new SendOptions() {Reliability = true, Encrypt = encrypt};
 
             // if sent to target player, this overrides the target
             if (player != null)
@@ -1118,9 +1179,9 @@ namespace Photon.Pun
                 }
                 else
                 {
-                    RaiseEventOptions options = new RaiseEventOptions() { TargetActors = new int[] { player.ActorNumber } };
+                    RaiseEventOptions options = new RaiseEventOptions() {TargetActors = new int[] {player.ActorNumber}};
                     PhotonNetwork.RaiseEventInternal(PunEvent.RPC, rpcEvent, options, sendOptions);
-                   // NetworkingClient.OpRaiseEvent(PunEvent.RPC, rpcEvent, options, new SendOptions() { Reliability = true, Encrypt = encrypt });
+                    // NetworkingClient.OpRaiseEvent(PunEvent.RPC, rpcEvent, options, new SendOptions() { Reliability = true, Encrypt = encrypt });
                 }
 
                 return;
@@ -1130,7 +1191,8 @@ namespace Photon.Pun
             {
                 // send to a specific set of players
                 case RpcTarget.All:
-                    RpcOptionsToAll.InterestGroup = (byte)view.Group;   // NOTE: Test-wise, this is static and re-used to avoid memory garbage
+                    RpcOptionsToAll.InterestGroup =
+                        (byte) view.Group; // NOTE: Test-wise, this is static and re-used to avoid memory garbage
                     PhotonNetwork.RaiseEventInternal(PunEvent.RPC, rpcEvent, RpcOptionsToAll, sendOptions);
 
                     // Execute local
@@ -1138,13 +1200,13 @@ namespace Photon.Pun
                     break;
                 case RpcTarget.Others:
                 {
-                    RaiseEventOptions options = new RaiseEventOptions() { InterestGroup = (byte)view.Group };
+                    RaiseEventOptions options = new RaiseEventOptions() {InterestGroup = (byte) view.Group};
                     PhotonNetwork.RaiseEventInternal(PunEvent.RPC, rpcEvent, options, sendOptions);
                     break;
                 }
                 case RpcTarget.AllBuffered:
                 {
-                    RaiseEventOptions options = new RaiseEventOptions() { CachingOption = EventCaching.AddToRoomCache };
+                    RaiseEventOptions options = new RaiseEventOptions() {CachingOption = EventCaching.AddToRoomCache};
                     PhotonNetwork.RaiseEventInternal(PunEvent.RPC, rpcEvent, options, sendOptions);
 
                     // Execute local
@@ -1153,7 +1215,7 @@ namespace Photon.Pun
                 }
                 case RpcTarget.OthersBuffered:
                 {
-                    RaiseEventOptions options = new RaiseEventOptions() { CachingOption = EventCaching.AddToRoomCache };
+                    RaiseEventOptions options = new RaiseEventOptions() {CachingOption = EventCaching.AddToRoomCache};
                     PhotonNetwork.RaiseEventInternal(PunEvent.RPC, rpcEvent, options, sendOptions);
                     break;
                 }
@@ -1165,7 +1227,7 @@ namespace Photon.Pun
                     }
                     else
                     {
-                        RaiseEventOptions options = new RaiseEventOptions() { Receivers = ReceiverGroup.MasterClient };
+                        RaiseEventOptions options = new RaiseEventOptions() {Receivers = ReceiverGroup.MasterClient};
                         PhotonNetwork.RaiseEventInternal(PunEvent.RPC, rpcEvent, options, sendOptions);
                     }
 
@@ -1173,7 +1235,8 @@ namespace Photon.Pun
                 }
                 case RpcTarget.AllViaServer:
                 {
-                    RaiseEventOptions options = new RaiseEventOptions() { InterestGroup = (byte)view.Group, Receivers = ReceiverGroup.All };
+                    RaiseEventOptions options = new RaiseEventOptions()
+                        {InterestGroup = (byte) view.Group, Receivers = ReceiverGroup.All};
                     PhotonNetwork.RaiseEventInternal(PunEvent.RPC, rpcEvent, options, sendOptions);
                     if (PhotonNetwork.OfflineMode)
                     {
@@ -1184,7 +1247,11 @@ namespace Photon.Pun
                 }
                 case RpcTarget.AllBufferedViaServer:
                 {
-                    RaiseEventOptions options = new RaiseEventOptions() { InterestGroup = (byte)view.Group, Receivers = ReceiverGroup.All, CachingOption = EventCaching.AddToRoomCache };
+                    RaiseEventOptions options = new RaiseEventOptions()
+                    {
+                        InterestGroup = (byte) view.Group, Receivers = ReceiverGroup.All,
+                        CachingOption = EventCaching.AddToRoomCache
+                    };
                     PhotonNetwork.RaiseEventInternal(PunEvent.RPC, rpcEvent, options, sendOptions);
                     if (PhotonNetwork.OfflineMode)
                     {
@@ -1229,7 +1296,9 @@ namespace Photon.Pun
                         byte g = disableGroups[index];
                         if (g <= 0)
                         {
-                            Debug.LogError("Error: PhotonNetwork.SetInterestGroups was called with an illegal group number: " + g + ". The Group number should be at least 1.");
+                            Debug.LogError(
+                                "Error: PhotonNetwork.SetInterestGroups was called with an illegal group number: " + g +
+                                ". The Group number should be at least 1.");
                             continue;
                         }
 
@@ -1260,7 +1329,9 @@ namespace Photon.Pun
                         byte g = enableGroups[index];
                         if (g <= 0)
                         {
-                            Debug.LogError("Error: PhotonNetwork.SetInterestGroups was called with an illegal group number: " + g + ". The Group number should be at least 1.");
+                            Debug.LogError(
+                                "Error: PhotonNetwork.SetInterestGroups was called with an illegal group number: " + g +
+                                ". The Group number should be at least 1.");
                             continue;
                         }
 
@@ -1299,7 +1370,6 @@ namespace Photon.Pun
                 blockedSendingGroups.Remove(group);
             }
         }
-
 
 
         /// <summary>Enable/disable sending on given groups (applied to PhotonViews)</summary>
@@ -1390,81 +1460,82 @@ namespace Photon.Pun
         ///<summary> cache the RaiseEventOptions to prevent redundant Memory Allocation</summary>
         private static RaiseEventOptions serializeRaiseEvOptions = new RaiseEventOptions();
 
-    private struct RaiseEventBatch: IEquatable<RaiseEventBatch>
-    {
-        public byte Group;
-        public bool Reliable;
-
-        public override int GetHashCode()
+        private struct RaiseEventBatch : IEquatable<RaiseEventBatch>
         {
-            return (this.Group << 1) + (this.Reliable ? 1 : 0);
-        }
+            public byte Group;
+            public bool Reliable;
 
-        public bool Equals(RaiseEventBatch other)
-        {
-            return this.Reliable == other.Reliable && this.Group == other.Group;
-        }
-    }
-
-
-    private class SerializeViewBatch : IEquatable<SerializeViewBatch>, IEquatable<RaiseEventBatch>
-    {
-        public readonly RaiseEventBatch Batch;
-        public List<object> ObjectUpdates;
-        private int defaultSize = PhotonNetwork.ObjectsInOneUpdate;
-        private int offset;
-
-
-        // the offset enables us to skip the first X entries in the ObjectUpdate(s), leaving room for (e.g.) timestamp of sending and level prefix
-        public SerializeViewBatch(RaiseEventBatch batch, int offset)
-        {
-            this.Batch = batch;
-            this.ObjectUpdates = new List<object>(this.defaultSize);
-            this.offset = offset;
-            for (int i=0; i<offset; i++) this.ObjectUpdates.Add(null);
-        }
-
-        public override int GetHashCode()
-        {
-            return (this.Batch.Group << 1) + (this.Batch.Reliable ? 1 : 0);
-        }
-
-        public bool Equals(SerializeViewBatch other)
-        {
-            return this.Equals(other.Batch);
-        }
-
-        public bool Equals(RaiseEventBatch other)
-        {
-            return this.Batch.Reliable == other.Reliable && this.Batch.Group == other.Group;
-        }
-
-        public override bool Equals(object obj)
-        {
-            SerializeViewBatch other = obj as SerializeViewBatch;
-            return other != null && this.Batch.Equals(other.Batch);
-        }
-
-        public void Clear()
-        {
-            this.ObjectUpdates.Clear();
-            for (int i = 0; i < offset; i++) this.ObjectUpdates.Add(null);
-            }
-
-        public void Add(List<object> viewData)
-        {
-            if (this.ObjectUpdates.Count >= this.ObjectUpdates.Capacity)
+            public override int GetHashCode()
             {
-                // NOTE: we could also trim to new size
-                throw new Exception("Can't add. Size exceeded.");
+                return (this.Group << 1) + (this.Reliable ? 1 : 0);
             }
 
-            this.ObjectUpdates.Add(viewData);
+            public bool Equals(RaiseEventBatch other)
+            {
+                return this.Reliable == other.Reliable && this.Group == other.Group;
+            }
         }
-    }
 
 
-        private static readonly Dictionary<RaiseEventBatch, SerializeViewBatch> serializeViewBatches = new Dictionary<RaiseEventBatch, SerializeViewBatch>();
+        private class SerializeViewBatch : IEquatable<SerializeViewBatch>, IEquatable<RaiseEventBatch>
+        {
+            public readonly RaiseEventBatch Batch;
+            public List<object> ObjectUpdates;
+            private int defaultSize = PhotonNetwork.ObjectsInOneUpdate;
+            private int offset;
+
+
+            // the offset enables us to skip the first X entries in the ObjectUpdate(s), leaving room for (e.g.) timestamp of sending and level prefix
+            public SerializeViewBatch(RaiseEventBatch batch, int offset)
+            {
+                this.Batch = batch;
+                this.ObjectUpdates = new List<object>(this.defaultSize);
+                this.offset = offset;
+                for (int i = 0; i < offset; i++) this.ObjectUpdates.Add(null);
+            }
+
+            public override int GetHashCode()
+            {
+                return (this.Batch.Group << 1) + (this.Batch.Reliable ? 1 : 0);
+            }
+
+            public bool Equals(SerializeViewBatch other)
+            {
+                return this.Equals(other.Batch);
+            }
+
+            public bool Equals(RaiseEventBatch other)
+            {
+                return this.Batch.Reliable == other.Reliable && this.Batch.Group == other.Group;
+            }
+
+            public override bool Equals(object obj)
+            {
+                SerializeViewBatch other = obj as SerializeViewBatch;
+                return other != null && this.Batch.Equals(other.Batch);
+            }
+
+            public void Clear()
+            {
+                this.ObjectUpdates.Clear();
+                for (int i = 0; i < offset; i++) this.ObjectUpdates.Add(null);
+            }
+
+            public void Add(List<object> viewData)
+            {
+                if (this.ObjectUpdates.Count >= this.ObjectUpdates.Capacity)
+                {
+                    // NOTE: we could also trim to new size
+                    throw new Exception("Can't add. Size exceeded.");
+                }
+
+                this.ObjectUpdates.Add(viewData);
+            }
+        }
+
+
+        private static readonly Dictionary<RaiseEventBatch, SerializeViewBatch> serializeViewBatches =
+            new Dictionary<RaiseEventBatch, SerializeViewBatch>();
 
 
         /// <summary>Calls all locally controlled PhotonViews to write their updates in OnPhotonSerializeView. Called by a PhotonHandler.</summary>
@@ -1477,37 +1548,40 @@ namespace Photon.Pun
 
 
             // no need to send OnSerialize messages while being alone (these are not buffered anyway)
-            #if !PHOTON_DEVELOP
+#if !PHOTON_DEVELOP
             if (CurrentRoom.Players.Count <= 1)
             {
                 return;
             }
-            #else
-            serializeRaiseEvOptions.Receivers = (CurrentRoom.Players.Count == 1) ? ReceiverGroup.All : ReceiverGroup.Others;
-            #endif
+#else
+            serializeRaiseEvOptions.Receivers =
+ (CurrentRoom.Players.Count == 1) ? ReceiverGroup.All : ReceiverGroup.Others;
+#endif
 
 
+            /* Format of the event's data object[]:
+             *  [0] = PhotonNetwork.ServerTimestamp;
+             *  [1] = currentLevelPrefix;  OPTIONAL!
+             *  [2] = object[] of PhotonView x
+             *  [3] = object[] of PhotonView y or NULL
+             *  [...]
+             *
+             *  We only combine updates for XY objects into one RaiseEvent to avoid fragmentation.
+             *  The Reliability and Interest Group are only used for RaiseEvent and not contained in the event/data that reaches the other clients.
+             *  This is read in OnEvent().
+             */
 
-           /* Format of the event's data object[]:
-            *  [0] = PhotonNetwork.ServerTimestamp;
-            *  [1] = currentLevelPrefix;  OPTIONAL!
-            *  [2] = object[] of PhotonView x
-            *  [3] = object[] of PhotonView y or NULL
-            *  [...]
-            *
-            *  We only combine updates for XY objects into one RaiseEvent to avoid fragmentation.
-            *  The Reliability and Interest Group are only used for RaiseEvent and not contained in the event/data that reaches the other clients.
-            *  This is read in OnEvent().
-            */
 
-
-            var enumerator = photonViewList.GetEnumerator();   // replacing foreach (PhotonView view in this.photonViewList.Values) for memory allocation improvement
+            var enumerator =
+                photonViewList
+                    .GetEnumerator(); // replacing foreach (PhotonView view in this.photonViewList.Values) for memory allocation improvement
             while (enumerator.MoveNext())
             {
                 PhotonView view = enumerator.Current.Value;
 
                 // a client only sends updates for active, synchronized PhotonViews that are under it's control (isMine)
-                if (view.Synchronization == ViewSynchronization.Off || view.IsMine == false || view.isActiveAndEnabled == false)
+                if (view.Synchronization == ViewSynchronization.Off || view.IsMine == false ||
+                    view.isActiveAndEnabled == false)
                 {
                     continue;
                 }
@@ -1526,14 +1600,16 @@ namespace Photon.Pun
                 }
 
                 RaiseEventBatch eventBatch = new RaiseEventBatch();
-                eventBatch.Reliable = view.Synchronization == ViewSynchronization.ReliableDeltaCompressed || view.mixedModeIsReliable;
+                eventBatch.Reliable = view.Synchronization == ViewSynchronization.ReliableDeltaCompressed ||
+                                      view.mixedModeIsReliable;
                 eventBatch.Group = view.Group;
 
                 SerializeViewBatch svBatch = null;
                 bool found = serializeViewBatches.TryGetValue(eventBatch, out svBatch);
                 if (!found)
                 {
-                    svBatch = new SerializeViewBatch(eventBatch, 2);    // NOTE: the 2 first entries are kept empty for timestamp and level prefix
+                    svBatch = new SerializeViewBatch(eventBatch,
+                        2); // NOTE: the 2 first entries are kept empty for timestamp and level prefix
                     serializeViewBatches.Add(eventBatch, svBatch);
                 }
 
@@ -1561,10 +1637,11 @@ namespace Photon.Pun
 
             serializeRaiseEvOptions.InterestGroup = batch.Batch.Group;
             batch.ObjectUpdates[0] = PhotonNetwork.ServerTimestamp;
-            batch.ObjectUpdates[1] = (currentLevelPrefix != 0) ? (object)currentLevelPrefix : null;
+            batch.ObjectUpdates[1] = (currentLevelPrefix != 0) ? (object) currentLevelPrefix : null;
             byte code = batch.Batch.Reliable ? PunEvent.SendSerializeReliable : PunEvent.SendSerialize;
 
-            PhotonNetwork.RaiseEventInternal(code, batch.ObjectUpdates, serializeRaiseEvOptions, batch.Batch.Reliable ? SendOptions.SendReliable : SendOptions.SendUnreliable);
+            PhotonNetwork.RaiseEventInternal(code, batch.ObjectUpdates, serializeRaiseEvOptions,
+                batch.Batch.Reliable ? SendOptions.SendReliable : SendOptions.SendUnreliable);
             batch.Clear();
         }
 
@@ -1580,14 +1657,16 @@ namespace Photon.Pun
 
 
             // each view creates a list of values that should be sent
-            PhotonMessageInfo info = new PhotonMessageInfo(NetworkingClient.LocalPlayer, PhotonNetwork.ServerTimestamp, view);
+            PhotonMessageInfo info =
+                new PhotonMessageInfo(NetworkingClient.LocalPlayer, PhotonNetwork.ServerTimestamp, view);
 
             if (view.syncValues == null) view.syncValues = new List<object>();
             view.syncValues.Clear();
             serializeStreamOut.SetWriteStream(view.syncValues);
-            serializeStreamOut.SendNext(null);  //to become: viewID,
-            serializeStreamOut.SendNext(null);  //to become: is compressed
-            serializeStreamOut.SendNext(null);  //to become: null-values (for compression) followed by: values for this object's update
+            serializeStreamOut.SendNext(null); //to become: viewID,
+            serializeStreamOut.SendNext(null); //to become: is compressed
+            serializeStreamOut
+                .SendNext(null); //to become: null-values (for compression) followed by: values for this object's update
 
 
             view.SerializeView(serializeStreamOut, info);
@@ -1601,9 +1680,9 @@ namespace Photon.Pun
 
             List<object> currentValues = serializeStreamOut.GetWriteStream();
             currentValues[SyncViewId] = view.ViewID;
-            currentValues[SyncCompressed] = false;      // (bool) compression was used.
-            currentValues[SyncNullValues] = null;       // if reliable compressed, this is non-null.
-                                                        // next: sequence of values in this object's update.
+            currentValues[SyncCompressed] = false; // (bool) compression was used.
+            currentValues[SyncNullValues] = null; // if reliable compressed, this is non-null.
+            // next: sequence of values in this object's update.
 
             if (view.Synchronization == ViewSynchronization.Unreliable)
             {
@@ -1622,14 +1701,14 @@ namespace Photon.Pun
                     }
 
                     view.mixedModeIsReliable = true;
-                    List<object> temp = view.lastOnSerializeDataSent;   // TODO: extract "exchange" into method in PV
+                    List<object> temp = view.lastOnSerializeDataSent; // TODO: extract "exchange" into method in PV
                     view.lastOnSerializeDataSent = currentValues;
                     view.syncValues = temp;
                 }
                 else
                 {
                     view.mixedModeIsReliable = false;
-                    List<object> temp = view.lastOnSerializeDataSent;   // TODO: extract "exchange" into method in PV
+                    List<object> temp = view.lastOnSerializeDataSent; // TODO: extract "exchange" into method in PV
                     view.lastOnSerializeDataSent = currentValues;
                     view.syncValues = temp;
                 }
@@ -1647,7 +1726,7 @@ namespace Photon.Pun
                 List<object> dataToSend = DeltaCompressionWrite(view.lastOnSerializeDataSent, currentValues);
 
                 // cache the values that were written this time (not the compressed values)
-                List<object> temp = view.lastOnSerializeDataSent;   // TODO: extract "exchange" into method in PV
+                List<object> temp = view.lastOnSerializeDataSent; // TODO: extract "exchange" into method in PV
                 view.lastOnSerializeDataSent = currentValues;
                 view.syncValues = temp;
 
@@ -1663,7 +1742,7 @@ namespace Photon.Pun
         private static void OnSerializeRead(object[] data, Player sender, int networkTime, short correctPrefix)
         {
             // read view ID from key (byte)0: a int-array (PUN 1.17++)
-            int viewID = (int)data[SyncViewId];
+            int viewID = (int) data[SyncViewId];
 
 
             // debug:
@@ -1672,13 +1751,16 @@ namespace Photon.Pun
             PhotonView view = GetPhotonView(viewID);
             if (view == null)
             {
-                Debug.LogWarning("Received OnSerialization for view ID " + viewID + ". We have no such PhotonView! Ignored this if you're joining or leaving a room. State: " + NetworkingClient.State);
+                Debug.LogWarning("Received OnSerialization for view ID " + viewID +
+                                 ". We have no such PhotonView! Ignored this if you're joining or leaving a room. State: " +
+                                 NetworkingClient.State);
                 return;
             }
 
             if (view.Prefix > 0 && correctPrefix != view.Prefix)
             {
-                Debug.LogError("Received OnSerialization for view ID " + viewID + " with prefix " + correctPrefix + ". Our prefix is " + view.Prefix);
+                Debug.LogError("Received OnSerialization for view ID " + viewID + " with prefix " + correctPrefix +
+                               ". Our prefix is " + view.Prefix);
                 return;
             }
 
@@ -1687,8 +1769,6 @@ namespace Photon.Pun
             {
                 return; // Ignore group
             }
-
-
 
 
             if (view.Synchronization == ViewSynchronization.ReliableDeltaCompressed)
@@ -1703,6 +1783,7 @@ namespace Photon.Pun
                         Debug.Log("Skipping packet for " + view.name + " [" + view.ViewID +
                                   "] as we haven't received a full packet for delta compression yet. This is OK if it happens for the first few frames after joining a game.");
                     }
+
                     return;
                 }
 
@@ -1755,7 +1836,9 @@ namespace Photon.Pun
                 return null; // this send doesn't contain values (except the "headers"), so it's not being sent
             }
 
-            List<object> compressedContent = previousContent; // the previous content is no longer needed, once we compared the values!
+            List<object>
+                compressedContent =
+                    previousContent; // the previous content is no longer needed, once we compared the values!
             compressedContent[SyncCompressed] = false;
             int compressedValues = 0;
 
@@ -1782,6 +1865,7 @@ namespace Photon.Pun
                         {
                             valuesThatAreChangedToNull = new Queue<int>(currentContent.Count);
                         }
+
                         valuesThatAreChangedToNull.Enqueue(index);
                     }
                 }
@@ -1799,7 +1883,9 @@ namespace Photon.Pun
                 compressedContent[SyncCompressed] = true;
                 if (valuesThatAreChangedToNull != null)
                 {
-                    compressedContent[SyncNullValues] = valuesThatAreChangedToNull.ToArray(); // data that is actually null (not just cause we didn't want to send it)
+                    compressedContent[SyncNullValues] =
+                        valuesThatAreChangedToNull
+                            .ToArray(); // data that is actually null (not just cause we didn't want to send it)
                 }
             }
 
@@ -1810,7 +1896,7 @@ namespace Photon.Pun
 
         private static object[] DeltaCompressionRead(object[] lastOnSerializeDataReceived, object[] incomingData)
         {
-            if ((bool)incomingData[SyncCompressed] == false)
+            if ((bool) incomingData[SyncCompressed] == false)
             {
                 // index 1 marks "compressed" as being true.
                 return incomingData;
@@ -1824,13 +1910,14 @@ namespace Photon.Pun
             }
 
 
-            int[] indexesThatAreChangedToNull = incomingData[(byte)2] as int[];
+            int[] indexesThatAreChangedToNull = incomingData[(byte) 2] as int[];
             for (int index = SyncFirstValue; index < incomingData.Length; index++)
             {
                 if (indexesThatAreChangedToNull != null && indexesThatAreChangedToNull.Contains(index))
                 {
                     continue; // if a value was set to null in this update, we don't need to fetch it from an earlier update
                 }
+
                 if (incomingData[index] == null)
                 {
                     // we replace null values in this received msg unless a index is in the "changed to null" list
@@ -1888,8 +1975,8 @@ namespace Photon.Pun
                 // if A is not B, lets check if A is almost B
                 if (one is Vector3)
                 {
-                    Vector3 a = (Vector3)one;
-                    Vector3 b = (Vector3)two;
+                    Vector3 a = (Vector3) one;
+                    Vector3 b = (Vector3) two;
                     if (a.AlmostEquals(b, PhotonNetwork.PrecisionForVectorSynchronization))
                     {
                         return true;
@@ -1897,8 +1984,8 @@ namespace Photon.Pun
                 }
                 else if (one is Vector2)
                 {
-                    Vector2 a = (Vector2)one;
-                    Vector2 b = (Vector2)two;
+                    Vector2 a = (Vector2) one;
+                    Vector2 b = (Vector2) two;
                     if (a.AlmostEquals(b, PhotonNetwork.PrecisionForVectorSynchronization))
                     {
                         return true;
@@ -1906,8 +1993,8 @@ namespace Photon.Pun
                 }
                 else if (one is Quaternion)
                 {
-                    Quaternion a = (Quaternion)one;
-                    Quaternion b = (Quaternion)two;
+                    Quaternion a = (Quaternion) one;
+                    Quaternion b = (Quaternion) two;
                     if (a.AlmostEquals(b, PhotonNetwork.PrecisionForQuaternionSynchronization))
                     {
                         return true;
@@ -1915,8 +2002,8 @@ namespace Photon.Pun
                 }
                 else if (one is float)
                 {
-                    float a = (float)one;
-                    float b = (float)two;
+                    float a = (float) one;
+                    float b = (float) two;
                     if (a.AlmostEquals(b, PhotonNetwork.PrecisionForFloatSynchronization))
                     {
                         return true;
@@ -1958,7 +2045,8 @@ namespace Photon.Pun
         /// <summary>Internally used to detect the current scene and load it if PhotonNetwork.AutomaticallySyncScene is enabled.</summary>
         internal static void LoadLevelIfSynced()
         {
-            if (!PhotonNetwork.AutomaticallySyncScene || PhotonNetwork.IsMasterClient || PhotonNetwork.CurrentRoom == null)
+            if (!PhotonNetwork.AutomaticallySyncScene || PhotonNetwork.IsMasterClient ||
+                PhotonNetwork.CurrentRoom == null)
             {
                 return;
             }
@@ -1973,16 +2061,16 @@ namespace Photon.Pun
             object sceneId = PhotonNetwork.CurrentRoom.CustomProperties[CurrentSceneProperty];
             if (sceneId is int)
             {
-                if (SceneManagerHelper.ActiveSceneBuildIndex != (int)sceneId)
+                if (SceneManagerHelper.ActiveSceneBuildIndex != (int) sceneId)
                 {
-                    PhotonNetwork.LoadLevel((int)sceneId);
+                    PhotonNetwork.LoadLevel((int) sceneId);
                 }
             }
             else if (sceneId is string)
             {
-                if (SceneManagerHelper.ActiveSceneName != (string)sceneId)
+                if (SceneManagerHelper.ActiveSceneName != (string) sceneId)
                 {
-                    PhotonNetwork.LoadLevel((string)sceneId);
+                    PhotonNetwork.LoadLevel((string) sceneId);
                 }
             }
         }
@@ -1990,10 +2078,12 @@ namespace Photon.Pun
 
         internal static void SetLevelInPropsIfSynced(object levelId)
         {
-            if (!PhotonNetwork.AutomaticallySyncScene || !PhotonNetwork.IsMasterClient || PhotonNetwork.CurrentRoom == null)
+            if (!PhotonNetwork.AutomaticallySyncScene || !PhotonNetwork.IsMasterClient ||
+                PhotonNetwork.CurrentRoom == null)
             {
                 return;
             }
+
             if (levelId == null)
             {
                 Debug.LogError("Parameter levelId can't be null!");
@@ -2005,7 +2095,7 @@ namespace Photon.Pun
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey(CurrentSceneProperty))
             {
                 object levelIdInProps = PhotonNetwork.CurrentRoom.CustomProperties[CurrentSceneProperty];
-               //Debug.Log("levelId (to set): "+ levelId + " levelIdInProps: " + levelIdInProps + " SceneManagerHelper.ActiveSceneName: "+ SceneManagerHelper.ActiveSceneName);
+                //Debug.Log("levelId (to set): "+ levelId + " levelIdInProps: " + levelIdInProps + " SceneManagerHelper.ActiveSceneName: "+ SceneManagerHelper.ActiveSceneName);
 
                 if (levelId.Equals(levelIdInProps))
                 {
@@ -2019,7 +2109,8 @@ namespace Photon.Pun
                     int scnIndex = SceneManagerHelper.ActiveSceneBuildIndex;
                     string scnName = SceneManagerHelper.ActiveSceneName;
 
-                    if ((levelId.Equals(scnIndex) && levelIdInProps.Equals(scnName)) || (levelId.Equals(scnName) && levelIdInProps.Equals(scnIndex)))
+                    if ((levelId.Equals(scnIndex) && levelIdInProps.Equals(scnName)) ||
+                        (levelId.Equals(scnName) && levelIdInProps.Equals(scnIndex)))
                     {
                         //Debug.LogWarning("The levelId and levelIdInProps refer to the same scene. Don't set property for it.");
                         return;
@@ -2033,7 +2124,9 @@ namespace Photon.Pun
             {
                 if (!_AsyncLevelLoadingOperation.isDone)
                 {
-                    Debug.LogWarning("PUN cancels an ongoing async level load, as another scene should be loaded. Next scene to load: " + levelId);
+                    Debug.LogWarning(
+                        "PUN cancels an ongoing async level load, as another scene should be loaded. Next scene to load: " +
+                        levelId);
                 }
 
                 _AsyncLevelLoadingOperation.allowSceneActivation = false;
@@ -2043,8 +2136,8 @@ namespace Photon.Pun
 
             // current level is not yet in props, or different, so this client has to set it
             Hashtable setScene = new Hashtable();
-            if (levelId is int) setScene[CurrentSceneProperty] = (int)levelId;
-            else if (levelId is string) setScene[CurrentSceneProperty] = (string)levelId;
+            if (levelId is int) setScene[CurrentSceneProperty] = (int) levelId;
+            else if (levelId is string) setScene[CurrentSceneProperty] = (string) levelId;
             else Debug.LogError("Parameter levelId must be int or string!");
 
             PhotonNetwork.CurrentRoom.SetCustomProperties(setScene);
@@ -2087,9 +2180,9 @@ namespace Photon.Pun
                      *  This is read in OnEvent().
                      */
 
-                    object[] pvUpdates = (object[])photonEvent[ParameterCode.Data];
-                    int remoteUpdateServerTimestamp = (int)pvUpdates[0];
-                    short remoteLevelPrefix = (pvUpdates[1] != null) ? (byte)pvUpdates[1] : (short)0;
+                    object[] pvUpdates = (object[]) photonEvent[ParameterCode.Data];
+                    int remoteUpdateServerTimestamp = (int) pvUpdates[0];
+                    short remoteLevelPrefix = (pvUpdates[1] != null) ? (byte) pvUpdates[1] : (short) 0;
 
                     object[] viewUpdate = null;
                     for (int i = 2; i < pvUpdates.Length; i++)
@@ -2099,8 +2192,10 @@ namespace Photon.Pun
                         {
                             break;
                         }
+
                         OnSerializeRead(viewUpdate, originatingPlayer, remoteUpdateServerTimestamp, remoteLevelPrefix);
                     }
+
                     break;
 
                 case PunEvent.Instantiation:
@@ -2112,7 +2207,8 @@ namespace Photon.Pun
                     // MasterClient "requests" a disconnection from us
                     if (originatingPlayer == null || !originatingPlayer.IsMasterClient)
                     {
-                        Debug.LogError("Error: Someone else(" + originatingPlayer + ") then the masterserver requests a disconnect!");
+                        Debug.LogError("Error: Someone else(" + originatingPlayer +
+                                       ") then the masterserver requests a disconnect!");
                     }
                     else
                     {
@@ -2132,6 +2228,7 @@ namespace Photon.Pun
                     {
                         DestroyAll(true);
                     }
+
                     break;
 
                 case EventCode.Leave:
@@ -2141,6 +2238,7 @@ namespace Photon.Pun
                     {
                         DestroyPlayerObjects(actorNr, true);
                     }
+
                     break;
 
                 case PunEvent.Destroy:
@@ -2156,14 +2254,15 @@ namespace Photon.Pun
                     }
                     else
                     {
-                        Debug.LogError("Ev Destroy Failed. Could not find PhotonView with instantiationId " + instantiationId + ". Sent by actorNr: " + actorNr);
+                        Debug.LogError("Ev Destroy Failed. Could not find PhotonView with instantiationId " +
+                                       instantiationId + ". Sent by actorNr: " + actorNr);
                     }
 
                     break;
 
                 case PunEvent.OwnershipRequest:
                 {
-                    int[] requestValues = (int[])photonEvent.CustomData;
+                    int[] requestValues = (int[]) photonEvent.CustomData;
                     int requestedViewId = requestValues[0];
                     int requestedFromOwnerId = requestValues[1];
 
@@ -2171,29 +2270,38 @@ namespace Photon.Pun
                     PhotonView requestedView = GetPhotonView(requestedViewId);
                     if (requestedView == null)
                     {
-                        Debug.LogWarning("Can't find PhotonView of incoming OwnershipRequest. ViewId not found: " + requestedViewId);
+                        Debug.LogWarning("Can't find PhotonView of incoming OwnershipRequest. ViewId not found: " +
+                                         requestedViewId);
                         break;
                     }
 
                     if (PhotonNetwork.LogLevel == PunLogLevel.Informational)
                     {
-                        Debug.Log(string.Format("OwnershipRequest. actorNr {0} requests view {1} from {2}. current pv owner: {3} is {4}. isMine: {6} master client: {5}", actorNr, requestedViewId, requestedFromOwnerId, requestedView.OwnerActorNr, requestedView.IsOwnerActive?"active":"inactive", MasterClient.ActorNumber, requestedView.IsMine));
+                        Debug.Log(string.Format(
+                            "OwnershipRequest. actorNr {0} requests view {1} from {2}. current pv owner: {3} is {4}. isMine: {6} master client: {5}",
+                            actorNr, requestedViewId, requestedFromOwnerId, requestedView.OwnerActorNr,
+                            requestedView.IsOwnerActive ? "active" : "inactive", MasterClient.ActorNumber,
+                            requestedView.IsMine));
                     }
 
                     switch (requestedView.OwnershipTransfer)
                     {
                         case OwnershipOption.Takeover:
                             int currentPvOwnerId = requestedView.OwnerActorNr;
-                            if (requestedFromOwnerId == currentPvOwnerId || (requestedFromOwnerId == 0 && currentPvOwnerId == MasterClient.ActorNumber) || currentPvOwnerId == 0)
+                            if (requestedFromOwnerId == currentPvOwnerId ||
+                                (requestedFromOwnerId == 0 && currentPvOwnerId == MasterClient.ActorNumber) ||
+                                currentPvOwnerId == 0)
                             {
                                 // a takeover is successful automatically, if taken from current owner
                                 Player previousOwner = CurrentRoom.GetPlayer(currentPvOwnerId);
                                 requestedView.OwnerActorNr = actorNr;
                                 requestedView.OwnershipWasTransfered = true;
 
-                                if (PhotonNetwork.OnOwnershipTransferedEv != null) {
-                                    PhotonNetwork.OnOwnershipTransferedEv (requestedView, previousOwner);
+                                if (PhotonNetwork.OnOwnershipTransferedEv != null)
+                                {
+                                    PhotonNetwork.OnOwnershipTransferedEv(requestedView, previousOwner);
                                 }
+
                                 // JF IPunOwnershipCallbacks callback handling refactoring
                                 //requestedView.OnOwnershipTransfered(requestedView, previousOwner);
                             }
@@ -2201,15 +2309,17 @@ namespace Photon.Pun
                             {
                                 Debug.LogWarning("requestedView.OwnershipTransfer was ignored! ");
                             }
+
                             break;
 
                         case OwnershipOption.Request:
 
-                            if (PhotonNetwork.OnOwnershipRequestEv != null) {
-                                PhotonNetwork.OnOwnershipRequestEv (requestedView, originatingPlayer);
+                            if (PhotonNetwork.OnOwnershipRequestEv != null)
+                            {
+                                PhotonNetwork.OnOwnershipRequestEv(requestedView, originatingPlayer);
                             }
 
-                        // JF IPunOwnershipCallbacks callback handling refactoring
+                            // JF IPunOwnershipCallbacks callback handling refactoring
 //                            if (requestedView.IsMine)
 //                            {
 //                                // a request goes to the controller of a PV. the master client might control a view if the actual owner is inactive! this is covered by PV.IsMine
@@ -2219,21 +2329,23 @@ namespace Photon.Pun
                             break;
 
                         default:
-                            Debug.LogWarning("Ownership mode == "+ (requestedView.OwnershipTransfer) + ". Ignoring request.");
+                            Debug.LogWarning("Ownership mode == " + (requestedView.OwnershipTransfer) +
+                                             ". Ignoring request.");
                             break;
                     }
                 }
-                break;
+                    break;
 
                 case PunEvent.OwnershipTransfer:
                 {
-                    int[] transferViewToUserID = (int[])photonEvent.CustomData;
+                    int[] transferViewToUserID = (int[]) photonEvent.CustomData;
                     int requestedViewId = transferViewToUserID[0];
                     int newOwnerId = transferViewToUserID[1];
 
                     if (PhotonNetwork.LogLevel >= PunLogLevel.Informational)
                     {
-                        Debug.Log("Ev OwnershipTransfer. ViewID " + requestedViewId + " to: " + newOwnerId + " Time: " + Environment.TickCount % 1000);
+                        Debug.Log("Ev OwnershipTransfer. ViewID " + requestedViewId + " to: " + newOwnerId + " Time: " +
+                                  Environment.TickCount % 1000);
                     }
 
 
@@ -2245,12 +2357,15 @@ namespace Photon.Pun
                         requestedView.OwnerActorNr = newOwnerId;
                         Player previousOwner = CurrentRoom.GetPlayer(currentPvOwnerId);
 
-                        if (PhotonNetwork.OnOwnershipTransferedEv != null) {
-                            PhotonNetwork.OnOwnershipTransferedEv (requestedView, previousOwner);
+                        if (PhotonNetwork.OnOwnershipTransferedEv != null)
+                        {
+                            PhotonNetwork.OnOwnershipTransferedEv(requestedView, previousOwner);
                         }
+
                         // JF IPunOwnershipCallbacks callback handling refactoring
                         //requestedView.OnOwnershipTransfered(requestedView, previousOwner);
                     }
+
                     break;
                 }
             }
@@ -2267,16 +2382,21 @@ namespace Photon.Pun
 
                         if (PhotonNetwork.LogLevel >= PunLogLevel.Informational)
                         {
-                            Debug.Log("PUN got region list. Going to ping minimum regions, based on this previous result summary: "+previousBestRegionSummary);
+                            Debug.Log(
+                                "PUN got region list. Going to ping minimum regions, based on this previous result summary: " +
+                                previousBestRegionSummary);
                         }
+
                         NetworkingClient.RegionHandler.PingMinimumOfRegions(OnRegionsPinged, previousBestRegionSummary);
                     }
+
                     break;
                 case OperationCode.JoinGame:
                     if (Server == ServerConnection.GameServer)
                     {
                         PhotonNetwork.LoadLevelIfSynced();
                     }
+
                     break;
             }
         }
@@ -2294,26 +2414,28 @@ namespace Photon.Pun
             _cachedRegionHandler = regionHandler;
             //PhotonNetwork.BestRegionSummaryInPreferences = regionHandler.SummaryToCache; // can not be called here, as it's not in the main thread
 
-            
+
             // the dev region overrides the best region selection in "development" builds (unless it was set but is empty).
-            
-            #if UNITY_EDITOR
+
+#if UNITY_EDITOR
             if (!PhotonServerSettings.DevRegionSetOnce)
             {
                 // if no dev region was defined before or if the dev region is unavailable, set a new dev region
                 PhotonServerSettings.DevRegionSetOnce = true;
                 PhotonServerSettings.DevRegion = _cachedRegionHandler.BestRegion.Code;
             }
-            #endif
+#endif
 
-            #if DEVELOPMENT_BUILD || UNITY_EDITOR
+#if DEVELOPMENT_BUILD || UNITY_EDITOR
             if (!string.IsNullOrEmpty(PhotonServerSettings.DevRegion) && ConnectMethod == ConnectMethod.ConnectToBest)
             {
-                Debug.LogWarning("PUN is in development mode (development build). As the 'dev region' is not empty (" + PhotonServerSettings.DevRegion + ") it overrides the found best region. See PhotonServerSettings.");
+                Debug.LogWarning("PUN is in development mode (development build). As the 'dev region' is not empty (" +
+                                 PhotonServerSettings.DevRegion +
+                                 ") it overrides the found best region. See PhotonServerSettings.");
                 PhotonNetwork.NetworkingClient.ConnectToRegionMaster(PhotonServerSettings.DevRegion);
                 return;
             }
-            #endif
+#endif
 
             if (NetworkClientState == ClientState.ConnectedToNameServer)
             {

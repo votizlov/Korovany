@@ -9,7 +9,6 @@ namespace Objects.Items
     {
         public void PickupItem(PlayerController player, ItemTypes type)
         {
-        
         }
     }
 

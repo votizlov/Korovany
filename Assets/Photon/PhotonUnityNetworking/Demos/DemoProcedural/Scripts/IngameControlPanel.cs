@@ -185,7 +185,10 @@ namespace Photon.Pun.Demo.Procedural
         /// </summary>
         public override void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged)
         {
-            if (propertiesThatChanged.ContainsKey(WorldGenerator.Instance.SeedPropertiesKey) && propertiesThatChanged.ContainsKey(WorldGenerator.Instance.WorldSizePropertiesKey) && propertiesThatChanged.ContainsKey(WorldGenerator.Instance.ClusterSizePropertiesKey) && propertiesThatChanged.ContainsKey(WorldGenerator.Instance.WorldTypePropertiesKey))
+            if (propertiesThatChanged.ContainsKey(WorldGenerator.Instance.SeedPropertiesKey) &&
+                propertiesThatChanged.ContainsKey(WorldGenerator.Instance.WorldSizePropertiesKey) &&
+                propertiesThatChanged.ContainsKey(WorldGenerator.Instance.ClusterSizePropertiesKey) &&
+                propertiesThatChanged.ContainsKey(WorldGenerator.Instance.WorldTypePropertiesKey))
             {
                 // Updating Seed
                 int seed = (int) propertiesThatChanged[WorldGenerator.Instance.SeedPropertiesKey];
@@ -218,7 +221,8 @@ namespace Photon.Pun.Demo.Procedural
                 }
 
                 // Updating Cluster Size
-                ClusterSize clusterSize = (ClusterSize) propertiesThatChanged[WorldGenerator.Instance.ClusterSizePropertiesKey];
+                ClusterSize clusterSize =
+                    (ClusterSize) propertiesThatChanged[WorldGenerator.Instance.ClusterSizePropertiesKey];
                 switch (clusterSize)
                 {
                     case ClusterSize.Small:
