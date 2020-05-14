@@ -478,6 +478,7 @@
             <e p="AttackManager.cs" t="Include" />
             <e p="AttackTypes.cs" t="Include" />
             <e p="DamagableObject.cs" t="Include" />
+            <e p="ExplosionForce.cs" t="Include" />
           </e>
           <e p="Data" t="Include">
             <e p="SettingsData.cs" t="Include" />

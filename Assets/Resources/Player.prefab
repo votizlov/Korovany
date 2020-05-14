@@ -254,9 +254,12 @@ MonoBehaviour:
   rigidbody: {fileID: 2362603814635793141}
   photonView: {fileID: 7612308229380496167}
   gunPlace: {fileID: 2362603814392010858}
-  speed: 7
+  speed: 20
   speedH: 2
   speedV: 2
+  jumpVelocity: 10
+  fallMultipler: 2.5
+  lowJumpMultipler: 2
 --- !u!114 &2362603814524813787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,7 +273,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   primaryGun: {fileID: 0}
-  guns: []
   gunPlace: {fileID: 2362603814392010861}
 --- !u!114 &2362603814524813794
 MonoBehaviour:

@@ -10,9 +10,8 @@ namespace Objects
 {
     public class PlayerController : MonoBehaviour, IPunObservable
     {
-
         public bool isFreesed = true;
-        
+
         public Camera camera;
 
         [SerializeField] private SettingsData settings;
@@ -36,6 +35,14 @@ namespace Objects
         [SerializeField] private float speedH = 2.0f;
 
         [SerializeField] private float speedV = 2.0f;
+
+        [SerializeField] private float jumpVelocity = 10;
+
+        [SerializeField] private float fallMultipler = 2.5f;
+
+        [SerializeField] private float lowJumpMultipler = 2f;
+
+        private bool isHoldingJump;
 
         private float _yaw = 0f;
 
@@ -75,12 +82,17 @@ namespace Objects
 
             if (Input.GetKey(settings.jump))
             {
-                ApplyAcceleration(gameObject.transform.up);
+                isHoldingJump = true;
             }
 
             if (Input.GetKey(settings.fire))
             {
                 inventoryController.FireCurrentGun();
+            }
+
+            if (Input.GetKeyDown(settings.jump))
+            {
+                ApplyJumpVelocity();
             }
 
             if (Input.GetKeyDown(settings.interaction))
@@ -110,6 +122,20 @@ namespace Objects
             }
         }
 
+        private void FixedUpdate()
+        {
+            if (rigidbody.velocity.y < 0)
+            {
+                rigidbody.velocity += Vector3.up * (Physics.gravity.y * (fallMultipler - 1) * Time.deltaTime);
+            }
+            else if (rigidbody.velocity.y > 0 && !isHoldingJump)
+            {
+                rigidbody.velocity += Vector3.up * (Physics.gravity.y * (lowJumpMultipler - 1) * Time.deltaTime);
+            }
+
+            isHoldingJump = false;
+        }
+
         private void Interact()
         {
             RaycastHit hit;
@@ -117,7 +143,8 @@ namespace Objects
             if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit,
                 2))
             {
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance,
+                    Color.yellow);
                 if (hit.collider.gameObject.CompareTag("Interactable"))
                 {
                     hit.collider.GetComponent<Interactable>().Interact(this);
@@ -128,6 +155,11 @@ namespace Objects
         private void ApplyAcceleration(Vector3 dir)
         {
             rigidbody.AddForce(dir * speed);
+        }
+
+        private void ApplyJumpVelocity()
+        {
+            rigidbody.velocity += Vector3.up * jumpVelocity;
         }
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
