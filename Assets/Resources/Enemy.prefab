@@ -69,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 670224309865224971, guid: f967cdf05da58f141b1073754d0bcadd, type: 3}
+  - {fileID: 2100000, guid: 409bf720e9924426b9f253cf037a8f4e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -191,9 +191,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0a69b953296de43ac78ce76d58e523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameProxy: {fileID: 0}
+  gameProxy: {fileID: 11400000, guid: 24328f21fb38f43418eb88b6b1219227, type: 2}
   agent: {fileID: 7075088038993600591}
   gun: {fileID: 8182126336554756847}
+  bounty: 0
 --- !u!114 &2051431507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,8 +238,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 670224309865224971, guid: f967cdf05da58f141b1073754d0bcadd,
-        type: 3}
+      objectReference: {fileID: 2100000, guid: 01763a1c279a5cd4d8f897f6b6cdbae5, type: 2}
     - target: {fileID: 1864030407702970961, guid: 5e23330ee01367641b8937c7bf15c71a,
         type: 3}
       propertyPath: optimalRestingPosition.z
@@ -263,8 +263,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 670224309865224971, guid: f967cdf05da58f141b1073754d0bcadd,
-        type: 3}
+      objectReference: {fileID: 2100000, guid: 01763a1c279a5cd4d8f897f6b6cdbae5, type: 2}
     - target: {fileID: 6675716773691439195, guid: 5e23330ee01367641b8937c7bf15c71a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -356,8 +355,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 670224309865224971, guid: f967cdf05da58f141b1073754d0bcadd,
-        type: 3}
+      objectReference: {fileID: 2100000, guid: 01763a1c279a5cd4d8f897f6b6cdbae5, type: 2}
     - target: {fileID: 1864030407702970961, guid: 5e23330ee01367641b8937c7bf15c71a,
         type: 3}
       propertyPath: optimalRestingPosition.y
@@ -382,8 +380,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 670224309865224971, guid: f967cdf05da58f141b1073754d0bcadd,
-        type: 3}
+      objectReference: {fileID: 2100000, guid: 01763a1c279a5cd4d8f897f6b6cdbae5, type: 2}
     - target: {fileID: 6675716773691439195, guid: 5e23330ee01367641b8937c7bf15c71a,
         type: 3}
       propertyPath: m_LocalPosition.x

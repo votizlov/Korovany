@@ -16,9 +16,9 @@ MonoBehaviour:
   version: 16779010
   aiId: f033d780-fc25-4d60-9bc8-23588ae047ba
   configuration: '{"@type":"Apex.AI.UtilityAI, ApexAI","_rootSelectorId":cfffc970876646e4894c381f68fef5fb,"_id":f033d780fc254d609bc823588ae047ba,"_selectors":[{"@type":"Apex.AI.ScoreSelector,
-    ApexAI","_id":cfffc970876646e4894c381f68fef5fb,"_qualifiers":[],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","_id":cfffc970876646e4894c381f68fef5fb,"_qualifiers":[{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
+    ApexAI","_scorers":[{"@type":"AI.Scorers.isItemsSpawned, Assembly-CSharp"}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI","action":{"@type":"Apex.AI.CompositeAction, ApexAI","_actions":[{"@type":"AI.Actions.SelectItemPlaces,
-    Assembly-CSharp"},{"@type":"AI.Actions.SpawnItems, Assembly-CSharp"},{"@type":"StopAI,
-    Assembly-CSharp"}]}}}]}'
-  editorConfiguration: '{"offset":{"@x":0,"@y":0},"zoom":1,"SelectorView":{"ViewArea":{"@left":100,"@top":100,"@width":200,"@height":100},"Name":"Generate
-    items","DefaultQualifier":{"ActionView":{"@connectorType":"Composite"}}}}'
+    Assembly-CSharp"},{"@type":"AI.Actions.SpawnItems, Assembly-CSharp"}]}}}]}'
+  editorConfiguration: '{"offset":{"@x":0,"@y":0},"zoom":1,"SelectorView":{"ViewArea":{"@left":100,"@top":100,"@width":200,"@height":160},"Name":"Generate
+    items","QualifierView":{},"DefaultQualifier":{"ActionView":{"@connectorType":"Composite"}}}}'

@@ -784,6 +784,14 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  enemyRarityCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  enemiesSorted: []
+  itemsSorted: []
   componentAI: {fileID: 892227141}
 --- !u!114 &892227141
 MonoBehaviour:
@@ -806,10 +814,10 @@ MonoBehaviour:
     isActive: 1
   - aiId: 51c192fc-96f4-47c7-9a97-d56cf4c367d2
     intervalMin: 1
-    intervalMax: 1
+    intervalMax: 10
     startDelayMin: 0
     startDelayMax: 0
-    isActive: 0
+    isActive: 1
 --- !u!114 &892227142
 MonoBehaviour:
   m_ObjectHideFlags: 0

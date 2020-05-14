@@ -13,15 +13,16 @@ namespace AI.Actions
             foreach (var VAR in c.itemPlaces)
             {
                 if (PhotonNetwork.IsConnected)
-                    PhotonNetwork.Instantiate(selectItemToSpawn(), VAR, Quaternion.identity);
+                    PhotonNetwork.Instantiate(selectItemToSpawn(c), VAR, Quaternion.identity);
                 else
-                    GameObject.Instantiate((GameObject) Resources.Load(selectItemToSpawn()), VAR,
+                    GameObject.Instantiate((GameObject) Resources.Load(selectItemToSpawn(c)), VAR,
                         Quaternion.identity); //todo сделать, чтобы предметы 'лежали' на меше с помощью нормалей
             }
         }
 
-        private String selectItemToSpawn()
+        private String selectItemToSpawn(SpawnersContext c)
         {
+            
             return "Item";
         }
     }

@@ -10,4 +10,9 @@ public class SpawnersContext : IAIContext
     public Vector3 lastEnemyPlace;
     public int itemsOnLevel = 20;
     public UtilityAIComponent componentAI;
+    public AnimationCurve itemRarityCurve;
+    public AnimationCurve enemyRarityCurve;
+    public GameObject[] enemiesSorted;
+    public GameObject[] itemsSorted;
+    public bool isItemsSpawned;
 }
