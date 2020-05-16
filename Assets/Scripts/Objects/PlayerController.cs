@@ -54,6 +54,8 @@ namespace Objects
         {
             UI = gameProxy.UI;
             gunPlace.transform.forward = camera.transform.forward;
+            if(!photonView.IsMine && PhotonNetwork.IsConnected)
+                Destroy(camera);
         }
 
         void Update()
