@@ -10,6 +10,7 @@ public class AttackManager : MonoBehaviour
     public GameObject bazookaShotEffect;
     public GameObject swordSwingEffect;
     private Transform t;
+    private GameObject prefab;
 
     public void Attack(AttackingObject attackingObject)
     {
@@ -39,11 +40,18 @@ public class AttackManager : MonoBehaviour
             case AttackTypes.BazookaShot:
                 t = attackingObject.transform;
                 if (PhotonNetwork.IsConnected)
-                    PhotonNetwork.Instantiate(bazookaShotEffect.name, t.position, t.rotation);
+                {
+                    prefab = PhotonNetwork.Instantiate(bazookaShotEffect.name, t.position, t.rotation);
+                }
                 else
-                    GameObject.Instantiate(bazookaShotEffect, t.position, t.rotation);
+                {
+                    prefab = GameObject.Instantiate(bazookaShotEffect, t.position, t.rotation);
+                }
+
+                prefab.GetComponent<Rigidbody>().velocity = t.forward * attackingObject.speed;
+
                 break;
-            
+
             case AttackTypes.SwordSwing:
                 t = attackingObject.transform;
                 if (PhotonNetwork.IsConnected)

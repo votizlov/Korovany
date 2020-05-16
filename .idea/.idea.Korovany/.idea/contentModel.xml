@@ -20,6 +20,26 @@
             <e p="changelog.txt" t="Include" />
           </e>
         </e>
+        <e p="EffectExamples" t="Include">
+          <e p="Magic Effects" t="Include">
+            <e p="Shaders" t="Include">
+              <e p="Ice.shader" t="Include" />
+            </e>
+          </e>
+          <e p="Misc Effects" t="Include">
+            <e p="Prefabs" t="Include">
+              <e p="Readme_Dissolve_Respawn_.txt" t="Include" />
+            </e>
+            <e p="Scripts" t="Include">
+              <e p="SpawnEffect.cs" t="Include" />
+            </e>
+            <e p="Shaders" t="Include">
+              <e p="Dissolve.shader" t="Include" />
+              <e p="FireFly.shader" t="Include" />
+              <e p="Respawn.shader" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="FastIK" t="Include">
           <e p="Documentation.txt" t="Include" />
           <e p="Scripts" t="Include">
@@ -496,6 +516,7 @@
             <e p="Classes.cs" t="Include" />
             <e p="DeleteAfterTime.cs" t="Include" />
             <e p="Gun" t="Include">
+              <e p="BazookaRocket.cs" t="Include" />
               <e p="Gun.cs" t="Include" />
               <e p="GunTypes.cs" t="Include" />
             </e>

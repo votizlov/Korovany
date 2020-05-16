@@ -2,14 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df3e315c-cbe7-4d00-8ec6-568c98cfc889" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Korovany/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Korovany/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Korovany/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Korovany/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Effects/Line.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Effects/Line.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/CabinEnemy.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/CabinEnemy.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Korovany/PhonkKorovan.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Korovany/PhonkKorovan.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Guns/bazooka.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Guns/bazooka.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Line.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Line.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Arena.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Arena.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/Actions/SelectItemPlaces.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/Actions/SelectItemPlaces.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/Actions/SpawnEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/Actions/SpawnEnemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/SpawnersContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/SpawnersContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/SpawnersContextProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/SpawnersContextProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DamageSystem/AttackManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DamageSystem/AttackManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Networking/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Networking/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Objects/Timer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Objects/Timer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,9 +28,11 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/Korovan.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/Scorers/isExecutingOrder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/SpawnersContextProvider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/FastIK/Scripts/FastIK/FastIKFabric.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/Classes.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/Gun/BazookaRocket.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Code/PunClasses.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Networking/LobbyManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Networking/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -51,6 +60,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/Actions/FollowPlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data/SettingsData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/AlliesShop.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/Actions/FindClosestTarget.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/Actions/SpawnItems.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/Items/ItemsController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DamageSystem/ExplosionForce.cs" root0="FORCE_HIGHLIGHTING" />
@@ -80,7 +90,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/ItemSpawnerContextProvider.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Objects/AlliesShop.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/MainContext.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Objects/Timer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Core/Game.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DamageSystem/AttackingObject.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/AllyContextProvider.cs" />
@@ -101,20 +110,22 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Objects/Items/InventoryController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/Actions/SelectItemPlace.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Core/UIController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Networking/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/Actions/SelectItemsToSpawn.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/Actions/SpawnItems.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/Actions/StopAI.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/Actions/SpawnPlayer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/Scorers/isItemsSpawned.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ProceduralLegPlacement/CreatureController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/DamageSystem/AttackManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Objects/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Objects/TerrainGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/SpawnersContext.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/SpawnersContextProvider.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/AI/Actions/SpawnEnemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/Actions/SelectItemPlaces.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/AI/Actions/SpawnEnemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DamageSystem/AttackManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Objects/Gun/BazookaRocket.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Objects/Timer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Networking/GameManager.cs" />
       </list>
     </option>
   </component>
@@ -168,7 +179,8 @@
       <workItem from="1589488436851" duration="4876000" />
       <workItem from="1589493874095" duration="3098000" />
       <workItem from="1589530101943" duration="3518000" />
-      <workItem from="1589627450169" duration="5671000" />
+      <workItem from="1589627450169" duration="6213000" />
+      <workItem from="1589645692594" duration="8503000" />
     </task>
     <servers />
   </component>

@@ -5,6 +5,8 @@ using Core;
 using Data;
 using Objects;
 using Objects.Items;
+using PathCreation;
+using PathCreation.Examples;
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,6 +16,10 @@ namespace Networking
     public class GameManager : MonoBehaviourPunCallbacks
     {
         [SerializeField] private Transform playerStartPoint;
+
+        [SerializeField] private float korovanSpawnTime;
+
+        [SerializeField] private Transform korovanStartPoint;
 
         [SerializeField] private SettingsData settings;
 
@@ -31,12 +37,23 @@ namespace Networking
 
         [SerializeField] private PhotonView photonView;
 
+        [SerializeField] private UtilityAIComponent utilityAiComponent;
+
+        [SerializeField] private Timer timer;
+
+        [SerializeField] private GameObject korovanPrefab;
+
+        [SerializeField] private PathCreator roadPathCreator;
+
         private GameObject t;
 
         private int m_PlayersReady = 0;
 
+        private bool isKorovanSpawned = false;
+
         void Awake()
         {
+            timer.OnTimerTick += CheckTimer;
             gameProxy.attackManager = attackManager;
             gameProxy.players = new List<PlayerController>();
             gameProxy.UI = UI;
@@ -70,6 +87,7 @@ namespace Networking
             if (!PhotonNetwork.IsConnected)
             {
                 StartMainLoop();
+                return;
             }
 
             if (PhotonNetwork.CurrentRoom.PlayerCount == m_PlayersReady)
@@ -92,7 +110,34 @@ namespace Networking
                 player.isFreesed = false;
             }
 
+            utilityAiComponent.clients[0].Start();
+            
+            timer.StartTimer();
+
             UI.OnMainLoopStarted();
+        }
+
+        private void CheckTimer(float time)
+        {
+            if (time >= korovanSpawnTime && !isKorovanSpawned)
+            {
+                GameObject t;
+                if (PhotonNetwork.IsConnected)
+                {
+                    t = PhotonNetwork.Instantiate(korovanPrefab.name, korovanStartPoint.position,
+                        korovanStartPoint.rotation);
+                }
+                else
+                    t = Instantiate(korovanPrefab, korovanStartPoint.position, korovanStartPoint.rotation);
+
+                isKorovanSpawned = true;
+                t.GetComponent<PathFollower>().pathCreator = roadPathCreator;
+            }
+        }
+
+        private GameObject ChooseKorovan()
+        {
+            return korovanPrefab;
         }
 
         public void OnLeftRoom()

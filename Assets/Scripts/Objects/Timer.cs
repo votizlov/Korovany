@@ -1,17 +1,31 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace Objects
 {
     public class Timer : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
+        public event Action<float> OnTimerTick;
+        [SerializeField] private Text text;
+        [SerializeField] private float timeOfTick = 1f;
+        private float currentTime = 0f;
+
+        public void StartTimer()
         {
+            StartCoroutine(Counter());
         }
 
-        // Update is called once per frame
-        void Update()
+        private IEnumerator Counter()
         {
+            while (true)
+            {
+                currentTime += timeOfTick;
+                OnTimerTick?.Invoke(currentTime);
+                text.text = currentTime.ToString();
+                yield return new WaitForSeconds(timeOfTick);
+            }
         }
     }
 }

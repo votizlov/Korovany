@@ -110,7 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 0
   damage: 0
-  speed: 0
+  speed: 50
   reload: 0
   gameProxy: {fileID: 11400000, guid: 24328f21fb38f43418eb88b6b1219227, type: 2}
-  type: 0
+  type: 1
