@@ -16,8 +16,7 @@ namespace AI.Actions
         private float m_TrashHold = 0.9f;
         private int m_SpawnedItems = 0;
         private float offset = 10;
-        private int layermask = -1;
-        private Vector3 t;
+        private NavMeshHit hit;
 
         public override void Execute(IAIContext context)
         {
@@ -31,24 +30,11 @@ namespace AI.Actions
                     if (m_SpawnedItems < c.itemsOnLevel && CalculateHeight(x, z) >= m_TrashHold)
                     {
                         m_SpawnedItems++;
-                        t = getPosOnNavMesh(x, z);
-                            //if (Math.Abs(t.x) < width && Math.Abs(t.z) < width & Math.Abs(t.y) < 250)
-                            c.itemPlaces.Add(getPosOnNavMesh(x,z));
+                        NavMesh.SamplePosition(new Vector3(x, c.terrainData.GetHeight(x, z), z), out hit, offset, NavMesh.AllAreas);
+                        c.itemPlaces.Add(hit.position);
                     }
                 }
             }
-        }
-
-        private Vector3 getPosOnNavMesh(int x, int z)
-        {
-            Vector3 randomDirection = Vector3.up * offset;
-
-            randomDirection += new Vector3(x, -10, z);
-
-            NavMeshHit navHit;
-
-            NavMesh.SamplePosition(randomDirection, out navHit, offset, layermask);
-            return navHit.position;
         }
 
         private float CalculateHeight(int x, int y)

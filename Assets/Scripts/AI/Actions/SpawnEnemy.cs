@@ -2,22 +2,30 @@
 using Apex.AI;
 using Photon.Pun;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 namespace AI.Actions
 {
     public class SpawnEnemy : ActionBase
     {
-        private int maxX = 250;
-        private int maxZ = 250;
-        private int offset = 5;
+        private int maxX = 200;
+        private int maxZ = 200;
+        private int offset = 10;
         private Vector3 v;
+        private int x;
+        private int z;
+        private NavMeshHit hit;
+
         public override void Execute(IAIContext context)
         {
             var c = (SpawnersContext) context;
-            v = new Vector3(Random.Range(0, maxX), offset, Random.Range(0, maxZ));
+            x = Random.Range(-maxX, maxX);
+            z = Random.Range(-maxZ, maxZ);
+            v = new Vector3(x, c.terrainData.GetHeight(x, z), z);
+            NavMesh.SamplePosition(v, out hit, offset, NavMesh.AllAreas);
             if (PhotonNetwork.IsConnected)
-                PhotonNetwork.Instantiate(selectEnemyToSpawn(c), v, Quaternion.identity);
+                PhotonNetwork.Instantiate(selectEnemyToSpawn(c), hit.position, Quaternion.identity);
             else
                 GameObject.Instantiate((GameObject) Resources.Load(selectEnemyToSpawn(c)), v, Quaternion.identity);
         }

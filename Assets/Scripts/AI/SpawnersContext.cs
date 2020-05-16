@@ -15,4 +15,5 @@ public class SpawnersContext : IAIContext
     public GameObject[] enemiesSorted;
     public GameObject[] itemsSorted;
     public bool isItemsSpawned;
+    public TerrainData terrainData;
 }
