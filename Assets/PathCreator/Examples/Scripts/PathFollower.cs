@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using Core;
+using UnityEngine;
 
 namespace PathCreation.Examples
 {
@@ -8,8 +10,9 @@ namespace PathCreation.Examples
     {
         public PathCreator pathCreator;
         public EndOfPathInstruction endOfPathInstruction;
-        public float speed = 5;
+        public float speed = 10;
         public bool isRotating;
+        [SerializeField] private GameProxy gp;
         private float m_DistanceTravelled;
         private Vector3 m_InitRotation; //добавил сохранение начального вращения и положения объекта
         private Vector3 m_InitPos;
@@ -27,16 +30,19 @@ namespace PathCreation.Examples
 
         void Update()
         {
-            if (pathCreator != null)
+            m_DistanceTravelled += speed * Time.deltaTime;
+            if (pathCreator.path.length <= m_DistanceTravelled)
             {
-                m_DistanceTravelled += speed * Time.deltaTime;
-                transform.position = pathCreator.path.GetPointAtDistance(m_DistanceTravelled, endOfPathInstruction) +
-                                     m_InitPos;
-                if (isRotating)
-                    transform.eulerAngles =
-                        pathCreator.path.GetRotationAtDistance(m_DistanceTravelled, endOfPathInstruction).eulerAngles +
-                        m_InitRotation;
+                gp.gameManager.OnKorovanLeft();
+                Destroy(gameObject);
             }
+
+            transform.position = pathCreator.path.GetPointAtDistance(m_DistanceTravelled, endOfPathInstruction) +
+                                 m_InitPos;
+            if (isRotating)
+                transform.eulerAngles =
+                    pathCreator.path.GetRotationAtDistance(m_DistanceTravelled, endOfPathInstruction).eulerAngles +
+                    m_InitRotation;
         }
 
         // If the path changes during the game, update the distance travelled so that the follower's position on the new path

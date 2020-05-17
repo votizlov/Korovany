@@ -17,6 +17,11 @@ namespace Objects
             StartCoroutine(Counter());
         }
 
+        public void ResetTimer()
+        {
+            currentTime = 0f;
+        }
+
         private IEnumerator Counter()
         {
             while (true)

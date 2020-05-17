@@ -51,8 +51,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 0}
   endOfPathInstruction: 2
-  speed: 5
+  speed: 10
   isRotating: 1
+  gp: {fileID: 11400000, guid: 24328f21fb38f43418eb88b6b1219227, type: 2}
 --- !u!65 &4904718342633561633
 BoxCollider:
   m_ObjectHideFlags: 0

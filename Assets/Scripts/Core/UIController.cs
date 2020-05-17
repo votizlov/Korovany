@@ -1,7 +1,9 @@
-﻿using AI;
+﻿using System;
+using AI;
 using Networking;
 using Objects;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Core
 {
@@ -13,6 +15,7 @@ namespace Core
         [SerializeField] private GameObject tutorial;
         [SerializeField] private GameObject classSelection;
         [SerializeField] private GameObject waitForPlayers;
+        [SerializeField] private Text scoreText;
         private AlliesShop _currShop;
         private AlliesCommander _currCommander;
 
@@ -30,6 +33,11 @@ namespace Core
         {
             classSelection.SetActive(false);
             waitForPlayers.SetActive(true);
+        }
+
+        public void OnScoreChanged(int score)
+        {
+            scoreText.text = score.ToString();
         }
 
         public void OpenAlliesShopMenu(AlliesShop shop)

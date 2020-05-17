@@ -3,6 +3,7 @@ using Apex.AI;
 using Apex.AI.Components;
 using Core;
 using Objects.Gun;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,6 +15,7 @@ namespace AI
         [SerializeField] private NavMeshAgent agent;
         [SerializeField] private Gun gun;
         [SerializeField] private int bounty;
+        [SerializeField] private PhotonView photonView;
         private MainContext _context;
 
         private void Awake()
@@ -30,7 +32,14 @@ namespace AI
 
         private void OnDestroy()
         {
+            //todo sync scores if(PhotonNetwork.IsConnected)
+            gameProxy.UI.OnScoreChanged(gameProxy.currency);
             gameProxy.enemies.Remove(gameObject);
+        }
+
+        private void UpdateScore()
+        {
+                
         }
     }
 }

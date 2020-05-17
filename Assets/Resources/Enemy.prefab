@@ -196,7 +196,7 @@ MonoBehaviour:
   gameProxy: {fileID: 11400000, guid: 24328f21fb38f43418eb88b6b1219227, type: 2}
   agent: {fileID: 7075088038993600591}
   gun: {fileID: 8182126336554756847}
-  bounty: 0
+  bounty: 10
 --- !u!114 &2051431507
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -145,8 +145,14 @@ namespace Networking
             SceneManager.LoadScene("MainMenu");
         }
 
+        public void OnKorovanLeft()
+        {
+            timer.ResetTimer();
+        }
+
         public void OnKorovanDestroyed()
         {
+            //todo go to next stage via portal
         }
     }
 }
