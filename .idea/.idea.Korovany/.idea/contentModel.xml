@@ -449,6 +449,38 @@
             </e>
           </e>
         </e>
+        <e p="PortalProject" t="Include">
+          <e p="Models" t="Include">
+            <e p="Car" t="Include">
+              <e p="LICENSE.txt" t="Include" />
+            </e>
+          </e>
+          <e p="Scripts" t="Include">
+            <e p="Core" t="Include">
+              <e p="CameraUtility.cs" t="Include" />
+              <e p="MainCamera.cs" t="Include" />
+              <e p="Portal.cs" t="Include" />
+              <e p="PortalTraveller.cs" t="Include" />
+              <e p="Shaders" t="Include">
+                <e p="Portal.shader" t="Include" />
+                <e p="Slice.shader" t="Include" />
+              </e>
+            </e>
+            <e p="Demo" t="Include">
+              <e p="Car.cs" t="Include" />
+              <e p="CloudBehaviorTest.cs" t="Include" />
+              <e p="CloudCoreTest.cs" t="Include" />
+              <e p="CloudTest.cs" t="Include" />
+              <e p="FPSController.cs" t="Include" />
+              <e p="PortalPhysicsObject.cs" t="Include" />
+              <e p="Shaders" t="Include">
+                <e p="CloudTest.shader" t="Include" />
+                <e p="SkyDome.shader" t="Include" />
+              </e>
+              <e p="Spawner.cs" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="Scripts" t="Include">
           <e p="AI" t="Include">
             <e p="Actions" t="Include">

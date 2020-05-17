@@ -10,9 +10,8 @@ namespace Objects.Items
 
         public override void Interact(PlayerController playerController)
         {
-            Debug.Log("a");
             gameProxy.itemsController.PickupItem(playerController, type);
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 }

@@ -9,12 +9,14 @@ namespace Objects.Items
     {
         public void PickupItem(PlayerController player, ItemTypes type)
         {
+            
         }
     }
 
     public enum ItemTypes
     {
         Speed,
-        ExplosiveRounds
+        ExplosiveRounds,
+        ChallengeAltar
     }
 }
