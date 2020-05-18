@@ -13,11 +13,11 @@ namespace Objects.Items
 
         public void PickupItem(PlayerController player, ItemTypes type)
         {
-            if (gameProxy.currency >= itemCosts[(int) type])
+           //todo remove buying bypass if (gameProxy.currency >= itemCosts[(int) type])
                 switch (type)
                 {
                     case ItemTypes.Speed:
-
+                        player.speed *= 1.1f;
                         break;
                     case ItemTypes.ExplosiveRounds:
                         break;

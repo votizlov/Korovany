@@ -13,6 +13,7 @@ namespace AI
         [SerializeField] private AnimationCurve enemyRarityCurve;
         [SerializeField] private GameObject[] enemiesSorted;
         [SerializeField] private GameObject[] itemsSorted;
+        [SerializeField] private GameObject[] treeVariants;
         [SerializeField] private UtilityAIComponent componentAI;
         [SerializeField] private TerrainData tData;
 
@@ -22,7 +23,7 @@ namespace AI
             {
                 itemPlaces = new List<Vector3>(), componentAI = componentAI, itemRarityCurve = itemRarityCurve,
                 enemyRarityCurve = enemyRarityCurve, itemsSorted = itemsSorted, enemiesSorted = enemiesSorted,
-                terrainData = tData
+                terrainData = tData, treeVariants = treeVariants
             };
             return c;
         }

@@ -490,6 +490,7 @@
               <e p="FollowPlayer.cs" t="Include" />
               <e p="GoToPos.cs" t="Include" />
               <e p="GoToTarget.cs" t="Include" />
+              <e p="PlaceTrees.cs" t="Include" />
               <e p="RotateToTarget.cs" t="Include" />
               <e p="SelectItemPlaces.cs" t="Include" />
               <e p="SelectRandomDestination.cs" t="Include" />

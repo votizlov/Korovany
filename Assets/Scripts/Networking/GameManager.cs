@@ -31,6 +31,8 @@ namespace Networking
 
         [SerializeField] private UIController UI;
 
+        [SerializeField] private AudioSource musicSource;
+
         [SerializeField] private GameObject classSelectionCam;
 
         [SerializeField] private UtilityAIComponent comp;
@@ -61,6 +63,9 @@ namespace Networking
             gameProxy.enemies = new List<GameObject>();
             gameProxy.gameManager = this;
             gameProxy.itemsController = itemsController;
+            
+
+            utilityAiComponent.clients[0].Start();
         }
 
         public void SpawnPlayer(String selectedClass)
@@ -109,12 +114,13 @@ namespace Networking
             {
                 player.isFreesed = false;
             }
-
-            utilityAiComponent.clients[0].Start();
+            utilityAiComponent.clients[1].Start();
             
             timer.StartTimer();
 
             UI.OnMainLoopStarted();
+            
+            musicSource.Play();
         }
 
         private void CheckTimer(float time)

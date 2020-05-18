@@ -19,6 +19,7 @@ MonoBehaviour:
     ApexAI","_id":cfffc970876646e4894c381f68fef5fb,"_qualifiers":[{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
     ApexAI","_scorers":[{"@type":"AI.Scorers.isItemsSpawned, Assembly-CSharp"}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI","action":{"@type":"Apex.AI.CompositeAction, ApexAI","_actions":[{"@type":"AI.Actions.SelectItemPlaces,
-    Assembly-CSharp"},{"@type":"AI.Actions.SpawnItems, Assembly-CSharp"}]}}}]}'
+    Assembly-CSharp"},{"@type":"AI.Actions.SpawnItems, Assembly-CSharp"},{"@type":"PlaceTrees,
+    Assembly-CSharp"}]}}}]}'
   editorConfiguration: '{"offset":{"@x":0,"@y":0},"zoom":1,"SelectorView":{"ViewArea":{"@left":100,"@top":100,"@width":200,"@height":160},"Name":"Generate
     items","QualifierView":{},"DefaultQualifier":{"ActionView":{"@connectorType":"Composite"}}}}'

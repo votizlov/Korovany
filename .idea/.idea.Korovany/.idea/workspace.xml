@@ -4,18 +4,16 @@
     <list default="true" id="df3e315c-cbe7-4d00-8ec6-568c98cfc889" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Korovany/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Korovany/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Korovany/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Korovany/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PathCreator/Examples/Scripts/PathFollower.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PathCreator/Examples/Scripts/PathFollower.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Emperrior.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Emperrior.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ApexAIStorage/ItemSpawnerAI.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ApexAIStorage/ItemSpawnerAI.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Guard.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Guard.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/PhonkKorovan.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/PhonkKorovan.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Arena.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Arena.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/EnemyContextProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/EnemyContextProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/Actions/SpawnItems.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/Actions/SpawnItems.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/SpawnersContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/SpawnersContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/SpawnersContextProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/SpawnersContextProvider.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/UIController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/UIController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Networking/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Networking/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Objects/Items/ItemsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Objects/Items/ItemsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Objects/Timer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Objects/Timer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Objects/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Objects/PlayerController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +60,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Game.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/Items/InventoryController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scripts/CameraWork.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/Actions/PlaceTrees.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/Items/ItemComponent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DamageSystem/AttackManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/Interactable.cs" root0="FORCE_HIGHLIGHTING" />
@@ -76,13 +75,11 @@
     <setting file="file://$USER_HOME$/Downloads/Portals-master/Portals-master/Assets/Scripts/Core/Portal.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PortalProject/Scripts/Core/Shaders/Portal.shader" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Temp/Compiled-Shader Graphs-New Shader Graph.shader" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PortalProject/Scripts/Core/MainCamera.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/TerrainGenerator/Scripts/FalloffGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Data/SettingsData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Object/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AnimationControllers.cs" />
@@ -110,15 +107,11 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Objects/Items/InventoryController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/Actions/SelectItemPlace.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/Actions/SelectItemsToSpawn.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/AI/Actions/SpawnItems.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/Actions/StopAI.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/Actions/SpawnPlayer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/Scorers/isItemsSpawned.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ProceduralLegPlacement/CreatureController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Objects/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Objects/TerrainGenerator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/AI/SpawnersContext.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/AI/SpawnersContextProvider.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/Actions/SelectItemPlaces.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/Actions/SpawnEnemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DamageSystem/AttackManager.cs" />
@@ -128,11 +121,16 @@
         <option value="$PROJECT_DIR$/Assets/PortalProject/Scripts/Core/Portal.cs" />
         <option value="$PROJECT_DIR$/Assets/PortalProject/Scripts/Core/Shaders/Portal.shader" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Objects/Timer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Networking/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/PathCreator/Examples/Scripts/PathFollower.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Core/UIController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/EnemyContextProvider.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/AI/SpawnersContext.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/AI/SpawnersContextProvider.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/AI/Actions/PlaceTrees.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/AI/Actions/SpawnItems.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Objects/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Objects/Items/ItemsController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Core/UIController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Networking/GameManager.cs" />
       </list>
     </option>
   </component>
@@ -188,7 +186,9 @@
       <workItem from="1589530101943" duration="3518000" />
       <workItem from="1589627450169" duration="6213000" />
       <workItem from="1589645692594" duration="8857000" />
-      <workItem from="1589701906013" duration="10785000" />
+      <workItem from="1589701906013" duration="10959000" />
+      <workItem from="1589784805381" duration="575000" />
+      <workItem from="1589819666279" duration="4039000" />
     </task>
     <servers />
   </component>

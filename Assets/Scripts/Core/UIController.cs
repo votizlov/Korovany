@@ -37,7 +37,7 @@ namespace Core
 
         public void OnScoreChanged(int score)
         {
-            scoreText.text = score.ToString();
+//todo add score change            scoreText.text = score.ToString();
         }
 
         public void OpenAlliesShopMenu(AlliesShop shop)

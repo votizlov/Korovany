@@ -22,7 +22,11 @@ namespace AI.Actions
 
         private String selectItemToSpawn(SpawnersContext c)
         {
-            
+            /*
+             Random.next
+             c.itemRaritiCurve
+             todo map curve to possible items array             
+             */
             return "Item";
         }
     }

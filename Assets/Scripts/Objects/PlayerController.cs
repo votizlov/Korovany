@@ -30,7 +30,7 @@ namespace Objects
 
         [SerializeField] private GameObject gunPlace;
 
-        [SerializeField] private float speed;
+        public float speed;
 
         [SerializeField] private float speedH = 2.0f;
 
